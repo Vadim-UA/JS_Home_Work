@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №2</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table {
+			border: 2px solid rgb(56, 56, 56);
+		}
+
+		tr {
+			padding: 10px;
+		}
+
+		td {
+			padding: 15px;
+			border: 2px solid rgb(56, 56, 56);
+		}
+
+		p {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</p>
+	<script>
+		// Створюю змінні для введення даних та присвоюю їм значення
+		const numOne = parseFloat(prompt("Введіть перше число:"));
+		const numTwo = parseFloat(prompt("Введіть друге число:"));
+
+		// Виводжу дані на екран
+		document.write(`Перше число: ${numOne} </br>
+							Друге число: ${numTwo}`)
+
+		// Створюю змінні для збереження результатів обчислень
+		let summ = (numOne + numTwo).toFixed(2);
+		let multip = (numOne * numTwo).toFixed(2);
+		let divis = (numOne / numTwo).toFixed(2);
+
+		// Намагаюсь) вивести результат у формі таблиці
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Сума двох чисел
+					</td>
+					<td>
+						${summ}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Добуток двох чисел
+					</td>
+					<td>
+						${multip}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Частка двох чисел
+					</td>
+					<td>
+						${divis}
+					</td>
+				</tr>
+			</table>
+		`);
+	</script>
+
+</body>
+
+</html>

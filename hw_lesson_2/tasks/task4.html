@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №2</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table {
+			border: 2px solid rgb(56, 56, 56);
+		}
+
+		tr {
+			padding: 10px;
+		}
+
+		td {
+			padding: 15px;
+			border: 2px solid rgb(56, 56, 56);
+		}
+
+		p {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).</p>
+	<script>
+		// Створюю змінні та присвоюю їм значення
+		let cost = parseFloat(prompt("Введіть вартість товару"));
+		let quantity = parseFloat(prompt("Введіть кількість товару"));
+		const tax = 5 / 100;
+
+		// Виконую обчислення
+		let totalCost = cost * quantity;
+		let taxAmount = totalCost * tax;
+
+		// Виводжу результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Загальна вартість товару
+					</td>
+					<td>
+						${totalCost} у.о.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						ПДВ (5%)(пощастило:)
+					</td>
+					<td>
+						${taxAmount} у.о.
+					</td>
+				</tr>
+			</table>
+		`)
+	</script>
+
+</body>
+
+</html>

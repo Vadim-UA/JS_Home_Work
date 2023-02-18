@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №2</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		p {
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</p>
+	<script>
+		// Створюю змінну. Присвоюю значення
+		//let userSec = 326600;
+		let userSec = parseInt(prompt("Введіть кількість секунд"));
+
+		// Обраховую результат
+
+		let sec = userSec % 60;
+		//let minutesCalc = (userSec - sec) / 60;
+		let minutesCalc = Math.floor(userSec / 60);
+
+		let hours = Math.floor(minutesCalc / 60);
+		let minutes = minutesCalc - (hours * 60);
+
+		// Просто у години та хвилини
+
+		let summMinutes = Math.floor(userSec / 60);
+		let summHours = Math.floor((Math.floor(userSec / 60)) / 60);
+
+
+		// Від початку доби
+
+		const date = new Date()
+		const hoursBeg = date.getHours();
+		const minutesBeg = date.getMinutes();
+		const secondsBeg = date.getSeconds();
+		const allSecondsBeg = hoursBeg * 3600 + minutesBeg * 60 + secondsBeg;
+
+		let begSec = allSecondsBeg % 60;
+		let begMinCalc = Math.floor(allSecondsBeg / 60);
+		let begHour = Math.floor(begMinCalc / 60);
+		let begMin = begMinCalc - (begHour * 60);
+
+
+
+
+		// Виводжу результати
+
+		document.write(`<p>У ${userSec} секундах міститься:</p> ${hours} годин(a) </br> ${minutes} хвилин(a) </br> ${sec} секунд(a)
+		</br>
+		</br>
+		або
+		<p>${userSec} секунд - це:</p>
+			${summHours} годин(а) </br>
+		чи 
+		${summMinutes} хвилин(а)
+		</br>
+		</br>
+		</br>
+		<p>З початку доби минуло: ${allSecondsBeg} секунд. Тобто, минуло:</p>
+		</br>
+		${begHour} годин(а)
+		</br>
+		${begMin} хвилин(а)
+		</br>
+		${begSec} секунд(а)
+		`);
+	</script>
+</body>
+
+</html>

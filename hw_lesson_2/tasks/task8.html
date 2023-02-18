@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6 уроку №2</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		p {
+			margin-bottom: 10px;
+		}
+
+		table,
+		td,
+		th {
+			border: 1px solid #000;
+		}
+
+		th,
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №7</h1>
+	<p>Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).</p>
+	<script>
+		// Створюємо змінні. Присвоюємо значення змінним
+		// Період місяців
+		const minMonth = 1;
+		const maxMonth = 12;
+
+		// Період днів
+		const minDay = 0;
+		const maxDay = 6;
+
+		//Виконуємо обчислення
+		let someMonth = Math.floor(Math.random() * (maxMonth - minMonth + 1) + minMonth);
+
+		let someDay = Math.floor(Math.random() * (maxDay - minDay + 1));
+
+		let someDateSumm = someMonth + someDay;
+
+
+		// Виводимо результат
+
+		document.write(`
+		<table>
+			<th>Випадковий номер місяця року</th>
+			<th>Випадковий номер дня тижня</th>
+			<th>Результат додавання</th>
+			<tr>
+				<td>${someMonth}</td>
+				<td>${someDay}</td>
+				<td>${someDateSumm}</td>
+			</tr>
+		</table>`)
+	</script>
+
+</body>
+
+</html>

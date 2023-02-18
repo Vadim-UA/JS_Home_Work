@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 0 уроку №2</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №0</h1>
+	<p>Обчислити значення виразів</p>
+	<img src="../img/2_0.jpg" alt="Image for task">
+	<script>
+		// Створюю змінні для вхідних даних та присвоюю їм значення
+		const a = parseFloat(prompt('Введіть число "а"'));
+		const b = parseFloat(prompt('Введіть число "b"'));
+		const c = parseFloat(prompt('Введіть число "c"'));
+
+		// Створюю змінні для виведення результату та виконую математичні дії
+		let s1 = (a + 12 + b);
+		let s2 = (Math.sqrt(((a + b) / (2 * a)))).toFixed(3);
+		let s3 = (Math.cbrt((a + b) * c)).toFixed(3);
+		let s4 = (Math.sin(a / (-b))).toFixed(3);
+
+		// Виводжу результати обчислень
+		document.write(`<h5>a = ${a}</h5>\n
+							<h5>b = ${b}</h5>\n
+							<h5>c = ${c}</h5>\n
+							<h4>S1 = ${s1}</h4>\n
+							<h4>S2 = ${s2}</h4>\n
+							<h4>S3 = ${s3}</h4>\n
+							<h4>S4 = ${s4}</h4>`);
+	</script>
+</body>
+
+</html>

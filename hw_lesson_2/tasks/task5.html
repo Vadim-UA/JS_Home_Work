@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №2</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table {
+			border: 2px solid rgb(56, 56, 56);
+		}
+
+		tr {
+			padding: 10px;
+		}
+
+		td {
+			padding: 15px;
+			border: 2px solid rgb(56, 56, 56);
+		}
+
+		p {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.</p>
+	<script>
+		// Створюю змінні. Присвоюю їм значення.
+		let smLength = parseInt(prompt("Введіть значення довжини, см"));
+
+		// Виконую обчислення
+		let mLength = smLength / 100;
+		let kmLength = (smLength / 100000).toFixed(4);
+
+		// Виводжу результат
+		document.write(`
+					<table>
+						<tr>
+							<td>
+								Довжина у метрах становить
+							</td>
+							<td>
+								${mLength} м.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Довжина у кілометрах становить
+							</td>
+							<td>
+								${kmLength} км.
+							</td>
+						</tr>
+					</table>
+		`)
+	</script>
+</body>
+
+</html>

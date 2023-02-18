@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6 уроку №2</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		p {
+			margin-bottom: 10px;
+		}
+
+		table,
+		td,
+		th {
+			border: 1px solid #000;
+		}
+
+		th,
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №6</h1>
+	<p>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів.
+		Обчислити вартість кожного товару окремо та загальну вартість.
+		Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+	<script>
+		// Створюю змінні. Присвоюю значення змінним.
+		const commOne = prompt("Введіть назву першого товару", "Бензин");
+		const quantOne = parseFloat(prompt("Введіть кількість першого товару"));
+		const priceOne = parseFloat(prompt("Введіть ціну першого товару"));
+
+		const commTwo = prompt("Введіть назву другого товару", "Диз Паливо");
+		const quantTwo = parseFloat(prompt("Введіть кількість другого товару"));
+		const priceTwo = parseFloat(prompt("Введіть ціну другого товару"));
+
+		const commThree = prompt("Введіть назву третього товару", "Газ");
+		const quantThree = parseFloat(prompt("Введіть кількість третього товару"));
+		const priceThree = parseFloat(prompt("Введіть ціну третього товару"));
+
+
+		// Виконую обчислення
+		let summOne = quantOne * priceOne;
+		let summTwo = quantTwo * priceTwo;
+		let summThree = quantThree * priceThree;
+		let summTotal = summOne + summTwo + summThree;
+
+		console.log(commOne);
+		console.log(quantOne);
+		console.log(priceOne);
+		console.log(summOne);
+
+		// Виводжу результат
+		document.write(`
+		<table>
+			<tr>
+				<th>Назва товару</th>
+				<th>Кількість товару, од.</th>
+				<th>Вартість товару, у.о.</th>
+				<th>Сума, у.о.</th>
+			</tr>
+			<tr>
+				<td>${commOne}</td>
+				<td>${quantOne}</td>
+				<td>${priceOne}</td>
+				<td>${summOne}</td>
+			</tr>
+			<tr>
+				<td>${commTwo}</td>
+				<td>${quantTwo}</td>
+				<td>${priceTwo}</td>
+				<td>${summTwo}</td>
+			</tr>
+			<tr>
+				<td>${commThree}</td>
+				<td>${quantThree}</td>
+				<td>${priceThree}</td>
+				<td>${summThree}</td>
+			</tr>
+			<tr>
+				<td colspan = "3">Загальна сума операції, у.о.</td>
+				<td>${summTotal}</td>
+			</tr>
+		</table>
+		`);
+	</script>
+</body>
+
+</html>
