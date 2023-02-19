@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №3</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>З клавіатури вводиться назва категорії водія
+		(А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль).
+		Вивести на екран назву транспортного засобу, яким він може керувати.</p>
+	<script>
+		// Створюємо змінні
+		let userLetter = prompt(`Визначте вашу категорію водія. А або В, або С`);
+
+		// Обчислення
+		if (userLetter === "a" || userLetter === "A") {
+			document.write(`Ви маєте право керувати мотоциклом. Категорія "А"`);
+		} else if (userLetter === "b" || userLetter === "B") {
+			document.write(`Ви маєте право керувати легковим автомобілем. Категорія "В"`);
+		} else if (userLetter === "c" || userLetter === "C") {
+			document.write(`Ви маєте право керувати вантажним автомобілем. Категорія "С"`);
+		} else {
+			document.write(`Ви маєте право керувати підводним човном. Щасливого плавання!`);
+			//document.write(`Ви маєте право керувати літаючою тарілкою. Щасливої дороги!`);
+			//document.write(`Неможливо визначити вашу категорію водія.`);
+			//document.write(`Неможливо визначити вашу категорію водія. Введіть коректні дані латиницею`);
+		};
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7 уроку №3</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №7</h1>
+	<p>З клавіатури вводиться номер місяця. Вивести, до якої пори року він відноситься</p>
+	<script>
+		// Створюємо змінні
+		let userMonthNumber = parseInt(prompt(`Введіть номер місяця року`));
+
+		// Обчислення
+		if (userMonthNumber >= 1 && userMonthNumber <= 2) {
+			document.write(`Місяць під номером ${userMonthNumber} є зимовим. `);
+			if (userMonthNumber == 1) {
+				document.write(`Це Січень.`)
+			} else if (userMonthNumber == 2) {
+				document.write(`Це Лютий.`);
+			}
+		} else if (userMonthNumber >= 3 && userMonthNumber <= 5) {
+			document.write(`Місяць під номером ${userMonthNumber} є весняним. `);
+			if (userMonthNumber == 3) {
+				document.write(`Це Березень.`);
+			} else if (userMonthNumber == 4) {
+				document.write(`Це Квітень.`);
+			} else if (userMonthNumber == 5) {
+				document.write(`Це Травень.`);
+			}
+		} else if (userMonthNumber >= 6 && userMonthNumber <= 8) {
+			document.write(`Місяць під номером ${userMonthNumber} є літнім. `);
+			if (userMonthNumber == 6) {
+				document.write(`Це Червень.`);
+			} else if (userMonthNumber == 7) {
+				document.write(`Це Липень.`);
+			} else if (userMonthNumber == 8) {
+				document.write(`Це Серпень.`);
+			}
+		} else if (userMonthNumber >= 9 && userMonthNumber <= 11) {
+			document.write(`Місяць під номером ${userMonthNumber} є осіннім. `);
+			if (userMonthNumber == 9 || userMonthNumber == "Вересень") {
+				document.write(`Це Вересень.`);
+			} else if (userMonthNumber == 10) {
+				document.write(`Це Жовтень.`);
+			} else if (userMonthNumber == 11) {
+				document.write(`Це Листопад.`)
+			}
+		} else if (userMonthNumber === 12) {
+			document.write(`Місяць під номером ${userMonthNumber} є зимовим. Це Грудень - останній місяць року.`);
+		} else {
+			document.write(`Місяця під номером ${userMonthNumber} не існує.`);
+		}
+	</script>
+</body>
+
+</html>

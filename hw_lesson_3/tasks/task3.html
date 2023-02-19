@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №3</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</p>
+	</br>
+	<script>
+		// Створюємо змінні
+		let minNumber = 1;
+		let maxNumber = 5;
+		let randomNumber = Math.floor((Math.random() * (maxNumber - minNumber + 1) + minNumber));
+		let userNumber = parseInt(prompt(`Спробуйте вгадати число від 1 до 5. Маєте 2 спроби.`));
+		//console.log(randomNumber);
+
+		// Обчислення
+		if ((userNumber < minNumber) || (userNumber > maxNumber)) {
+			document.write(`Обране вами число (${userNumber}) не відповідає заданому діапазону.
+			</br>
+			</br>
+			Будь ласка, оберіть число від 1 до 5
+			`);
+		} else if (userNumber == randomNumber) {
+			document.write(`Вітаємо! Ви вгадали число ${randomNumber}!`);
+		} else {
+			userNumber = parseInt(prompt(`Спробуйте вгадати число від 1 до 5. Спроба друга. Остання.`));
+			if (userNumber == randomNumber) {
+				document.write(`Вітаємо! Ви вгадали число ${randomNumber} з другої спроби!`);
+			} else {
+				document.write(`Ви не вгадали число.
+				</br>
+				</br>
+				Загадане число було ${randomNumber}.
+				`);
+			}
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №3</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>З клавіатури вводяться імена двох дітей та кількість у них цукерок.
+		Вивести на екран ім’я тієї дитини, у якої кількість цукерок є більшою або вивести, що кількість однакова.</p>
+	<script>
+		// Створено змінні
+		let nameOne = prompt("Введіть ім'я першої дитини", "Іштван");
+		let candyOne = parseInt(prompt(`Скільки цукерок має ${nameOne}`));
+		let nameTwo = prompt("Введіть ім'я другої дитини", "Микола");
+		let candyTwo = parseInt(prompt(`Скільки цукерок має ${nameTwo}`));
+		console.log(candyOne);
+		console.log(candyTwo);
+
+		// Виконуємо алгоритм та виводимо результат
+		if (candyOne > candyTwo) {
+			document.write(`${nameOne} має більше цукерок, ніж ${nameTwo}`);
+		} else if (candyTwo > candyOne) {
+			document.write(`${nameTwo} має більше цукерок, ніж ${nameOne}`);
+		} else {
+			document.write(`${nameOne} та ${nameTwo} мають однакову кількість цукерок`);
+		};
+	</script>
+</body>
+
+</html>

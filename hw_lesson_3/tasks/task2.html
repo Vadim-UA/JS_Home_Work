@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №3</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №2</h1>
+	<p>З клавіатури вводиться ціна товару і кількість грошей.
+		Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші,
+		то пропонуємо купити лотерею за 4 грн.</p>
+	<script>
+		// Створюємо змінні
+		let price = parseFloat(prompt(`Повідомте, будь ласка, ціну за одиницю товару, у.о.`));
+		let quant = parseFloat(prompt(`Повідомте, будь ласка, бажану кількість товару, од.`));
+		let money = parseFloat(prompt(`Повідомте, будь ласка, наявну кількість грошових коштів, у.о.`));
+		const ticket = 4;
+
+		// Виконуємо обчислення
+		let summ = (quant * price).toFixed(2);
+		document.write(`Наявна у вас сума: ${money} у.о. </br></br>`);
+		if (money >= summ) {
+			document.write(`Ви маєте можливість придбати товар у кількості ${quant} од. по ціні ${price} у.о./од. </br></br>`);
+			if ((money % summ) >= ticket) {
+				document.write(`Чи не бажаєте на решту коштів придбати лотерейні квитки? Вартість усього ${ticket} у.о. за 1 шт.`);
+			}
+		} else {
+			document.write(`У вас недостатньо коштів для придбання товару у кількості ${quant} од. по ціні ${price} у.о./од.`);
+		}
+		//console.log(`Сума покупки ${summ} у.о.`);
+		//console.log(`Наявна сума ${money} у.о.`);
+	</script>
+</body>
+
+</html>
