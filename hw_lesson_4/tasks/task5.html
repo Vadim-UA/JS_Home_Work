@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №4</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>Знайти 2 найбільших числа з 4 цілих чисел.</p>
+	<script>
+		//
+		const numOne = parseInt(prompt("Num One", "3"))
+		const numTwo = parseInt(prompt("Num Two", "4"))
+		const numThree = parseInt(prompt("Num Three", "5"))
+		const numFour = parseInt(prompt("Num Four", "6"))
+		let max1 = -Infinity
+		let max2 = -Infinity
+		//
+		if (isFinite(numOne) && isFinite(numTwo) && isFinite(numThree) && isFinite(numFour)) {
+			if (numOne > max1) max1 = numOne
+			if (numTwo > max1) max1 = numTwo
+			if (numThree > max1) max1 = numThree
+			if (numFour > max1) max1 = numFour
+			if (numOne < max1 && numOne > max2) max2 = numOne
+			if (numTwo < max1 && numTwo > max2) max2 = numTwo
+			if (numThree < max1 && numThree > max2) max2 = numThree
+			if (numFour < max1 && numFour > max2) max2 = numFour
+
+			document.write(`
+		Дано числа:</br>
+		Число: ${numOne}
+		</br>
+		Число: ${numTwo}
+		</br>
+		Число: ${numThree}
+		</br>
+		Число: ${numFour}
+		</br>
+		Перше найбільше число є ${max1}
+		</br>
+		Друге найбільше число є ${max2}`)
+		} else {
+			document.write("Введіть коректні дані")
+		}
+	</script>
+
+</body>
+
+</html>

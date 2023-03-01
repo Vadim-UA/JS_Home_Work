@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6 уроку №4</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №6</h1>
+	<p>Знайти 2 найменших числа.</p>
+	<script>
+		//
+		const numOne = parseFloat(prompt("Num One", "3"))
+		const numTwo = parseFloat(prompt("Num Two", "4"))
+		const numThree = parseFloat(prompt("Num Three", "5"))
+		const numFour = parseFloat(prompt("Num Four", "6"))
+		let min1 = Infinity
+		let min2 = Infinity
+		//Обчислення
+		if (isFinite(numOne) && isFinite(numTwo) && isFinite(numThree) && isFinite(numFour)) {
+			//Знаходимо мінімальне число
+			if (numOne < min1) min1 = numOne
+			if (numTwo < min1) min1 = numTwo
+			if (numThree < min1) min1 = numThree
+			if (numFour < min1) min1 = numFour
+			if (numOne > min1 && numOne < min2) min2 = numOne
+			if (numTwo > min1 && numTwo < min2) min2 = numTwo
+			if (numThree > min1 && numThree < min2) min2 = numThree
+			if (numFour > min1 && numFour < min2) min2 = numFour
+			document.write(`
+						Дано числа:</br>
+						Число: ${numOne}
+						</br>
+						Число: ${numTwo}
+						</br>
+						Число: ${numThree}
+						</br>
+						Число: ${numFour}
+						</br>
+						Перше найменше число є ${min1}
+						</br>
+						Друге найменше число є ${min2}`)
+		} else {
+			document.write("Введіть коректні дані")
+		}
+	</script>
+</body>
+
+</html>

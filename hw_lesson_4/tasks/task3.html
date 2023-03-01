@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №4</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>Значення які більші за середнє замінити на 0.</p>
+	</br>
+	<script>
+		// 
+
+		let numOne = parseInt(prompt("Num One"))
+		let numTwo = parseInt(prompt("Num Two"))
+		let numThree = parseInt(prompt("Num Three"))
+		let numFour = parseInt(prompt("Num Four"))
+		let average = (numOne + numTwo + numThree + numFour) / 4;
+		//console.log(`Середнє ${average}`);
+		//console.log(`Перше число ${numOne}`);
+		//console.log(`Друге число ${numTwo}`);
+		//console.log(`Третє число ${numThree}`);
+		//console.log(`Четверте число ${numFour}`);
+
+		if (isFinite(numOne) && isFinite(numTwo) && isFinite(numThree) && isFinite(numFour)) {
+			if (numOne > average) numOne = 0
+			if (numTwo > average) numTwo = 0
+			if (numThree > average) numThree = 0
+			if (numFour > average) numFour = 0
+			document.write(`Середнє ${average}<br><br>Перше число: ${numOne}<br><br>Друге число: ${numTwo}<br><br>Третє число: ${numThree}<br><br>Четверте число: ${numFour}`)
+
+		} else {
+			document.write("Введіть коректні дані")
+		}
+
+		//console.log(`Середнє ${average}`);
+		//console.log(`Перше число ${numOne}`);
+		//console.log(`Друге число ${numTwo}`);
+		//console.log(`Третє число ${numThree}`);
+		//console.log(`Четверте число ${numFour}`);
+	</script>
+</body>
+
+</html>

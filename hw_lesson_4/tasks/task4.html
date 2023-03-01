@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №4</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>Знайти найбільше серед тих які менші за середні арифметичне.</p>
+</body>
+<script>
+	let numOne = parseFloat(prompt("Num One", "3"))
+	let numTwo = parseFloat(prompt("Num Two", "4"))
+	let numThree = parseFloat(prompt("Num Three", "5"))
+	let numFour = parseFloat(prompt("Num Four", "6"))
+	let average = (numOne + numTwo + numThree + numFour) / 4;
+	let max = -Infinity
+
+	if (isFinite(numOne) && isFinite(numTwo) && isFinite(numThree) && isFinite(numFour)) {
+		if (numOne < average && numOne > max) max = numOne
+		if (numTwo < average && numTwo > max) max = numTwo
+		if (numThree < average && numThree > max) max = numThree
+		if (numFour < average && numFour > max) max = numFour
+		document.write(`Найбільшим серед менших за середнє арифметичне є число ${max}.</br></br>`)
+		document.write(`Середнє: ${average}<br><br>Перше число: ${numOne}<br><br>Друге число: ${numTwo}<br><br>Третє число: ${numThree}<br><br>Четверте число: ${numFour}`)
+
+	} else {
+		document.write("Введіть коректні дані")
+	}
+
+
+	console.log(`Середнє ${average}`);
+	console.log(`Перше число ${numOne}`);
+	console.log(`Друге число ${numTwo}`);
+	console.log(`Третє число ${numThree}`);
+	console.log(`Четверте число ${numFour}`);
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №4</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>Знайти найменше серед 2-x.</p>
+	<script>
+		// Створюємо змінні 
+		const nomeOne = parseFloat(prompt("Перше число"))
+		const nomeTwo = parseFloat(prompt("Друге число"))
+		let min
+		// Цикл
+		if (isFinite(nomeOne) && isFinite(nomeTwo)) {
+			if (nomeOne < nomeTwo) {
+				min = nomeOne
+				document.write(`Найменшим буде число ${min}`)
+			} else if (nomeTwo < nomeOne) {
+				min = nomeTwo
+				document.write(`Найменшим буде число ${min}`)
+			} else {
+				nomeOne === nomeTwo
+				document.write(`Число ${nomeOne} і число ${nomeTwo} рівні`)
+			}
+		} else {
+			document.write("Введіть коректні дані")
+		}
+	</script>
+</body>
+
+</html>

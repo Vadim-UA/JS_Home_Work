@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №4</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №2</h1>
+	<p>Найбільше замінити на 0, якщо одинакові то обидва на 0.</p>
+	<script>
+		//
+		let a = parseFloat(prompt("Введіть а"))
+		let b = parseFloat(prompt("Введіть b"))
+		//
+		if (isFinite(a) && isFinite(b)) {
+			if (a > b) {
+				a = 0
+				document.write(`a = ${a}</br>b = ${b}`)
+			} else if (b > a) {
+				b = 0
+				document.write(`a = ${a}</br>b = ${b}`)
+			} else {
+				a = 0
+				b = 0
+				document.write(`Числа ${a} та ${b} рівні`)
+			}
+		} else {
+			document.write("Введіть коректні дані")
+		}
+	</script>
+</body>
+
+</html>
