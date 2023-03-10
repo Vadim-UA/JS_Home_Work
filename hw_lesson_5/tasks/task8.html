@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 8 уроку №5</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №8</h1>
+	<p>Користувач загадує число.
+		За 3 спроби комп’ютер намагається вгадати число користувача
+		(використати confirm).</p>
+	<script>
+		// Створюємо змінні
+		const minNum = 1
+		const userNum = parseInt(prompt("Ваше число", "5"))
+		//const userNum = 13
+
+		if (isFinite(userNum) && userNum > 0) {
+			for (let i = 1; i <= 3; i++) {
+				const compNum = minNum + Math.floor(Math.random() * (userNum - minNum + 1))
+				let verification = confirm(`Комп'ютер стверджує, що загадано число ${compNum}`)
+				if (compNum === userNum && verification === true) {
+					document.write(`Комп'ютер вгадав загадане число з ${i}-ої спроби.<br>Загадане число було ${compNum}
+					</br>
+					Комп'ютер вибрав число ${compNum}`)
+					break
+				} else if (compNum != userNum && verification === false) {
+					document.write(`Комп'ютер не вгадав загадане число з ${i}-ої спроби<br>Комп'ютер вибрав число ${compNum}
+				<br>Загадане число було ${userNum}
+				<br>
+				<br>
+				<br>
+				`)
+					//break
+				} else if (compNum === userNum && verification === false) {
+					document.write(`Комп'ютер вгадав загадане число з ${i}-ої спроби.<br>Загадане число було ${userNum}
+				<br>Не варто заперечувати!
+				`)
+					break
+				} else if (compNum != userNum && verification === true) {
+					document.write(`Неправда! Комп'ютер не вгадав загадане число<br>Комп'ютер вибрав число ${compNum}
+				<br>Загадане число було ${userNum}
+				<br>`)
+					break
+				}
+			}
+		} else {
+			document.write("Дані некоректні")
+		}
+	</script>
+</body>
+
+</html>

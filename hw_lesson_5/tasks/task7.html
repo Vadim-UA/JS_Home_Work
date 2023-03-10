@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7 уроку №5</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		p {}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №7</h1>
+	<p>Вивести на екран N абзаців (N вводиться користувачем) за зразком</p>
+	<script>
+		// Створюємо змінні
+		const N = parseInt(prompt("Кількість абзаців:", "3"))
+		//
+		for (let i = 1; i <= N; i++) {
+			document.write(`<h2>Заголовок ${i}</h2>`)
+			for (let j = 1; j <= i; j++) {
+				document.write(`<p>Розділ ${i}, параграф ${j}</p>`)
+			}
+			document.write(`
+			<hr>
+			`)
+		}
+	</script>
+
+</body>
+
+</html>

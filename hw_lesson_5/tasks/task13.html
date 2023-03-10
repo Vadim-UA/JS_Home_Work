@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 13 уроку №5</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №13</h1>
+	<p>Морський бій. Комп’ютер випадково розташовує одиночний корабель
+		на полі розміром N*M. Маючи K, снарядів користувач намагається
+		потопити корабель.</p>
+	<script>
+		// Створюємо змінні
+		const N = parseInt(prompt("Задайте розмір поля, N", "5"));
+		const M = parseInt(prompt("Задайте розмір поля, M", "5"));
+		let K = parseInt(prompt("Задайте кількість пострілів, K", "5"));
+		// Обрахунок
+		const coordinateShipN = 1 + Math.floor(Math.random() * N);
+		const coordinateShipM = 1 + Math.floor(Math.random() * M);
+		// Підказка))
+		console.log(coordinateShipN);
+		console.log(coordinateShipM);
+
+		for (let i = 1; i <= K; i++) {
+			const shotСoordinateN = parseInt(prompt("Введіть координати пострілу, N", "5"));
+			const shotСoordinateM = parseInt(prompt("Введіть координати пострілу, M", "5"));
+			if (coordinateShipN === shotСoordinateN && coordinateShipM === shotСoordinateM) {
+				document.write(`Вітання! Влучання з ${i}-го пострілу!`);
+				break
+			} else if (i === K) {
+				document.write("Протистояння закінчилось. Сьогодня удача на боці супротивника. Сушіть весла, сер.");
+			} else {
+				alert(`Невдало. Заряджай знову! Залишилось ${K-i} спроб(и)!`);
+				continue
+			}
+		}
+	</script>
+</body>
+
+</html>

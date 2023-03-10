@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №5</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>Вивести таблицю з 3 рядків і 7 стовпців</p>
+</body>
+<script>
+	document.write(`<table>`)
+	for (let r = 1; r <= 3; r++) {
+		document.write(`<tr>`)
+		for (let d = 1; d <= 7; d++) {
+			document.write(`<td>${d}</td>`)
+		}
+		document.write(`</tr>`)
+	}
+	document.write(`</table>`)
+</script>
+
+</html>

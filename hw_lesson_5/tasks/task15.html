@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 15 уроку №5</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №15</h1>
+	<p>Користувача поступово вводить показники температури протягом року.
+		Знайти середню температуру.</p>
+	<script>
+		// Створюємо змінні
+		const numberOfMonths = 12;
+		let temperature = 0;
+		let averageTemperature;
+		for (let i = 0; i < numberOfMonths; i++) {
+			let userMonthTemperature = parseInt(prompt(`Введіть температуру за ${i+1} місяць.`, "15"));
+			temperature += userMonthTemperature;
+		}
+		averageTemperature = temperature / numberOfMonths;
+		document.write(`Середня температура за рік становить ${(averageTemperature).toFixed(1)} градусів.`);
+	</script>
+</body>
+
+</html>

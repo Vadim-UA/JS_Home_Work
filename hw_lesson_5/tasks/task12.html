@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 12 уроку №5</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		img {
+			width: 200px;
+			height: 130px;
+			margin: 10px 10px 0px 10px;
+			border: 1px solid #000;
+			border-radius: 15px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №12</h1>
+	<p>Ігровий автомат. Випадково вибираємо зображення у 3 позиціях.
+		Вибір у кожній позиції вибирається як одне з чотирьох зображень.
+		Вивести ці зображення і повідомити виграш користувача
+		(три перших зображення 100 грн, три других – 200, три третіх – 500,
+		три четвертих зображення – 1000грн).
+		Використати цикли і switch (для вибору зображення за номером).</p>
+	<script>
+		// Створюємо змінні
+		let randomImgSum1 = 0;
+		let randomImgSum2 = 0;
+		let randomImgSum3 = 0;
+		let randomImgSum4 = 0;
+
+		//Обчислюємо
+		for (let i = 0; i < 3; i++) {
+			let randomImgNum = 1 + Math.floor(Math.random() * 4);
+
+			switch (randomImgNum) {
+				case 1:
+					let randomImg1 = `<img src="../img/1.jpg">`
+					document.write(randomImg1);
+					randomImgSum1++;
+					break;
+				case 2:
+					let randomImg2 = `<img src="../img/2.jpg">`
+					document.write(randomImg2);
+					randomImgSum2++;
+					break;
+				case 3:
+					let randomImg3 = `<img src="../img/3.jpg">`
+					document.write(randomImg3);
+					randomImgSum3++;
+					break;
+				case 4:
+					let randomImg4 = `<img src="../img/4.jpg">`
+					document.write(randomImg4);
+					randomImgSum4++;
+					break;
+			}
+
+		}
+		if (randomImgSum1 === 3) {
+			document.write(`<span>Виграш становить 100 грн.</span>`);
+		} else if (randomImgSum2 === 3) {
+			document.write(`<span>Виграш становить 200 грн.</span>`);
+		} else if (randomImgSum3 === 3) {
+			document.write(`<span>Виграш становить 500 грн.</span>`);
+		} else if (randomImgSum4 === 3) {
+			document.write(`<span>Виграш становить 1000 грн.</span>`);
+		} else {
+			document.write("Лише спортивний інтерес-с-с-с. Грайте та вигравайте!");
+		}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 10 уроку №5</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №10</h1>
+	<p>Знайти суму всіх непарних чисел,
+		що знаходяться між заданими користувачем числами.</p>
+	<script>
+		// Створюємо змінні
+		let firstNum = parseInt(prompt("Початок діапазону чисел", "10"));
+		let lastNum = parseInt(prompt("Кінець діапазону чисел", "30"));
+		let sumOdd = 0;
+		// Обчислюємо
+		for (let i = firstNum; i <= lastNum; i++) {
+			if (i % 2 != 0) {
+				sumOdd += i;
+			}
+		}
+		document.write(`Сума усіх непарних чисел у діапазоні між числами ${firstNum} і ${lastNum} дорівнює ${sumOdd}<br>`);
+
+		//if (((isFinite(firstNum) && isFinite(lastNum)) && (firstNum >= 0 && lastNum >= 0))) {
+		//	if (firstNum === lastNum) {
+		//		document.write(`Дані некоректні<br><br><br>`);
+		//	} else if (firstNum > lastNum) {
+		//		let temp;
+		//		temp = firstNum;
+		//		firstNum = lastNum;
+		//		lastNum = temp;
+		//		for (let i = firstNum; i <= lastNum; i++) {
+		//			let number = firstNum;
+		//			if (number % 2 != 0) {
+		//				sum = sum + number;
+		//			}
+		//		}
+		//	}
+		//} else {
+		//	document.write(`Дані некоректні<br><br><br>`);
+		//}
+		//document.write(`Сума усіх непарних чисел у діапазоні між ${firstNum} і ${lastNum} дорівнює ${sum}<br>`);
+
+
+		//!
+		//if () {
+		//	for (let i = 1; i <= lastNum; i++) {
+		//		let sum = 0;
+		//		let temp;
+		//	}
+
+		//document.write(`Перше число ${firstNum}
+		//<br>
+		//Друге число ${lastNum}
+		//<br>
+		//Сума ${sum}`);
+	</script>
+</body>
+
+</html>
