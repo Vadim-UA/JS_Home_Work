@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 11 уроку №7</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №11</h1>
+	<p>Дано покази температур (довільна кількість).
+		Розробити функцію, яка дозволить знайти середнє значення
+		для додатних показів температури.</p>
+	<script>
+		// Створюємо змінні
+		const userNumberTemperature = parseInt(prompt("Кількість показників, що оброблятимуться"));
+		let numberPositive = 0;
+
+		function getAveragePositive(userNumberTemperature) {
+			let averagePositive;
+			let sumPositive = 0;
+
+			for (let i = 1; i <= userNumberTemperature; i++) {
+				const userTemperature = parseInt(prompt(`Введіть ${i}-ий показник температури`));
+				if (userTemperature > 0) {
+					numberPositive++;
+					sumPositive += userTemperature;
+				}
+			}
+			averagePositive = sumPositive / numberPositive;
+			return averagePositive;
+		}
+		let positiveTemperatureAverage = getAveragePositive(userNumberTemperature);
+		document.write(`З усіх ${userNumberTemperature} наведених значень 
+		температури додатніми є ${numberPositive}. Їх середнє значення
+		дорівнює ${positiveTemperatureAverage} градусів.`);
+	</script>
+</body>
+
+</html>

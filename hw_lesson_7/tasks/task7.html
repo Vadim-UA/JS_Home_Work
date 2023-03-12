@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7 уроку №7</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №7</h1>
+	<p>Створити функцію, яка створює таблицю з вказаною кількістю
+		рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).</p>
+	<script>
+		// Створюємо змінні
+		const rows = parseInt(prompt("Вкажіть кількість рядків таблиці", "5"));
+		const columns = parseInt(prompt("Вкажіть кількість стовпців таблиці", "5"));
+		const message = prompt("Бажане повідомлення:", "Hello, JS!");
+		//
+		function getTable(rows, columns, message) {
+			document.write(`<table>`);
+			for (let i = 0; i < rows; i++) {
+				document.write(`<tr>`);
+				for (let j = 0; j < columns; j++) {
+					document.write(`<td>${message}</td>`);
+				}
+				document.write(`</td>`);
+			}
+			document.write(`</table>`);
+		}
+		const makeTable = getTable(rows, columns, message);
+	</script>
+
+</body>
+
+</html>

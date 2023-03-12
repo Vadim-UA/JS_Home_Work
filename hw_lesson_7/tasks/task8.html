@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 8 уроку №7</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		img {
+			width: 450px;
+			height: 300px;
+			margin: 10px 10px 0px 10px;
+			border: 1px solid #000;
+			border-radius: 15px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №8</h1>
+	<p>Створити функцію, яка випадковим чином виводить на
+		екран одне із 4 зображень (шляхи до зображень передаються у функцію).</p>
+	<script>
+		// Створюємо змінні
+		const startInterval = 1;
+		const endInterval = 4;
+		//const randomVersionWay = startInterval + Math.floor(Math.random() * (endInterval - startInterval + 1));
+
+		//function getRandomImage(randomVersionWay) {
+		//	let way;
+		//	switch (randomVersionWay) {
+		//		case 1:
+		//			way = 1;
+		//			break;
+		//		case 2:
+		//			way = 2;
+		//			break;
+		//		case 3:
+		//			way = 3;
+		//			break;
+		//		case 4:
+		//			way = 4;
+		//			break;
+		//	}
+		//	document.write(`<img src="../img/${way}.jpg" alt="Picture">;`);
+		//}
+		//let randomImage = getRandomImage(randomVersionWay);
+
+		// or
+
+		const way1 = `<img src="../img/1.jpg" alt="Picture">;`;
+		const way2 = `<img src="../img/2.jpg" alt="Picture">;`;
+		const way3 = `<img src="../img/3.jpg" alt="Picture">;`;
+		const way4 = `<img src="../img/4.jpg" alt="Picture">;`;
+		const randomWay = startInterval + Math.floor(Math.random() * (endInterval - startInterval + 1));
+		let way;
+		switch (randomWay) {
+			case 1:
+				way = way1;
+				break;
+			case 2:
+				way = way2;
+				break;
+			case 3:
+				way = way3;
+				break;
+			default:
+				way = way4;
+				break;
+		}
+		console.log(randomWay);
+
+		function getRandomPicture(way) {
+			return document.write(way);
+		}
+		const randomPicture = getRandomPicture(way);
+	</script>
+	<!--<img src="../img/1.jpg" alt="Picture">;-->
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 10 уроку №7</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №10</h1>
+	<p>Дано покази температур (довільна кількість).
+		Розробити функцію, яка дозволить підрахувати кількість
+		від’ємних показів температури.</p>
+	<script>
+		// Створюємо змінні
+
+		//const userNumberTemperature = parseInt(prompt("Кількість показників, що оброблятимуться"));
+		//
+		//function getNumberNegative(userNumberTemperature) {
+		//let numberNegative = 0;
+		//for (let i = 1; i <= userNumberTemperature; i++) {
+		//const userTemperature = parseInt(prompt(`Введіть ${i}-ий показник температури`));
+		//if (userTemperature < 0) {
+		//numberNegative++;
+		//}
+		//}
+		//return numberNegative;
+		//console.log(numberNegativ);
+		//}
+		//let negativeTemperature = getNumberNegative(userNumberTemperature);
+		//document.write(`З усіх ${userNumberTemperature} наведених значень 
+		//температури від'ємними є ${negativeTemperature}`);
+
+		function getNumberNegative() {
+			let userTemperature = 0;
+			let quantityNegativ = 0;
+			for (let i = 1; isFinite(userTemperature); i++) {
+				userTemperature = parseFloat(prompt("Введіть значення температури. Для припинення - Скасувати"));
+				if (userTemperature < 0) {
+					quantityNegativ++;
+				}
+				//console.log(numberNegativ);
+			}
+			return quantityNegativ;
+		}
+		let numberNegative = getNumberNegative();
+		document.write(`Кількість від'ємних показів становить ${numberNegative}`);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №7</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>Створити функцію, яка за номером місяця повертає пору року,
+		до якої відноситься цей місяць.</p>
+	<script>
+		// Створюємо змінні 
+		let userMonthNum = parseInt(prompt("Номер місяця:", "7"));
+		let answerSeason = getSeason(userMonthNum);
+
+		function getSeason(userMonthNum) {
+			let result;
+			switch (userMonthNum) {
+				case 12:
+				case 1:
+				case 2:
+					result = "Зима";
+					break
+				case 3:
+				case 4:
+				case 5:
+					result = "Весна";
+					break;
+				case 6:
+				case 7:
+				case 8:
+					result = "Літо";
+					break
+				case 9:
+				case 10:
+				case 11:
+					result = "Осінь";
+					break
+				default:
+					result = "Дані некоректні";
+					break;
+			}
+			return result
+		}
+		if (isFinite(userMonthNum) && userMonthNum >= 1 && userMonthNum <= 12) {
+			document.write(`Місяць за номером ${userMonthNum} належить до пори року ${answerSeason}`);
+		} else {
+			document.write("Дані некоректні");
+		}
+	</script>
+</body>
+
+</html>

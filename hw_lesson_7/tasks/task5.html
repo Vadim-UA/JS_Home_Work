@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №7</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів:
+		кількість парних, кількість додатних, кількість більших за 100.</p>
+	<script>
+		// Змінні
+		const userNumber1 = parseFloat(prompt("Перше число:", "5"));
+		const userNumber2 = parseFloat(prompt("Друге число:", "6"));
+		const userNumber3 = parseFloat(prompt("Третє число:", "7"));
+		const evenNumbers = getAmountEven(userNumber1, userNumber2, userNumber3);
+		const positiveNumbers = getAmountPositiv(userNumber1, userNumber2, userNumber3);
+		const greaterThanHundred = getGreaterThanHundred(userNumber1, userNumber2, userNumber3)
+
+		//
+		function getAmountEven() {
+			let even = 0;
+			for (let i = 0; i < arguments.length; i++) {
+				if (arguments[i] % 2 === 0) {
+					even++;
+				}
+			}
+			return even;
+		}
+
+		function getAmountPositiv() {
+			let positiv = 0;
+			for (let i = 0; i < arguments.length; i++) {
+				if (arguments[i] > 0) {
+					positiv++;
+				}
+			}
+			return positiv;
+		}
+
+		function getGreaterThanHundred() {
+			let greaterHundred = 0;
+			for (let i = 0; i < arguments.length; i++) {
+				if (arguments[i] > 100) {
+					greaterHundred++;
+				}
+			}
+			return greaterHundred;
+		}
+		document.write(`Kількість парних становить ${evenNumbers}<br>
+		Kількість додатнiх становить ${positiveNumbers}<br>
+		Кількість більших за 100 становить ${greaterThanHundred}
+		`);
+		//console.log(userNumber1);
+		//console.log(userNumber2);
+		//console.log(userNumber3);
+	</script>
+
+</body>
+
+</html>

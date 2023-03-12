@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №7</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>Створити функцію, яка за номером дня дозволяє з’ясувати
+		чи є цей день робочим.</p>
+	</br>
+	<script>
+		// Змінні
+		const dayNumber = parseInt(prompt("Номер дня, 1-7", "5"));
+		const whatDay = isWorkingDay(dayNumber)
+
+		function isWorkingDay(dayNumber) {
+			let result;
+			switch (dayNumber) {
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+					result = "Робочий день";
+					break;
+				case 6:
+				case 7:
+					result = "Вихідний день";
+					break;
+				default:
+					break;
+			}
+			return result;
+		}
+		document.write(whatDay);
+	</script>
+</body>
+
+</html>
