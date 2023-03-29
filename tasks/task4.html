@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>
+		Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :<br>
+		- починаються на букву «А»;<br>
+		- перша і остання літери співпадають;<br>
+		- складаються з більше ніш 5 символів;
+	</p>
+	<hr>
+	<br>
+</body>
+<script>
+	// Змінні
+	const autoNumberList = ["С2АІ", "АА3С", "ВН2574ВК", "С562СС", "АІА", "ВВ496ВИ", "ВМ2347ОК"]
+
+	// 1) кількість номерів, які починаються на букву «А»
+	const firstLetter_A = autoNumberList.filter(element => element[0] === "А")
+	// console.log(firstLetter_A);
+	// ============================================
+
+	// function getNumberFirstLetter_A(autoNumberList) {
+	// 	let arrNumberList = []
+	// 	for (let i = 0; i < autoNumberList.length; i++) {
+	// 		let autoNumberListItem = autoNumberList[i]
+	// 		if (autoNumberListItem[0] === "А") arrNumberList.push(autoNumberListItem)
+	// 	}
+	// 	return arrNumberList
+	// }
+	// const firstLetter_A = getNumberFirstLetter_A(autoNumberList)
+	// console.log(firstLetter_A);
+	// ==========================================
+
+	// 2) перша і остання літери співпадають
+	const firstAndLastLetter = autoNumberList.filter(element => element[0] === element[element.length - 1])
+	// console.log(firstAndLastLetter.length)
+
+	// function getCoincidenceFirstAndLastLetter(arr) {
+	// 	let count = 0
+	// 	for (let i = 0; i < arr.length; i++) {
+	// 		for (let j = 0; j < arr[i].length; j++) {
+	// 			if (arr[i][0] == arr[i][arr.length - 1]) count++
+	// 		}
+	// 	}
+	// 	return count
+	// }
+	// const firstAndLastLetter = getCoincidenceFirstAndLastLetter(autoNumberList)
+	// console.log(autoNumberList);
+	// console.log(firstAndLastLetter)
+	// ==========================================
+
+	// 3) складаються з більше ніш 5 символів
+	const moreThenFiveSymbols = autoNumberList.filter(element => element.length > 5)
+	// console.log(moreThenFiveSymbols.length)
+
+	document.write(`
+	Дано послідовність номерів автомобілів: ${autoNumberList}<br><br>
+	Номери, які:<br><br>
+	- починаються на букву «А»: ${firstLetter_A} у кількості ${firstLetter_A.length} шт.<br><br>
+	- перша і остання літери номера співпадають: ${firstAndLastLetter} у кількості ${firstAndLastLetter.length} шт.<br><br>
+	- складаються з більше ніш 5 символів: ${moreThenFiveSymbols} у кількості ${moreThenFiveSymbols.length} шт.
+	`)
+
+</script>
+
+</html>

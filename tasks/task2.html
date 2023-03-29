@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<br>
+<h1>Задача №2</h1>
+<p>
+	Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:<br>
+	- номери днів, протягом яких кількість відвідувачів була меншою за 20;<br>
+	- номери днів, коли кількість відвідувачів була мінімальною;<br>
+	- номери днів, коли кількість відвідувачів була максимальною;<br>
+	- загальну кількість клієнтів у робочі дні та окремо загальну кількість клієнтів на вихідних.
+</p>
+<hr><br>
+<script>
+	// Опис змінних
+	// const numberVisitorsTheWeek = [1, 2, 3, 4, 5, 6, 7]
+	const minNumberVisitors = 1
+	const maxNumberVisitors = 50
+	const daysInWeek = 7
+
+	// Заповнення масиву даними кількості відвідувачів
+	function getNumberVisitorsTheWeek(minNumberVisitors, maxNumberVisitors, daysInWeek) {
+		let numberVisitorsTheWeek = []
+		for (let i = 0; i < daysInWeek; i++) {
+			let randomNumberVisitors = minNumberVisitors + Math.floor(Math.random() * (maxNumberVisitors - minNumberVisitors + 1))
+			numberVisitorsTheWeek.push(randomNumberVisitors)
+		}
+		return numberVisitorsTheWeek
+	}
+	let numberVisitorsTheWeek = getNumberVisitorsTheWeek(minNumberVisitors, maxNumberVisitors, daysInWeek)
+	// console.log(numberVisitorsTheWeek);
+
+	// 1) -відвідувачів менше за 20
+	function getLessThan20(numberVisitorsTheWeek) {
+		let dayNumbersLessThan20 = []
+		numberVisitorsTheWeek.forEach((element, index) => {
+			if (element < 20) dayNumbersLessThan20.push(++index)
+		})
+		return dayNumbersLessThan20
+	}
+	const dayNumbersLessThan20 = getLessThan20(numberVisitorsTheWeek)
+	// console.log(lessThan20(numberVisitorsTheWeek));
+
+	// 2) -номери днів, коли кількість відвідувачів була мінімальною
+	function getMinNumberOfVisitors(numberVisitorsTheWeek) {
+		let minNumberVisitorsList = []
+		let minNumberVistors = Math.min(...numberVisitorsTheWeek)
+		numberVisitorsTheWeek.forEach((element, index) => {
+			if (element === minNumberVistors) {
+				minNumberVisitorsList.push(++index)
+			}
+		})
+		return minNumberVisitorsList
+	}
+	const minNumberVisitorsList = getMinNumberOfVisitors(numberVisitorsTheWeek)
+	// console.log(minNumberVisitorsList);
+
+	// 3) -номери днів, коли кількість відвідувачів була максимальною;
+	function getMaxNumberOfVisitors(numberVisitorsTheWeek) {
+		let maxNumberVisitorsList = []
+		let maxNumberVistors = Math.max(...numberVisitorsTheWeek)
+		numberVisitorsTheWeek.forEach((element, index) => {
+			if (element === maxNumberVistors) {
+				maxNumberVisitorsList.push(++index)
+			}
+		})
+		return maxNumberVisitorsList
+	}
+	const maxNumberVisitorsList = getMaxNumberOfVisitors(numberVisitorsTheWeek)
+	// console.log(maxNumberVisitorsList);
+
+	// 4) -загальна кількість клієнтів у робочі дні
+	function getNumberOfVisitorsOnWorkingDays(numberVisitorsTheWeek) {
+		const numberWorkingDays = 5
+		let sumVisitors = 0
+		for (let i = 0; i < numberWorkingDays; i++) {
+			sumVisitors += numberVisitorsTheWeek[i]
+		}
+		return sumVisitors
+	}
+
+	const numberOfVisitorsOnWorkingDays = getNumberOfVisitorsOnWorkingDays(numberVisitorsTheWeek)
+	// console.log(numberOfVisitorsOnWorkingDays);
+
+	// 5) -загальна кількість клієнтів на вихідних
+	function getNumberOfVisitorsOnWeekends(numberVisitorsTheWeek) {
+		return numberVisitorsTheWeek[5] + numberVisitorsTheWeek[6]
+	}
+	const numberOfVisitorsOnWeekends = getNumberOfVisitorsOnWeekends(numberVisitorsTheWeek)
+	// console.log(numberOfVisitorsOnWeekends)
+
+	// 6) -загальна кількість клієнтів за тиждень
+	function getTotalNumberVisitors(numberVisitorsTheWeek) {
+		return numberVisitorsTheWeek.reduce((sumPrev, element) => sumPrev + element)
+	}
+	const totalNumberVisitors = getTotalNumberVisitors(numberVisitorsTheWeek)
+
+	document.write(`Кількість відвідувачів магазину протягом тижня у розрізі днів становила: ${numberVisitorsTheWeek}<br><br>
+						Hомери днів, протягом яких кількість відвідувачів була меншою за 20: ${dayNumbersLessThan20}<br><br>
+						Hомери днів, коли кількість відвідувачів була мінімальною: ${minNumberVisitorsList}<br><br>
+						Hомери днів, коли кількість відвідувачів була максимальною: ${maxNumberVisitorsList}<br><br>
+						Загальна кількість клієнтів у робочі дні становить: ${numberOfVisitorsOnWorkingDays}<br><br>
+						Загальна кількість клієнтів у вихідні дні становить: ${numberOfVisitorsOnWeekends}<br><br>
+						Загальна кількість клієнтів за тиждень становить: ${totalNumberVisitors}
+	`)
+
+	// Проба
+	// function lessThan20(numberVisitorsTheWeek) {
+	// 	let dayNumbers = []
+	// 	for (let i = 0; i < numberVisitorsTheWeek.length; i++) {
+	// 		if (numberVisitorsTheWeek[i] < 20) {
+	// 			dayNumbers.push(numberVisitorsTheWeek[i])
+	// 		}
+	// 	}
+	// 	console.log(dayNumbers)
+	// }
+	// lessThan20(numberVisitorsTheWeek)
+</script>
+
+</body>
+
+</html>

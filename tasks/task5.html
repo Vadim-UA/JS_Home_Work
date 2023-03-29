@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>
+		Дано послідовність оцінок учня. Підрахувати кількість:<br>
+		1) двійок<br>
+		2) кількість хороших оцінок (добре, відмінно);<br>
+		3) кількість оцінок, які нижче середнього.
+	</p>
+	<hr>
+	<br>
+	<script>
+		// Опис змінних
+		// const studentScoresList = [4, 3, 4, 2, 4, 3, 2, 5]
+		// const studentScoresList = [7, 2, 4, 4, 6, 4, 12, 8]
+		const minScores = 1
+		const maxScores = 12
+		const numberScores = parseInt(prompt("Кількість оцінок:", "10"))
+
+		// Заповнення масиву оцінок
+		function getNumberScoresList(minScores, maxScores, numberScores) {
+			let numberScoresList = []
+			for (let i = 0; i < numberScores; i++) {
+				let randomScores = minScores + Math.floor(Math.random() * (maxScores - minScores + 1))
+				numberScoresList.push(randomScores)
+			}
+			return numberScoresList
+		}
+		let studentScoresList = getNumberScoresList(minScores, maxScores, numberScores)
+		console.log(studentScoresList);
+
+		// 1) ===================================== Підрахувати кількість двійок
+		function getNumberOfTwo(studentScoresList) {
+			let numberOfTwo = 0
+			studentScoresList.filter(element => element === 2 ? numberOfTwo++ : numberOfTwo)
+			return numberOfTwo
+		}
+		const numberOfTwo = getNumberOfTwo(studentScoresList)
+		console.log(numberOfTwo)
+
+		// 2) ===================================== Підрахувати кількість хороших оцінок (добре, відмінно)
+		function getSumGoodScores(studentScoresList) {
+			let sumGoodScores = 0
+			studentScoresList.filter(element => element >= 7 && element <= 12 ? sumGoodScores++ : sumGoodScores)
+			// studentScoresList.filter(element => element === 4 || element === 5 ? sumGoodScores++ : sumGoodScores) // 5-бальна шкала
+			return sumGoodScores
+		}
+		const sumGoodScores = getSumGoodScores(studentScoresList)
+		console.log(sumGoodScores);
+
+		// 3) ===================================== Підрахувати кількість оцінок, які нижче середнього
+		// Визначення середньої оцінки
+		function getAverageScore(studentScoresList) {
+			const sumScores = studentScoresList.reduce((prevSum, element) => prevSum + element, 0)
+			const avgScore = sumScores / studentScoresList.length
+			// const avgScore = (studentScoresList.reduce((prevSum, element) => prevSum + element, 0)) / studentScoresList.length
+			return avgScore
+		}
+		const avgScore = getAverageScore(studentScoresList)
+		console.log(avgScore);
+
+		// Підрахунок кількості оцінок
+		function getSumScoresLowerAvg(studentScoresList, avgScore) {
+			let sumScoresLower = 0
+			studentScoresList.filter(element => element < avgScore ? sumScoresLower++ : sumScoresLower)
+			return sumScoresLower
+		}
+		const sumScoresLower = getSumScoresLowerAvg(studentScoresList, avgScore)
+		console.log(sumScoresLower);
+
+		// Виводимо результат
+		document.write(`
+		Варіант 12-бального оцінювання<br>
+		Кількість оцінок учня: ${numberScores}<br>
+		Оцінки учня: ${studentScoresList}<br>
+		Кількість "2": ${numberOfTwo}<br>
+		Kількість хороших оцінок (добре, відмінно. Від 7 балів до 12 балів): ${sumGoodScores}<br>
+		Kількість оцінок, які нижче середнього (${avgScore.toFixed(1)}): ${sumScoresLower}<br>
+		`)
+
+	</script>
+
+</body>
+
+</html>

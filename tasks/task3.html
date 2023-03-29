@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван»</p>
+	</br>
+	<script>
+		// Змінні
+		const studentsNamesList = ["Petro", "Mikola", "Ivan", "Katerina", "Ichtvan", "Olga", "Stepan", "Ivan"]
+
+		// Наповнення масиву імен
+		// const minQuantityNames = 3
+		// const maxQuantityNames = parseInt(prompt("Визначте кількість імен у масиві (до 30)"))
+		// const maxQuantityNames = parseInt(prompt("Визначте кількість імен у масиві (до 30)"))
+		// 
+		// if (maxQuantityNames > 0 && maxQuantityNames <= 30) {
+		// 	function getNamesArrayFilling(maxQuantityNames, ...names) {
+		// 		let studentsNamesList = []
+		// 		for (let i = 0; i < maxQuantityNames; i++) {
+		// 			const numberOfName = minQuantityNames + Math.floor(Math.random() * (maxQuantityNames - minQuantityNames + 1))
+		// 			let studentName
+		// 			switch (numberOfName) {
+		// 				case 1:
+		// 				case 2: studentName = "Mikola"
+		// 					break;
+		// 				case 3:
+		// 				case 4: studentName = "Katerina"
+		// 					break;
+		// 				case 7:
+		// 				case 8: studentName = "KrutyVus"
+		// 					break;
+		// 				case 9:
+		// 				case 10: studentName = "VernyDub"
+		// 					break;
+		// 				case 11:
+		// 				case 12: studentName = "Petro"
+		// 					break;
+		// 				case 5:
+		// 				case 6:
+		// 				case 13:
+		// 				case 14: studentName = "Ivan"
+		// 					break;
+		// 				case 15:
+		// 				case 16: studentName = "Stepan"
+		// 					break;
+		// 				case 17:
+		// 				case 18: studentName = "Kotigoroshko"
+		// 					break;
+		// 				case 19:
+		// 				case 20: studentName = "VernyGora"
+		// 					break;
+		// 				default: studentName = "Ivan"
+		// 					break;
+		// 			}
+		// 			studentsNamesList.push(studentName)
+		// 		}
+		// 		return studentsNamesList
+		// 	}
+		// } else {
+		// 	document.write("Введені дані не відповідають умові.")
+		// }
+
+		// const studentsNamesList = getNamesArrayFilling(maxQuantityNames, "Petro", "Mikola", "Ivan", "Katerina", "Ichtvan", "Olga", "Stepan", "Ivan")
+		// console.log(studentsNamesList);
+
+		const nameIvanNumberList = studentsNamesList.filter(element => element === "Ivan")
+		document.write(`У списку учнів "${studentsNamesList}" <br><br> ім'я "Іван" зустрічається ${nameIvanNumberList.length} рази(ів).`)
+		// if (nameIvanNumber.length) {
+		// 	document.write(`У списку учнів ім'я "Іван" зустрічається ${nameIvanNumber.length} рази(ів).`)
+		// } else {
+		// 	document.write(`У списку учнів ім'я "Іван" не зустрічається жодного разу.`)
+		// }
+
+		// console.log(nameIvan);
+	</script>
+</body>
+
+</html>
