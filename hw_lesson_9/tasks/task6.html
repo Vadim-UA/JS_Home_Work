@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table {
+			display: inline-block;
+			margin-right: 50px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №6</h1>
+	<p>Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</p>
+	<hr>
+	<br>
+	<script>
+		// Змінні
+		const minElement = 1
+		const maxElement = 10
+		const numberOfElements = 15
+		const testArray = getNewArray(minElement, maxElement, numberOfElements)
+		// const testArray = [3, 5, 2, 3, 6, 1, 8, 10, 1, 9, 3, 8, 4, 9, 3]
+
+		document.write(`Спочатку масив елементів виглядає так: ${testArray}<br><br>`)
+		// Створюємо масив елементів
+		function getNewArray(minElement, maxElement, numberOfElements) {
+			let arr = []
+			for (let i = 0; i < numberOfElements; i++) {
+				let randomElement = minElement + Math.floor(Math.random() * (maxElement - minElement + 1))
+				arr.push(randomElement)
+			}
+			return arr
+		}
+
+		// Змінюємо масив згідно умови
+		testArray.forEach((element, index, baseArrRef) => {
+			let max = baseArrRef[0]
+			if (element > max)
+				baseArrRef[index] *= 2
+		})
+		document.write(`
+		Потім масив елементів виглядає так: ${testArray}
+		`)
+	</script>
+</body>
+
+</html>

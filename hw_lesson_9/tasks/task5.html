@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			font-weight: 700;
+			color: #bb0d0d;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p> Тут використати цикл <span>for..of</span></p>
+	<p>
+		Дано масив елементів. Знайти добуток додатних елементів
+	</p>
+	<script>
+		// Змінні
+		const minElement = -10
+		const maxElement = 10
+		const arrayLenght = 15
+		const testArray = getNewArray(minElement, maxElement, arrayLenght)
+		// Створюємо масив
+		function getNewArray(minElement, maxElement, arrayLenght) {
+			let arr = []
+			for (let i = 0; i < arrayLenght; i++) {
+				let randomElement = minElement + Math.floor(Math.random() * (maxElement - minElement + 1))
+				arr.push(randomElement)
+			}
+			return arr
+		}
+		// Створюємо масив додатних елементів на основі існуючого масива
+		function getPositiveElementsArray(testArray) {
+			let arr = []
+			for (const element of testArray) {
+				if (element > 0) arr.push(element)
+			}
+			return arr
+		}
+		const positiveElementsArray = getPositiveElementsArray(testArray)
+
+		// Знаходимо добуток додатних елементів
+		const productOfPositives = positiveElementsArray.reduce((prevProd, element) => prevProd * element, 1)
+
+		document.write(`
+		Масив елементів виглядає так: ${testArray}<br><br>
+		Масив додатних елементів виглядає так: ${positiveElementsArray}<br><br>
+		Добуток додатних елементів дорівнює: ${productOfPositives}. "Хто не вірить - хай перевірить" ©
+		`)
+		console.log(testArray)
+	</script>
+
+</body>
+
+</html>

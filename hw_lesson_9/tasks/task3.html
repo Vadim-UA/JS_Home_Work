@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>
+		Користувач вводить кількість елементів.
+		Створити масив, у якому перші 5 елементів заповнені 1-цями,
+		а інші до кінця масиву заповнені 7-ками.
+	</p>
+	<hr>
+	<br>
+	<script>
+		// Змінні
+		const userNumberElement = parseInt(prompt("Необхідна кількість елементів:", "10"))
+		// Обчислення
+		const testArray = new Array(userNumberElement).fill(1, 0, 5).fill(7, 5)
+		document.write(testArray)
+		// console.log(testArray)
+	</script>
+</body>
+
+</html>
