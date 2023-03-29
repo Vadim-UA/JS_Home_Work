@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Задача 1 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>
+		Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+		з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+		хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+		би одна трійка)).
+	</p>
+	<script>
+		// Створюємо змінні
+		const rating = [5, 4, 3, 5, 4, 5];
+
+		// let rating = []
+		// const minNum = 1
+		// const maxNum = 5
+		// const numberOfGrades = parseInt(prompt("Вкажіть кількість оцінок"))
+
+		// for (let i = 0; i < numberOfGrades; i++) {
+		// 	let randomScores = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+		// 	rating.push(randomScores)
+		// }
+		// console.log(rating);
+
+
+
+		function getAverageScore(rating) {
+			let sum = 0;
+			for (let i = 0; i < rating.length; i++) {
+				sum += rating[i];
+			}
+			return sum / rating.length;
+		}
+		let averageScore = getAverageScore(rating);
+
+		function getStudentCategory(rating) {
+			let minScore = rating[0]
+			let result
+			for (let i = 1; i < rating.length; i++) {
+				if (rating[i] < minScore) minScore = rating[i]
+			}
+			// return minScore
+			if (minScore <= 2) result = "Двієчник"
+			if (minScore === 3) result = "Трієчник"
+			if (minScore === 4) result = "Хорошист"
+			if (minScore === 5) result = "Відмінник"
+			return result
+		}
+		let studentCategory = getStudentCategory(rating);
+		document.write(`Оцінки з предметів виглядають так: ${rating}<br><br>
+		Cередній бал становить "${averageScore.toFixed(1)}"<br><br>
+		Студент належить до категорії "${studentCategory}"`)
+		// console.log(averageScore.toFixed(1));
+		// console.log(studentCategory);
+	</script>
+</body>
+
+</html>

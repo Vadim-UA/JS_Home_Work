@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 8 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		img {
+			width: 450px;
+			height: 300px;
+			margin: 10px 10px 0px 10px;
+			border: 1px solid #000;
+			border-radius: 15px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №8</h1>
+	<p>
+		Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином
+		значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів (поки він не відмовиться).
+		Знаходити сумарний виграш.
+	</p>
+	<script>
+		// Створюємо змінні
+		const minWinningNum = -500
+		const maxWinningNum = 500
+		const winningArray = getWinningArray(minWinningNum, maxWinningNum)
+		let result
+
+		// Заповнюємо масив
+		function getWinningArray(minWinningNum, maxWinningNum) {
+			const N = parseInt(prompt("Кількість лотерейних квитків", "20"))
+			let winningArray = []
+			for (let i = 0; i < N; i++) {
+				let element = minWinningNum + Math.floor(Math.random() * (maxWinningNum - minWinningNum + 1))
+				winningArray.push(element)
+			}
+			return winningArray
+		}
+		document.write(`Увага на табло!<br><br>${winningArray}<br><br><br>`)
+		//  Підказка))
+		console.log(winningArray)
+		// ==================================== Обчислення
+		function getGame(winningArray) {
+			let sumWin = 0
+			for (let i = 0; ; i++) { // через while/do...while не придумав
+				const userNumber = parseInt(prompt("Номер лотерейної комірки?", "1"))
+				let message = confirm("Продовжуємо?")
+				if (!message) {
+					sumWin += winningArray[userNumber - 1]
+					console.log(sumWin);
+					break
+				} else {
+					sumWin += winningArray[userNumber - 1]
+				}
+				console.log(sumWin);
+			}
+			return sumWin
+		}
+		let sumWin = getGame(winningArray)
+
+		// **********************************************************************************************************
+
+		// let total = sumWin + winningArray[userNumber - 1]
+		// console.log(total);
+		// document.write(`
+		// Число юзера - це ${userNumber}<br>
+		// Елемент під "номером" ${userNumber} - це ${winningArray[userNumber - 1]}<br>
+		// Кінцеве значення суми складає: ${sumWin} + ${winningArray[userNumber - 1]} = ${total}<br><br>
+		// `)
+		// let sumWin = 0
+
+		if (sumWin > 0) result = `Виграш становить: ${sumWin}. Вітання!`
+		if (sumWin === 0) result = `Виграш становить: ${sumWin}. Ну хоч штани лишились.`
+		if (sumWin < 0) result = `Борг перед гральним закладом складає: ${sumWin}. Скільки коштують ваші штани?`
+		if (!sumWin) result = `Приносьте до нас свої гроші наступного разу. Завжди чекаємо!`
+		document.write(result)
+	</script>
+
+</body>
+
+</html>
