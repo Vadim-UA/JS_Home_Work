@@ -21,56 +21,40 @@
 <body>
 	<h1>Задача №1</h1>
 	<p>
-		Дано масив, який містить оцінки з К предметів. Знайти середній бал і
-		з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
-		хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
-		би одна трійка)).
+		Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде
+		містити величину сплаченого податку у грн.
 	</p>
+	<hr>
+	<br>
 	<script>
 		// Створюємо змінні
-		const rating = [5, 4, 3, 5, 4, 5];
+		const minPrice = 50;
+		const maxPrice = 500;
+		// const numberOfPrice = parseInt(prompt("Кількість цін:", "10"));
 
-		// let rating = []
-		// const minNum = 1
-		// const maxNum = 5
-		// const numberOfGrades = parseInt(prompt("Вкажіть кількість оцінок"))
-
-		// for (let i = 0; i < numberOfGrades; i++) {
-		// 	let randomScores = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
-		// 	rating.push(randomScores)
-		// }
-		// console.log(rating);
-
-
-
-		function getAverageScore(rating) {
-			let sum = 0;
-			for (let i = 0; i < rating.length; i++) {
-				sum += rating[i];
+		function getPriceList(minPrice, maxPrice) {
+			let pricesList = [];
+			for (let i = 0; i < 10; i++) {
+				const randomPrice = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1));
+				pricesList.push(randomPrice);
 			}
-			return sum / rating.length;
+			return pricesList;
 		}
-		let averageScore = getAverageScore(rating);
+		const pricesList = getPriceList(minPrice, maxPrice);
+		const taxList = pricesList.map(element => element * 0.2);
+		// const sumPricesList = pricesList.reduce((prevSum, element) => element + prevSum, 0);
+		// const sumTax = taxList.reduce((prevSum, element) => element + prevSum, 0);
+		let taxListFixed = []
+		for (let i = 0; i < taxList.length; i++) {
+			taxListFixed.push(taxList[i].toFixed(2))
+		}
+		document.write(`
+		Початковий масив цін: ${pricesList}<br><br>
+		Масив значень податку (20%): ${taxListFixed}<br><br>
+		`);
+		console.log(taxListFixed);
+		// Масив значень податку(20 %): ${ taxList } <br><br>
 
-		function getStudentCategory(rating) {
-			let minScore = rating[0]
-			let result
-			for (let i = 1; i < rating.length; i++) {
-				if (rating[i] < minScore) minScore = rating[i]
-			}
-			// return minScore
-			if (minScore <= 2) result = "Двієчник"
-			if (minScore === 3) result = "Трієчник"
-			if (minScore === 4) result = "Хорошист"
-			if (minScore === 5) result = "Відмінник"
-			return result
-		}
-		let studentCategory = getStudentCategory(rating);
-		document.write(`Оцінки з предметів виглядають так: ${rating}<br><br>
-		Cередній бал становить "${averageScore.toFixed(1)}"<br><br>
-		Студент належить до категорії "${studentCategory}"`)
-		// console.log(averageScore.toFixed(1));
-		// console.log(studentCategory);
 	</script>
 </body>
 

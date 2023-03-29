@@ -25,88 +25,54 @@
 		td {
 			padding: 10px;
 		}
+
+		span {
+			font-weight: 700;
+			color: #bb0d0d;
+		}
 	</style>
 </head>
 
 <body>
 	<h1>Задача №5</h1>
+	<p> Тут використати цикл <span>for..of</span></p>
 	<p>
-		Дано послідовність оцінок учня. Підрахувати кількість:<br>
-		1) двійок<br>
-		2) кількість хороших оцінок (добре, відмінно);<br>
-		3) кількість оцінок, які нижче середнього.
+		Дано масив елементів. Знайти добуток додатних елементів
 	</p>
-	<hr>
-	<br>
 	<script>
-		// Опис змінних
-		// const studentScoresList = [4, 3, 4, 2, 4, 3, 2, 5]
-		// const studentScoresList = [7, 2, 4, 4, 6, 4, 12, 8]
-		const minScores = 1
-		const maxScores = 12
-		const numberScores = parseInt(prompt("Кількість оцінок:", "10"))
-
-		// Заповнення масиву оцінок
-		function getNumberScoresList(minScores, maxScores, numberScores) {
-			let numberScoresList = []
-			for (let i = 0; i < numberScores; i++) {
-				let randomScores = minScores + Math.floor(Math.random() * (maxScores - minScores + 1))
-				numberScoresList.push(randomScores)
+		// Змінні
+		const minElement = -10
+		const maxElement = 10
+		const arrayLenght = 15
+		const testArray = getNewArray(minElement, maxElement, arrayLenght)
+		// Створюємо масив
+		function getNewArray(minElement, maxElement, arrayLenght) {
+			let arr = []
+			for (let i = 0; i < arrayLenght; i++) {
+				let randomElement = minElement + Math.floor(Math.random() * (maxElement - minElement + 1))
+				arr.push(randomElement)
 			}
-			return numberScoresList
+			return arr
 		}
-		let studentScoresList = getNumberScoresList(minScores, maxScores, numberScores)
-		console.log(studentScoresList);
-
-		// 1) ===================================== Підрахувати кількість двійок
-		function getNumberOfTwo(studentScoresList) {
-			let numberOfTwo = 0
-			studentScoresList.filter(element => element === 2 ? numberOfTwo++ : numberOfTwo)
-			return numberOfTwo
+		// Створюємо масив додатних елементів на основі існуючого масива
+		function getPositiveElementsArray(testArray) {
+			let arr = []
+			for (const element of testArray) {
+				if (element > 0) arr.push(element)
+			}
+			return arr
 		}
-		const numberOfTwo = getNumberOfTwo(studentScoresList)
-		console.log(numberOfTwo)
+		const positiveElementsArray = getPositiveElementsArray(testArray)
 
-		// 2) ===================================== Підрахувати кількість хороших оцінок (добре, відмінно)
-		function getSumGoodScores(studentScoresList) {
-			let sumGoodScores = 0
-			studentScoresList.filter(element => element >= 7 && element <= 12 ? sumGoodScores++ : sumGoodScores)
-			// studentScoresList.filter(element => element === 4 || element === 5 ? sumGoodScores++ : sumGoodScores) // 5-бальна шкала
-			return sumGoodScores
-		}
-		const sumGoodScores = getSumGoodScores(studentScoresList)
-		console.log(sumGoodScores);
+		// Знаходимо добуток додатних елементів
+		const productOfPositives = positiveElementsArray.reduce((prevProd, element) => prevProd * element, 1)
 
-		// 3) ===================================== Підрахувати кількість оцінок, які нижче середнього
-		// Визначення середньої оцінки
-		function getAverageScore(studentScoresList) {
-			const sumScores = studentScoresList.reduce((prevSum, element) => prevSum + element, 0)
-			const avgScore = sumScores / studentScoresList.length
-			// const avgScore = (studentScoresList.reduce((prevSum, element) => prevSum + element, 0)) / studentScoresList.length
-			return avgScore
-		}
-		const avgScore = getAverageScore(studentScoresList)
-		console.log(avgScore);
-
-		// Підрахунок кількості оцінок
-		function getSumScoresLowerAvg(studentScoresList, avgScore) {
-			let sumScoresLower = 0
-			studentScoresList.filter(element => element < avgScore ? sumScoresLower++ : sumScoresLower)
-			return sumScoresLower
-		}
-		const sumScoresLower = getSumScoresLowerAvg(studentScoresList, avgScore)
-		console.log(sumScoresLower);
-
-		// Виводимо результат
 		document.write(`
-		Варіант 12-бального оцінювання<br>
-		Кількість оцінок учня: ${numberScores}<br>
-		Оцінки учня: ${studentScoresList}<br>
-		Кількість "2": ${numberOfTwo}<br>
-		Kількість хороших оцінок (добре, відмінно. Від 7 балів до 12 балів): ${sumGoodScores}<br>
-		Kількість оцінок, які нижче середнього (${avgScore.toFixed(1)}): ${sumScoresLower}<br>
+		Масив елементів виглядає так: ${testArray}<br><br>
+		Масив додатних елементів виглядає так: ${positiveElementsArray}<br><br>
+		Добуток додатних елементів дорівнює: ${productOfPositives}. "Хто не вірить - хай перевірить" ©
 		`)
-
+		console.log(testArray)
 	</script>
 
 </body>

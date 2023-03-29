@@ -16,12 +16,6 @@
 			font-size: 25px;
 		}
 
-		span {
-			font-weight: 500;
-			font-size: 22px;
-			color: red;
-		}
-
 		table {
 			display: inline-block;
 			margin-right: 50px;
@@ -41,72 +35,37 @@
 
 <body>
 	<h1>Задача №6</h1>
-	<p>
-		Дано послідовність цін товарів та назв (у окремих масивах).
-		Вивести на екран ті, які може собі дозволити користувач
-		(кількість грошей задається).
-	</p>
-	<p>Приклад збереження даних</p>
-	<img src="../img/01.png" alt="">
+	<p>Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</p>
 	<hr>
 	<br>
 	<script>
 		// Змінні
-		let productsPrices = [1000, 20, 31, 120, 268, 3021, 76000, 540, 333, 80000]
-		let productsTitles = ["cheese", "juice", "bread", "gun", "bomb", "knife", "HIMARS", "Tomahawk", "Arrow", "Abrams"]
-		// const userMoney = parseInt(prompt("Кількість грошей", "1000"))
+		const minElement = 1
+		const maxElement = 10
+		const numberOfElements = 15
+		const testArray = getNewArray(minElement, maxElement, numberOfElements)
+		// const testArray = [3, 5, 2, 3, 6, 1, 8, 10, 1, 9, 3, 8, 4, 9, 3]
 
-		// let arrTwin =[
-		// ["cheese", "juice", "bread"],
-		// [  1000,      20,      31]
-		// ]
-		// Списано(((
-		// let newUserProducts = []
-		// for (let i = 0; i < productsPrices.length; i++) {
-		// 	if (userMoney > productsPrices[i])
-		// 		newUserProducts.push(productsTitles[i])
-		// }
-
-		// document.write(`
-		// Масив цін: ${productsPrices}<br><br>
-		// Масив назв товарів: ${productsTitles}<br><br>
-		// Сума наявних коштів: ${userMoney}<br><br>
-		// Масив назв товарів, що доступні за ${userMoney} грошей: ${newUserProducts}<br><br>
-		// <span>Менторе</span>, задачу "списав", бо ніц не розумію, як воно тут працює(( Буду вдячний за роз'яснення.
-		// `)
-		// console.log(newUserProducts);
-
-		function getPurchasedProductsList(productsTitles, productsPrices) {
-			const userMoney = parseInt(prompt("Кількість грошей", "250"))
-			let newProductsList = []
-			// const userMoney = 10000
-			for (let i = 0; i < productsPrices.length; i++) {
-				if (userMoney >= productsPrices[i])
-					newProductsList.push(productsTitles[i])
+		document.write(`Спочатку масив елементів виглядає так: ${testArray}<br><br>`)
+		// Створюємо масив елементів
+		function getNewArray(minElement, maxElement, numberOfElements) {
+			let arr = []
+			for (let i = 0; i < numberOfElements; i++) {
+				let randomElement = minElement + Math.floor(Math.random() * (maxElement - minElement + 1))
+				arr.push(randomElement)
 			}
-			return newProductsList
+			return arr
 		}
-		const newProductsList = getPurchasedProductsList(productsTitles, productsPrices)
+
+		// Змінюємо масив згідно умови
+		testArray.forEach((element, index, baseArrRef) => {
+			let max = baseArrRef[0]
+			if (element > max)
+				baseArrRef[index] *= 2
+		})
 		document.write(`
-		Товари: ${productsTitles}<br><br>
-		Ціни: ${productsPrices}<br><br>		
-		Товари, що доступні за вказані гроші: ${newProductsList}<br><br>
+		Потім масив елементів виглядає так: ${testArray}
 		`)
-		// Сума наявних коштів: ${userMoney}<br><br>
-		// console.log(newProductsList);
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</script>
 </body>
 

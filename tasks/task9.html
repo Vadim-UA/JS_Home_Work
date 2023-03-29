@@ -35,55 +35,22 @@
 
 <body>
 	<h1>Задача №9</h1>
-	<p>
-		Морський бій. Користувач вводить кількість клітинок одновимірного масиву
-		та кількість одиночних кораблів.
-		Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0,
-		то клітинка пуста, якщо 1 – то це означає, що там є корабель).
-		Користувач вводить номер клітинки, куди стріляє.
-		Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
-	</p>
+	<p>Дано масив імен. Сформувати масив з перших літер цих імен.</p>
+	<hr>
+	<br>
 	<script>
 		// Створюємо змінні
-		const playingField = parseInt(prompt("Кількість клітинок поля", "8"))
-		const playingFieldArr = new Array(playingField).fill(0)
-		const numberOfShips = parseInt(prompt(`Кількість кораблів (бажано до ${Math.floor(playingField * 0.6)})`, `${Math.floor(playingField * 0.6)}`))
+		const namesList = ["Микола", "Олена", "Василь", "Наталія", "Петро", "Гриць", "Тетяна", "Михайло", "Іштван"]
+		// Створюємо новий масив з перших літер імен
+		const firstLetterList = namesList.map(element => element[0])
 
-		console.log(playingFieldArr)
+		document.write(`
+		Масив імен має вигляд: ${namesList}<br><br>
+		Масив перших літер імен має вигляд: ${firstLetterList}
+		`)
 
-		//  Обчислення
-
-		//  Розміщуємо довільно кораблі
-		for (let i = 0; i < numberOfShips; i++) {
-			let randomFieldForShip = 1 + Math.floor(Math.random() * playingField)
-			if (playingFieldArr[randomFieldForShip - 1] === 0) {
-				playingFieldArr[randomFieldForShip - 1] = 1
-			} else {
-				i--
-			}
-		}
-		console.log(playingFieldArr)
-
-		// Граємо
-		function getSeaBattle(playingFieldArr) {
-			let endGame = playingFieldArr.reduce((prevSum, element) => prevSum + element, 0)
-			// console.log(endGame)
-			for (let i = 0; endGame > 0; i++) {
-				const userShot = parseInt(prompt("Введіть координати цілі", "2"))
-				if (playingFieldArr[userShot - 1] === 1) {
-					playingFieldArr[userShot - 1] = 0
-					endGame = playingFieldArr.reduce((prevSum, element) => prevSum + element, 0)
-					alert("Є влучання!")
-					// Підказка)
-					console.log(playingFieldArr)
-				} else {
-					alert("Ворожого транспорту нема за цимим координатами! Необхідні правки!")
-				}
-			}
-			return "Гру закінчено!"
-		}
-		const seaBattle = getSeaBattle(playingFieldArr)
-		document.write(`${seaBattle} Потоплено ${numberOfShips} ворожих кораблі(в).`)
+		// console.log(namesList);
+		// console.log(firstLetterList);
 	</script>
 
 </body>
