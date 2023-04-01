@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 13 уроку №10</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №13</h1>
+	<p>Знайти індекс останньої ціни, що більше за 1000</p>
+	<hr>
+	<br>
+	<script>
+		// Створюємо змінні 
+		const minPrice = 1
+		const maxPrice = 10000
+		const numberOfPrices = 15
+		const pricesList = getNewArray(minPrice, maxPrice, numberOfPrices)
+		// const pricesList = [878, 2314, 3515, 831, 33]
+
+		// ==============================================================
+		// Створення масиву цін
+		function getNewArray(minPrice, maxPrice, numberOfPrices) {
+			let arr = []
+			for (let i = 0; i < numberOfPrices; i++) {
+				let randomElement = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1))
+				arr.push(randomElement)
+			}
+			return arr
+		}
+		// console.log(pricesList)
+
+		// ==============================================================
+		// Обчислення
+		function getLastPriceGreaterThan1000(pricesList) {
+			return pricesList.findLast((element, index, baseArrRef) => element > 1000)
+		}
+		const lastPriceGreaterThan1000 = getLastPriceGreaterThan1000(pricesList)
+		// console.log(lastPriceGreaterThan1000)
+
+		// ==============================================================
+
+		let result
+		if (lastPriceGreaterThan1000) {
+			const indexOfElement = getIndexOfLastElement(pricesList)
+			result = `Остання ціна, яка більша за 1000, дорівнює ${lastPriceGreaterThan1000}.
+							Цей елемент знаходиться під індексом ${indexOfElement}<br><br>
+							Метод <span>.findLastIndex()</span>`
+		} else result = "У наведеному масиві немає цін, що більші за 1000"
+
+		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+		function getIndexOfLastElement(pricesList) {
+			let indexOfElement = pricesList.findLastIndex((element, index) => element > 1000)
+			return indexOfElement
+		}
+
+		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		// Виводимо на екран
+		document.write(`
+				Mасив цін має вигляд (довжина масиву - ${pricesList.length}):<br>${pricesList}<br><br>
+					${result}<br><br>
+					Метод <span>.findLast()</span>
+				`)
+	</script>
+</body>
+
+</html>

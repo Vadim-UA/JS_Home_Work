@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №10</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального</p>
+	<hr>
+	<br>
+</body>
+<script>
+	// Створюємо змінні 
+	const minPrice = 1
+	const maxPrice = 10000
+	const numberOfPrices = 20
+	const pricesList = getNewArray(minPrice, maxPrice, numberOfPrices)
+	const maxElement = getMaxElement(pricesList)
+	const percentOfmaxElement = getPercentOfMaxElement(pricesList, maxElement)
+
+	// ==============================================================
+	// Створення масиву цін
+	function getNewArray(minPrice, maxPrice, numberOfPrices) {
+		let arr = []
+		for (let i = 0; i < numberOfPrices; i++) {
+			let randomElement = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1))
+			arr.push(randomElement)
+		}
+		return arr
+	}
+
+	// ********************* monitor
+	// console.log(pricesList)
+	// console.log(`Довжина початкового масиву: ${pricesList.length}`)
+	// *********************
+
+	// ==============================================================
+	// Обчислення
+	// Знаходимо max елемент масиву
+	function getMaxElement(pricesList) {
+		let max = pricesList[0]
+		for (const element of pricesList) {
+			if (element > max) max = element
+		}
+		return max
+	}
+	// console.log(maxElement)
+
+	// ==============================================================
+	// Створюємо новий масив згідно умови
+	function getPercentOfMaxElement(pricesList, maxElement) {
+		let arr = []
+		for (let i = 0; i < pricesList.length; i++) {
+			arr.push((pricesList[i] / maxElement * 100).toFixed(1)) // не можна застосовувати .toFixed під час розрахунків((
+		}
+		return arr
+	}
+	// console.log(percentOfmaxElement)
+
+
+	// ********************* monitor
+	// console.log()
+	// console.log(`Довжина шуканого масиву: ${.length}`)
+	// *********************
+
+	// ==============================================================
+	// Виводимо на екран
+	document.write(`
+		Початковий масив має вигляд (довжина масиву - ${pricesList.length}):<br>${pricesList}<br><br>
+		Максимальним елементом є ${maxElement} <br><br>
+		Масив відсотків, що знаходимо, має вигляд (довжина масиву - ${percentOfmaxElement.length}):<br>${percentOfmaxElement}<br><br>
+		`)
+		// Метод <span>.filter</span>
+</script>
+
+</html>

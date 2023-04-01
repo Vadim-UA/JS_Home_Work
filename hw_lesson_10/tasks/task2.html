@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №10</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<br>
+<h1>Задача №2</h1>
+<p>
+	Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+</p>
+<hr>
+<br>
+<script>
+	//
+	// Створюємо змінні 
+	const minPrice = 1
+	const maxPrice = 10000
+	const numberOfPrices = 20
+	const pricesList = getNewArray(minPrice, maxPrice, numberOfPrices)
+
+	// ==============================================================
+	// Створення масиву цін
+	function getNewArray(minPrice, maxPrice, numberOfPrices) {
+		let arr = []
+		for (let i = 0; i < numberOfPrices; i++) {
+			let randomElement = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1))
+			arr.push(randomElement)
+		}
+		return arr
+	}
+	// console.log(pricesList)
+	// console.log(`Довжина початкового масиву: ${pricesList.length}`)
+
+	// ==============================================================
+	// Обчислення 
+	// function getArrIndexGreaterThan1000(pricesList) {
+	// 	let arrIndexGreaterThan1000 = []
+	// 	for (let i = 0; i <= pricesList.length; i++) {
+	// 		if (pricesList[i] > 1000) arrIndexGreaterThan1000.push(i)
+	// 	}
+	// 	return arrIndexGreaterThan1000
+	// }
+
+	// const arrIndexGreaterThan1000 = getArrIndexGreaterThan1000(pricesList)
+	// console.log(arrIndexGreaterThan1000)
+	// console.log(`Довжина шуканого масиву: ${arrIndexGreaterThan1000.length}`)
+
+	// або
+	let arrIndexGreaterThan1000 = []
+	pricesList.filter((element, index, baseArrRef) => {
+		if (element > 1000) arrIndexGreaterThan1000.push(index)
+	})
+
+	// ==============================================================
+	// Виводимо на екран
+	document.write(`
+		Початковий масив має вигляд (довжина масиву - ${pricesList.length}):<br>${pricesList}<br><br>
+		Масив, що знаходимо, має вигляд (довжина масиву - ${arrIndexGreaterThan1000.length}):<br>${arrIndexGreaterThan1000}<br><br>
+		Метод <span>.filter</span>
+		`)
+</script>
+
+</body>
+
+</html>

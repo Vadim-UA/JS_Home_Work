@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6 уроку №10</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №6</h1>
+	<p>Визначити, чи є ціна, що менше 1000</p>
+	<hr>
+	<br>
+	<script>
+		// Створюємо змінні 
+		const minPrice = 1
+		const maxPrice = 10000
+		const numberOfPrices = 15
+		const pricesList = getNewArray(minPrice, maxPrice, numberOfPrices)
+		// const pricesList = [8406, 8406, 1846, 8406, 8406, 1006, 8406, 8406, 8406, 8406]
+
+		// ==============================================================
+		// Створення масиву цін
+		function getNewArray(minPrice, maxPrice, numberOfPrices) {
+			let arr = []
+			for (let i = 0; i < numberOfPrices; i++) {
+				let randomElement = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1))
+				arr.push(randomElement)
+			}
+			return arr
+		}
+
+		// ********************* monitor
+		// console.log(pricesList)
+		// console.log(`Довжина початкового масиву: ${pricesList.length}`)
+		// *********************
+
+		// ==============================================================
+		// Обчислення
+		function isLessThan1000(pricesList) {
+			return pricesList.some((element, index, baseArrRef) => element < 1000)
+		}
+		const lessThan1000 = isLessThan1000(pricesList)
+		// console.log(lessThan1000)
+
+		let result
+		if (lessThan1000) {
+			const indexOfElement = getIndexOfElement(pricesList)
+			result = `У історії цін є хоча б одна ціна, що менша за 1000. 
+			Це елемент під номером ${indexOfElement + 1}<br><br>
+			Метод <span>.findIndex()</span>
+			`
+		}
+		else result = "У історії цін усі ціни більші за 1000"
+
+		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+		function getIndexOfElement(pricesList) {
+			let indexOfElement = pricesList.findIndex((element, index) => element < 1000)
+			return indexOfElement
+		}
+
+		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+		// ********************* monitor
+		// console.log()
+		// console.log(`Довжина шуканого масиву: ${.length}`)
+		// *********************
+
+		// ==============================================================
+		// Виводимо на екран
+		document.write(`
+				Початковий масив має вигляд (довжина масиву - ${pricesList.length}):<br>${pricesList}<br><br>
+				${result}<br><br>
+				Метод <span>.some()</span>
+				`)
+	</script>
+</body>
+
+</html>

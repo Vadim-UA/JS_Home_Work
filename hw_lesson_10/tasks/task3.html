@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №10</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>
+		Сформувати список з тих цін, які більші за попереднє значення
+	</p>
+	<hr>
+	</br>
+	<script>
+		// Створюємо змінні 
+		const minPrice = 1
+		const maxPrice = 10000
+		const numberOfPrices = 20
+		const pricesList = getNewArray(minPrice, maxPrice, numberOfPrices)
+
+		// ==============================================================
+		// Створення масиву цін
+		function getNewArray(minPrice, maxPrice, numberOfPrices) {
+			let arr = []
+			for (let i = 0; i < numberOfPrices; i++) {
+				let randomElement = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1))
+				arr.push(randomElement)
+			}
+			return arr
+		}
+
+		// ********************* monitor
+		// console.log(pricesList)
+		// console.log(`Довжина початкового масиву: ${pricesList.length}`)
+		// *********************
+
+		// ==============================================================
+		// Обчислення
+		// let moreThanBefore = []
+		// pricesList.filter((element, index, baseArrRef) => {
+		// 	if (element[index] < element[index + 1]) moreThanBefore.push(baseArrReff[index + 1])
+		// })
+		function getArrMoreThanBefore(pricesList) {
+			let moreThanBefore = []
+			for (let i = 0; i <= pricesList.length; i++) {
+				if (pricesList[i] < pricesList[i + 1]) moreThanBefore.push(pricesList[i + 1])
+			}
+			return moreThanBefore
+		}
+		const moreThanBefore = getArrMoreThanBefore(pricesList)
+
+		// ********************* monitor
+		// console.log(moreThanBefore)
+		// console.log(`Довжина шуканого масиву: ${moreThanBefore.length}`)
+		// *********************
+
+		// ==============================================================
+		// Виводимо на екран
+		document.write(`
+		Початковий масив має вигляд (довжина масиву - ${pricesList.length}):<br>${pricesList}<br><br>
+		Масив, що знаходимо, має вигляд (довжина масиву - ${moreThanBefore.length}):<br>${moreThanBefore}<br><br>
+		`)
+		// Метод <span>.filter</span>
+	</script>
+</body>
+
+</html>

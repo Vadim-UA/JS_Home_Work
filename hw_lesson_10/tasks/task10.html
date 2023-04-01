@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 10 уроку №10</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №10</h1>
+	<p>Знайти першу ціну, що більше за 1000</p>
+	<hr>
+	<br>
+	<script>
+		// Створюємо змінні 
+		const minPrice = 1
+		const maxPrice = 10000
+		const numberOfPrices = 15
+		const pricesList = getNewArray(minPrice, maxPrice, numberOfPrices)
+		// const pricesList = [878, 234, 355, 8921, 833]
+
+		// ==============================================================
+		// Створення масиву цін
+		function getNewArray(minPrice, maxPrice, numberOfPrices) {
+			let arr = []
+			for (let i = 0; i < numberOfPrices; i++) {
+				let randomElement = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1))
+				arr.push(randomElement)
+			}
+			return arr
+		}
+		// console.log(pricesList)
+
+		// ==============================================================
+		// Обчислення
+		function getFirstPriceGreaterThan1000(pricesList) {
+			return pricesList.find((element, index, baseArrRef) => element > 1000)
+		}
+		const firstPriceGreaterThan1000 = getFirstPriceGreaterThan1000(pricesList)
+		// console.log(firstPriceGreaterThan1000)
+
+		// ==============================================================
+
+		let result
+		if (firstPriceGreaterThan1000) {
+			const indexOfElement = getIndexOfElement(pricesList)
+			result = `Перша ціна, яка більша за 1000, дорівнює ${firstPriceGreaterThan1000}.
+			Цей елемент знаходиться під номером ${indexOfElement + 1}<br><br>
+			Метод <span>.findIndex()</span>`
+		} else result = "У наведеному масиві немає цін, що більші за 1000"
+
+		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+		function getIndexOfElement(pricesList) {
+			let indexOfElement = pricesList.findIndex((element, index) => element > 1000)
+			return indexOfElement
+		}
+
+		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		// Виводимо на екран
+		document.write(`
+			Mасив цін має вигляд (довжина масиву - ${pricesList.length}):<br>${pricesList}<br><br>
+			${result}<br><br>
+			Метод <span>.find()</span>
+			`)
+	</script>
+</body>
+
+</html>

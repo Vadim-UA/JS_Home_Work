@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 9 уроку №10</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			color: red;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №9</h1>
+	<p>Підрахувати суму цін, що більше за 1000</p>
+	<hr>
+	<br>
+	<script>
+		// Створюємо змінні 
+		const minPrice = 1
+		const maxPrice = 10000
+		const numberOfPrices = 15
+		const pricesList = getNewArray(minPrice, maxPrice, numberOfPrices)
+		// const pricesList = [166, 32]
+
+		// ==============================================================
+		// Створення масиву цін
+		function getNewArray(minPrice, maxPrice, numberOfPrices) {
+			let arr = []
+			for (let i = 0; i < numberOfPrices; i++) {
+				let randomElement = minPrice + Math.floor(Math.random() * (maxPrice - minPrice + 1))
+				arr.push(randomElement)
+			}
+			return arr
+		}
+		// console.log(pricesList)
+
+		// ********************* monitor
+		// console.log(pricesList)
+		// console.log(`Довжина початкового масиву: ${pricesList.length}`)
+		// *********************
+
+		// ==============================================================
+		// Обчислення
+		function getSumPricesGreaterThan1000(pricesList) {
+			let sum = 0
+			for (const element of pricesList) {
+				if (element > 1000) sum += element
+			}
+			return sum
+		}
+		const sumPricesGreaterThan1000 = getSumPricesGreaterThan1000(pricesList)
+		// console.log(sumPricesGreaterThan1000)
+
+		// ==============================================================
+
+		let result
+		if (sumPricesGreaterThan1000 > 0) result = `Сума цін, що більше за 1000, дорівнює ${sumPricesGreaterThan1000}`
+		else result = "У наведеному масиві немає цін, що більші за 1000"
+		// ********************* monitor
+		// console.log()
+		// console.log(`Довжина шуканого масиву: ${.length}`)
+		// *********************
+
+		// ==============================================================
+		// Виводимо на екран
+		document.write(`
+				Mасив цін має вигляд (довжина масиву - ${pricesList.length}):<br>${pricesList}<br><br>
+				${result}<br><br>
+				Метод <span>.for...of</span>
+				`)
+	</script>
+
+</body>
+
+</html>
