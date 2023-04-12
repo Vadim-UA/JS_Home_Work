@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №11</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		span {
+			font-weight: 900;
+			/* font-size: 18px; */
+		}
+	</style>
+</head>
+
+<body>
+	<br>
+	<h1>Задача №2</h1>
+	<p>Дано інформацію про прибуток К магазинів протягом тижня. Знайти:</p>
+	<ol>
+		<li>
+			<p>
+				1) загальний прибуток кожного магазину за тиждень;
+			</p>
+		</li>
+		<li>
+			<p>
+				2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за
+				вівторок, і т.д.);
+			</p>
+		</li>
+		<li>
+			<p>
+				3) загальний прибуток за робочі дні
+			</p>
+		</li>
+		<li>
+			<p>
+				4) загальний прибуток за вихідні дні
+			</p>
+		</li>
+		<li>
+			<p>
+				5) максимальний прибуток за середу
+			</p>
+		</li>
+		<li>
+			<p>
+				6) сформувати загальний список (одновимірний масив) зі значенням, які більші за 200
+			</p>
+		</li>
+		<li>
+			<p>
+				7) відсортувати кожен тиждень за зростанням
+			</p>
+		</li>
+		<li>
+			<p>
+				8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при
+				порівнянні рядків
+				потрібно порівнювати максимальні елементи у кожному з цих рядків
+			</p>
+		</li>
+		<li>
+			<p>
+				9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків
+				треба знайти суму
+				кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен
+				іти раніше).
+			</p>
+		</li>
+	</ol>
+	<hr>
+	<br>
+	<script>
+		// Створюємо змінні
+		// const numberOfShops = parseInt(prompt("Кількість магазинів", "5"))
+		alert("Кількість магазинів: 5")
+		const numberOfShops = 5
+		const numberOfDaysOfTheWeek = 7
+		const minCash = 100
+		const maxCash = 500
+
+		// Створення випадкового числа (виручка за 1 день)
+		function getRandomNumber(minCash, maxCash) {
+			let randomNumber = minCash + Math.floor(Math.random() * (maxCash - minCash + 1))
+			return randomNumber
+		}
+		const randomNumber = getRandomNumber(minCash, maxCash)
+		// console.log(randomNumber)
+
+		// Створення одновимірного масиву (1 магазин)
+		function getNewArray(numberOfDaysOfTheWeek, randomNumber) {
+			let arr = []
+			for (let i = 0; i < numberOfDaysOfTheWeek; i++) {
+				arr.push(getRandomNumber(minCash, maxCash))
+			}
+			return arr
+		}
+		// const newArray = getNewArray(numberOfDaysOfTheWeek, randomNumber)
+		// console.log(newArray)
+
+		// Створення багатовимірного масиву (декілька магазинів)
+		function getArrayWithShops(newArray, numberOfShops) {
+			let arr = []
+			for (let i = 0; i < numberOfShops; i++) {
+
+				arr.push(getNewArray(numberOfDaysOfTheWeek, randomNumber))
+			}
+			return arr
+		}
+		const arrayWithShops = getArrayWithShops(getNewArray(numberOfDaysOfTheWeek, randomNumber), numberOfShops)
+		// console.log(arrayWithShops)
+
+		// const arrayWithShops = [ // test array
+		// Пр Вт Ср Чт Пт Сб Нд
+		// [9, 3, 5, 7, 0, 1, 2], //	27 - #1
+		// [2, 5, 7, 2, 0, 1, 2], //	19 - #4
+		// [3, 9, 7, 1, 0, 1, 2], //	23	- #2
+		// [2, 5, 6, 1, 0, 1, 2], //	17 - #5
+		// [3, 9, 2, 3, 0, 1, 2]  //	20 - #3		-> total = 106
+		// 19  31 27 14, 0, 5, 10 -> total = 106
+		// ]
+		// console.log(arrayWithShops)
+
+
+		// Розв'язання
+		// >>>>>>>>>>>>>>> 1) загальний прибуток кожного магазину за тиждень
+		function getTotalShopProfit(arrayWithShops) {
+			let totalProfit = []
+			for (let i = 0; i < arrayWithShops.length; i++) {
+				let sum = arrayWithShops[i].reduce((prevSum, cash) => prevSum + cash, 0)
+				totalProfit.push(sum)
+			}
+			return totalProfit
+		}
+		const totalProfitOfShopArray = getTotalShopProfit(arrayWithShops)
+		// console.log(totalProfitOfShopArray)
+
+		// >>>>>>>>>>>>>>> 2) загальний прибуток усіх магазинів по дням 
+		// (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.) // *** by Daria Bilan
+		function getTotalProfitOutOfDay(arrayWithShops) {
+			let totalProfit = []
+			for (let i = 0; i < arrayWithShops[0].length; i++) {
+				let sum = 0
+				for (let j = 0; j < arrayWithShops.length; j++) {
+					sum += arrayWithShops[j][i]
+				}
+				totalProfit.push(sum)
+			}
+			return totalProfit
+		}
+		const totalProfitOutOfDay = getTotalProfitOutOfDay(arrayWithShops)
+		// console.log(totalProfitOutOfDay)
+
+		// >>>>>>>>>>>>>>> 3) загальний прибуток за робочі дні
+		// Створюємо масив виторгу за робочі дні
+		function getTotalProfitOnWorkingDays(arrayWithShops, dayStart, dayEnd) {
+			const start = dayStart - 1 //якщо день визначає користувач.
+			const end = dayEnd //якщо день визначає користувач.
+			let profitArray = []
+			for (let i = start; i < end; i++) {
+				let sum = 0
+				for (let j = 0; j < arrayWithShops.length; j++) {
+					sum += arrayWithShops[j][i]
+				}
+				profitArray.push(sum)
+			}
+			return profitArray
+		}
+		const profitWorkingDayArray = getTotalProfitOnWorkingDays(arrayWithShops, 1, 5)
+		// console.log(profitWorkingDayArray)
+		// Знаходимо суму виторгу за визначені дні (робочі)
+		const totalSumOnWorkingDays = profitWorkingDayArray.reduce((prevSum, element) => prevSum + element, 0)
+		// console.log(totalSumOnWorkingDays)
+
+		// >>>>>>>>>>>>>>> 4) загальний прибуток за вихідні дні
+		const profitWeekendArray = getTotalProfitOnWorkingDays(arrayWithShops, 6, 7)
+		// console.log(profitWeekendArray);
+		// Знаходимо суму виторгу за визначені дні (вихідні)
+		const totalSumOnWeekendDays = profitWeekendArray.reduce((prevSum, element) => prevSum + element, 0)
+		// console.log(totalSumOnWeekendDays)
+
+		// >>>>>>>>>>>>>>> 5) максимальний прибуток за середу
+		const day = 3
+		function getMaxProfitOnWednesday(arrayWithShops, day) {
+			const findDay = day - 1 //якщо день визначає користувач.
+			let max = arrayWithShops[0][findDay]
+			for (let i = 0; i < arrayWithShops.length; i++) {
+				if (arrayWithShops[i][findDay] > max) {
+					max = arrayWithShops[i][findDay]
+				}
+			}
+			return max
+		}
+		const maxProfitOnWednesday = getMaxProfitOnWednesday(arrayWithShops, day)
+		// console.log(maxProfitOnWednesday)
+
+		// >>>>>>>>>>>>>>> 6) сформувати загальний список(одновимірний масив) зі значенням, які більші за 200
+		const value = 200
+		function getArrayElementsGreater200(arrayWithShops, value) {
+			let arr = []
+			for (let i = 0; i < arrayWithShops.length; i++) {
+				for (const element of arrayWithShops[i]) {
+					if (element > value) {
+						arr.push(element)
+					}
+				}
+			}
+			return arr
+		}
+		const elementsGreater200 = getArrayElementsGreater200(arrayWithShops, value)
+		// console.log(elementsGreater200)
+
+		// >>>>>>>>>>>>>>> 7) Відсортувати кожен тиждень за зростанням 
+		//  Метод .sort
+		function sortToUp(arrayWithShops) {
+			let arr = JSON.parse(JSON.stringify(arrayWithShops)) // *** by Daria Bilan
+			for (const obj of arr) {
+				obj.sort((element1, element2) => {
+					return element1 - element2
+				})
+			}
+			return arr
+		}
+		const arr = sortToUp(arrayWithShops)
+		// console.log(arr)
+
+		// let arr = [9, 3, 5, 7, 0, 1, 2]
+		// console.log(arr)
+
+		// function insertSort(arr) {
+		// 	for (let k = 1; k < arr.length; k++) {
+		// 		const currentElement = arr[k]
+		// 		let i = k - 1
+		// 		while (i >= 0 && arr[i] > currentElement) {
+		// 			arr[i + 1] = arr[i]
+		// 			i--
+		// 		}
+		// 		arr[i + 1] = currentElement
+		// 	}
+		// }
+		// insertSort(arr)
+		// console.log(arr)
+
+		// Сортування вставками // *** by lesson #12
+		// function insertSortProfit(arrayWithShops) {
+		// 	for (let i = 0; i < arrayWithShops.length; i++) {
+		// 		for (let k = 1; k < arrayWithShops[i].length; k++) {
+		// 			const currentElement = arrayWithShops[i][k]
+		// 			let j = k - 1
+		// 			while (j >= 0 && arrayWithShops[i][j] > currentElement) {
+		// 				arrayWithShops[i][j + 1] = arrayWithShops[i][j]
+		// 				j--
+		// 			}
+		// 			arrayWithShops[i][j + 1] = currentElement
+		// 		}
+		// 	}
+		// }
+		// insertSortProfit(arrayWithShops)
+		// console.log(arrayWithShops)
+
+		// let arr = [9, 3, 5, 7, 0, 1, 2]
+		// arr.sort((el1, el2) => {
+		// 	return el1 - el2
+		// })
+
+		// Сортування *** by lesson 12
+		// let array = [9, 3, 5, 7, 0, 1, 2]
+		// **
+		// console.log(array)
+		// function sortedArray(arrayWithShops) {
+		// for (let j = 0; j < arrayWithShops.length; j++) {
+		// 	let key, i
+		// 	for (let k = 1; k < arrayWithShops[j].length; k++) {
+		// 		key = arrayWithShops[j][k]
+		// 		i = k - 1
+		// 		while (i >= 0 && arrayWithShops[j][i] > key) {
+		// 			arrayWithShops[j][i + 1] = arrayWithShops[j][i]
+		// 			i = i - 1
+		// 		}
+		// 		arrayWithShops[j][i + 1] = key
+		// 	}
+		// }
+		// }
+
+		// **
+		// for (let k = 1; k < array.length; k++) {
+		// 	key = array[k]
+		// 	i = k - 1
+		// 	while (i >= 0 && array[i] > key) {
+		// 		array[i + 1] = array[i]
+		// 		i = i - 1
+		// 	}
+		// 	array[i + 1] = key
+		// }
+		// console.log(arrayWithShops)
+
+
+
+		// >>>>>>>>>>>>>>> 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку),
+		// тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+
+		// function getMaxNumber(arrayWithShops) {
+		// 	let maxNumberArray = []
+		// 	for (const row of arrayWithShops) {
+		// 		let max = Math.max(...row)
+		// 		maxNumberArray.push(max)
+		// 	}
+		// 	return maxNumberArray
+		// }
+		// const maxNumberArray = getMaxNumber(arrayWithShops)
+
+		function sortOfMaxElement(arrayWithShops) {
+			let arrayForSortOfMaxElement = JSON.parse(JSON.stringify(arrayWithShops))
+			let rowMaxElement = arrayForSortOfMaxElement.sort((element1, element2) => // знайшов у Інеті
+				element2.reduce((a, b) =>
+					Math.max(a, b), -Infinity) -
+				element1.reduce((a, b) => Math.max(a, b), -Infinity)
+			)
+			return rowMaxElement
+		}
+		const rowMaxElementArray = sortOfMaxElement(arrayWithShops)
+		// Менторе, я впевнений, що ОЦЕЙ розв'язок - повний треш.
+		// Але це хоча б щось, що я зробив.) Буду вдячний за роз'яснення.
+		// Не маю уявлення, як вирішити це завдання
+
+		// console.log(rowMaxElementArray)
+
+		// console.log(maxNumberArray)
+
+		// let sortToDown = JSON.parse(json.stringify(maxNumberArray)).sort((el1, el2) => el2 - el1)
+		// console.log(sortToDown)
+
+		// >>>>>>>>>>>>>>>9) Упорядкувати тижні(рядки) за спаданням суми елементів у рядку(тобто при порівнянні двох рядків
+		// треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен
+		// іти раніше).
+		function getSortRowToSumOfElementsDown(arrayWithShops) {
+			let arrForSort = JSON.parse(JSON.stringify(arrayWithShops))
+			let arrSorted = arrForSort.sort((el1, el2) =>
+				el2.reduce((prevSum, item) => prevSum + item, 0) -
+				el1.reduce((prevSum, item) => prevSum + item, 0))
+			return arrSorted
+		}
+		const sortRowToSumOfElementsDown = getSortRowToSumOfElementsDown(arrayWithShops)
+		// console.log(sortRowToSumOfElementsDown) // Менторе, з цим розв'язком, впевнений, ситуація така ж,
+		// як і з попереднім. На жаль(для мене). Буду вдячний за роз'яснення.
+
+		// *************** Вивести результат
+		document.write(`
+		Початковий масив має вигляд:<br>
+			[${arrayWithShops[0]}]<br>
+			[${arrayWithShops[1]}]<br>
+			[${arrayWithShops[2]}]<br>
+			[${arrayWithShops[3]}]<br>
+			[${arrayWithShops[4]}]<br><br>
+		<span>1)</span> Загальний прибуток кожного магазину за тиждень дорівнює:<br>
+		1-ий: ${totalProfitOfShopArray[0]},<br>
+		2-ий: ${totalProfitOfShopArray[1]},<br>
+		3-ий: ${totalProfitOfShopArray[2]},<br>
+		4-ий: ${totalProfitOfShopArray[3]},<br>
+		5-ий: ${totalProfitOfShopArray[4]}.<br><br>
+		<span>2)</span> Загальний прибуток усіх магазинів по дням:<br>
+		Пн: ${totalProfitOutOfDay[0]},
+		Вт: ${totalProfitOutOfDay[1]},
+		Ср: ${totalProfitOutOfDay[2]},
+		Чт: ${totalProfitOutOfDay[3]},
+		Пт: ${totalProfitOutOfDay[4]},
+		Сб: ${totalProfitOutOfDay[5]},
+		Нд: ${totalProfitOutOfDay[6]}.<br><br>
+		<span>3)</span> Загальний прибуток за робочі дні дорівнює: ${totalSumOnWorkingDays}.<br><br>
+		<span>4)</span> Загальний прибуток за вихідні дні дорівнює: ${totalSumOnWeekendDays}.<br><br>
+		<span>5)</span> Максимальний прибуток за середу дорівнює: ${maxProfitOnWednesday}.<br><br>
+		<span>6)</span> Загальний список(одновимірний масив) зі значенням, які більші за ${value}: [${elementsGreater200}].<br><br>
+		<span>7)</span> Відсортувати кожен тиждень за зростанням: <br>
+		[${arr[0]}]<br>
+		[${arr[1]}]<br>
+		[${arr[2]}]<br>
+		[${arr[3]}]<br>
+		[${arr[4]}]<br><br>
+		<span>8)</span> Bідсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні:<br>
+				[${rowMaxElementArray[0]}]<br>
+				[${rowMaxElementArray[1]}]<br>
+				[${rowMaxElementArray[2]}]<br>
+				[${rowMaxElementArray[3]}]<br>
+				[${rowMaxElementArray[4]}]<br>
+		Менторе, мені дуже не подобається те, як я намагався вирішити це завдання. Буду вдячний за пояснення.<br><br>
+		<span>9)</span> Упорядкувати тижні(рядки) за спаданням суми елементів:<br>
+		<br>
+				[${sortRowToSumOfElementsDown[0]}]<br>
+				[${sortRowToSumOfElementsDown[1]}]<br>
+				[${sortRowToSumOfElementsDown[2]}]<br>
+				[${sortRowToSumOfElementsDown[3]}]<br>
+				[${sortRowToSumOfElementsDown[4]}]<br>
+		Менторе, мені дуже не подобається те, як я намагався вирішити це завдання. Буду вдячний за пояснення.<br><br>
+		`)
+	</script>
+
+</body>
+
+</html>

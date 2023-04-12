@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №11</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		.first-items {
+			display: inline-block;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		img {
+			width: 225px;
+			height: 150px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>ДЗ по уроку №11</h1>
+	<ul>
+		<li>
+			<h3>
+				<h1>Задача №1</h1>
+			</h3>
+			<p>Знайти суми елементів у вказаній області</p>
+			<ol>
+				<li class="first-items">
+					<p>1 )</p>
+					<img src="../img/1_1.png" alt="Image">
+				</li>
+				<li class="first-items">
+					<p>2 )</p>
+					<img src="../img/1_2.png" alt="Image">
+				</li>
+				<li class="first-items">
+					<p>3 )</p>
+					<img src="../img/1_3.png" alt="Image">
+				</li>
+				<li class="first-items">
+					<p>4 )</p>
+					<img src="../img/1_4.png" alt="Image">
+				</li>
+				<li>
+					<p>5 ) Суму парних рядків</p>
+				</li>
+				<li>
+					<p>6 ) Суму непарних стовпців</p>
+				</li>
+				<li>
+					<p>7 ) У парних рядках – непарні стовпці, у непарних – парні</p>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<hr>
+			<br>
+			<script>
+				// Створюємо змінні 
+				// const rowsNumber = parseInt(prompt("Кількість рядків"))
+				// const columnsNumber = parseInt(prompt("Кількість стовпців"))
+				// const minElement = parseInt(prompt("Мінімальне значення діапазону чисел"))
+				// const maxElement = parseInt(prompt("Максимальне значення діапазону чисел"))
+				const rowsNumber = 4
+				const columnsNumber = 5
+				const minElement = -20
+				const maxElement = 50
+
+				// Випадкове число
+				function getRandomNumber(minElement, maxElement) {
+					const randomNumber = minElement + Math.floor(Math.random() * (maxElement - minElement + 1))
+					return randomNumber
+				}
+				const randomNumber = getRandomNumber(minElement, maxElement)
+				// console.log(randomNumber);
+
+				// Одновимірний масив
+				function getRowsOfArray(columnsNumber, randomNumber) {
+					let arrRow = []
+					for (let i = 0; i < columnsNumber; i++) {
+						let item = getRandomNumber(minElement, maxElement)
+						arrRow.push(item)
+					}
+					return arrRow
+				}
+				const arrRow = getRowsOfArray(columnsNumber, randomNumber)
+				// console.log(arrRow)
+				// console.log(arrRow.length)
+
+				// Двовимірний масив
+				function getTableArray(arrRow, rowsNumber) {
+					let arrTable = []
+					for (let i = 0; i < rowsNumber; i++) {
+						let arrRow = getRowsOfArray(columnsNumber, randomNumber)
+						arrTable.push(arrRow)
+					}
+					return arrTable
+				}
+				const arrTable = getTableArray(arrRow, rowsNumber)
+				// const arrTable = [
+				// 	[2, 3, 25, -7, 30, 77],
+				// 	[76, 4, 86, 32, 47, 1, -23],
+				// 	[2, 3, 55, 19, 23, -4, -12, 32],
+				// 	[-2, 3, 2, -23, 44, -11, 82],
+				// ]
+				// const arrTable = [ // test array
+				// 	[2, 3, 5, 7, 2, 4],
+				// 	[0, 1, 2, 3],
+				// 	[7, 4, 8, 8],
+				// 	[2, 1, 5, 4],
+				// 	[2, 3, 2, 3],
+				// 	[2, 7, 2, 6],
+				// ]
+
+				// №1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
+				function getSumImage_1(arrTable) {
+					let halfArray = Math.floor(arrTable.length / 2)
+					let sum = 0
+					for (let i = 0; i < halfArray; i++) {
+						for (let j = 0; j < Math.floor(arrTable[i].length / 2); j++) {
+							sum += arrTable[i][j]
+						}
+					}
+					return sum
+				}
+				const sumImage_1 = getSumImage_1(arrTable)
+				// console.log(sumImage_1)
+
+				// №2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+				function getSumImage_2(arrTable) {
+					let halfArray = Math.floor(arrTable.length / 2)
+					let sum = 0
+					for (let i = 0; i < halfArray; i++) {
+						for (let j = Math.floor(arrTable[i].length / 2); j < arrTable[i].length; j++) {
+							sum += arrTable[i][j]
+						}
+					}
+					return sum
+				}
+				const sumImage_2 = getSumImage_2(arrTable)
+				// console.log(sumImage_2)
+
+				// №3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+				function getSumImage_3(arrTable) {
+					let halfArray = Math.floor(arrTable.length / 2)
+					let sum = 0
+					for (let i = halfArray; i < arrTable.length; i++) {
+						for (let j = 0; j < Math.floor(arrTable[i].length / 2); j++) {
+							sum += arrTable[i][j]
+						}
+					}
+					return sum
+				}
+				const sumImage_3 = getSumImage_3(arrTable)
+				// console.log(sumImage_3)
+
+				// №4 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+				function getSumImage_4(arrTable) {
+					let halfArray = Math.floor(arrTable.length / 2)
+					let sum = 0
+					for (let i = halfArray; i < arrTable.length; i++) {
+						for (let j = Math.floor(arrTable[i].length / 2); j < arrTable[i].length; j++) {
+							sum += arrTable[i][j]
+						}
+					}
+					return sum
+				}
+				const sumImage_4 = getSumImage_4(arrTable)
+				// console.log(sumImage_4)
+
+				// №5 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Суму парних рядків
+				function getSumElementOfEvenRows(arrTable) {
+					let sum = 0
+					for (let i = 0; i < arrTable.length; i += 2) {
+						for (let j = 0; j < arrTable[i].length; j++) {
+							sum += arrTable[i][j]
+						}
+					}
+					return sum
+				}
+				const sumElementOfEvenRows = getSumElementOfEvenRows(arrTable)
+				// console.log(sumElementOfEvenRows)
+
+				// №6 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Суму непарних стовпців
+				function getSumElementOfOddColumns(arrTable) {
+					let sum = 0
+					for (let i = 0; i < arrTable.length; i++) {
+						for (let j = 1; j < arrTable[i].length; j = j + 2) {
+							sum += arrTable[i][j]
+						}
+					}
+					return sum
+				}
+				const sumElementOfOddColumns = getSumElementOfOddColumns(arrTable)
+				// console.log(sumElementOfOddColumns)
+
+
+				// №7-1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> у парних рядках елементи непарних стовпців
+				function getSumOddElementsOfEvenRows(arrTable) {
+					let sumOddElements = 0
+					for (let i = 0; i < arrTable.length; i = i + 2) {
+						for (let j = 1; j < arrTable[i].length; j += 2) {
+							sumOddElements += arrTable[i][j]
+						}
+					}
+					return sumOddElements
+				}
+				const sumOddElementsOfEvenRows = getSumOddElementsOfEvenRows(arrTable)
+				// console.log(sumOddElementsOfEvenRows)
+
+				// №7-2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> у непарних рядках елементи парних стовпців
+				function getSumEvenElementsOfOddRows(arrTable) {
+					let sumEvenElements = 0
+					for (let i = 1; i < arrTable.length; i += 2) {
+						for (let j = 0; j < arrTable[i].length; j += 2) {
+							sumEvenElements += arrTable[i][j]
+						}
+					}
+					return sumEvenElements
+				}
+				const sumEvenElementsOfOddRows = getSumEvenElementsOfOddRows(arrTable)
+				// console.log(sumEvenElementsOfOddRows)
+
+				// №7 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+				const vinaigrette = sumOddElementsOfEvenRows + sumEvenElementsOfOddRows
+				// console.log(vinaigrette)
+
+				// *************************************************************
+				// Вивести результати
+				document.write(`
+				Масив має вигляд:<br><br>
+				arrTable = <br>
+					[${arrTable[0]}]<br>
+					[${arrTable[1]}]<br>
+					[${arrTable[2]}]<br>
+					[${arrTable[3]}]<br>
+				<br>
+				2) Сума елементів по 1-му малюнку дорівнює ${sumImage_1}<br>
+				1) Сума елементів по 2-му малюнку дорівнює ${sumImage_2}<br>
+				3) Сума елементів по 3-му малюнку дорівнює ${sumImage_3}<br>
+				4) Сума елементів по 4-му малюнку дорівнює ${sumImage_4}<br>
+				5) Сума парних рядків дорівнює ${sumElementOfEvenRows}<br>
+				6) Сума непарних стовпців дорівнює ${sumElementOfOddColumns}<br>
+				7) Сума непарних стовпців у парних рядках і
+				парних стовпців у непарних рядках дорівнює ${vinaigrette}
+				`)
+			</script>
+</body>
+
+</html>

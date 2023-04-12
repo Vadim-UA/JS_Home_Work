@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №11</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			width: 35px;
+			height: 35px;
+			/* padding: 5px; */
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>
+		Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів.
+		Користувач стріляє, вказуючи координати.
+		Гра продовжується, поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+		(Координати у консолі)
+	</p>
+	<hr>
+	</br>
+	<script>
+		// Змінні
+		// const sizeFieldX = 6
+		// const sizeFieldY = 6
+		// const userShotCoordinateWidth = parseInt(prompt("Вкажіть координати X для пострілу", "3"))
+		// const userShotCoordinateHeight = parseInt(prompt("Вкажіть координати Y для пострілу", "3"))
+		const widthOfField = 6
+		const heightOfField = 6
+		const numberShips = 5
+
+		// const userShotCoordinateWidth = 3
+		// const userShotCoordinateHeight = 3
+		// const numberUserBulleіt = 3
+
+		// ======================== Створення одновимірного масиву
+		let row = new Array(widthOfField).fill(0)
+		// console.log(row)
+
+		// ======================== Створення ігрового поля
+		let gameField = new Array(6).fill(row)
+		// console.log(gameField)
+
+		// ======================== Розташування кораблів
+		function getPositionOfShips(widthOfField, heightOfField, gameField, numberShips) {
+			let gameFieldFull = JSON.parse(JSON.stringify(gameField))
+			let count = 0
+			while (count < numberShips) {
+				const coordinateOfPositionWidth = 1 + Math.floor(Math.random() * widthOfField - 1)
+				const coordinateOfPositionHeight = 1 + Math.floor(Math.random() * heightOfField - 1)
+				// Підказка)
+				console.log(coordinateOfPositionWidth)
+				console.log(coordinateOfPositionHeight)
+				if (gameFieldFull[coordinateOfPositionWidth][coordinateOfPositionHeight] != 1) {
+					gameFieldFull[coordinateOfPositionWidth][coordinateOfPositionHeight] = 1
+					count++
+				}
+			}
+			return gameFieldFull
+		}
+		const gameFieldFull = getPositionOfShips(widthOfField, heightOfField, gameField, numberShips)
+		// console.log(gameFieldFull)
+
+		// ======================== Перевіркка кількості кораблів
+		function getSumOfShips(gameFieldFull) {
+			let sum = 0
+			for (let i = 0; i < gameFieldFull.length; i++) {
+				for (let k = 0; k < gameFieldFull[i].length; k++) {
+					sum += gameFieldFull[i][k]
+				}
+			}
+			return sum
+		}
+		const sumOfShips = getSumOfShips(gameFieldFull)
+		// console.log(sumOfShips)
+
+
+		// ======================== Візуалізація
+		document.write("Візуалізація")
+		document.write(`<table>`)
+		for (let i = 0; i < gameFieldFull.length; i++) {
+			document.write(`<tr>`)
+			for (let k = 0; k < gameFieldFull[i].length; k++) {
+				document.write(`<td>${gameFieldFull[i][k]}</td>`)
+			}
+			document.write(`</tr>`)
+		}
+		document.write(`</table><br>`)
+		document.write(`Кількість розміщених кораблів: ${sumOfShips}`)
+
+		// ************************ GAME 
+		function letsGo(numberShips, gameFieldFull) {
+			let shipsAfloat = numberShips
+			let numbersShot = parseInt(prompt("Вкажіть кількість снарядів", "5"))
+			while (shipsAfloat < 0 || numbersShot > 0) {
+				const userShotCoordinateWidth = parseInt(prompt("Вкажіть координати X для пострілу", "3"))
+				const userShotCoordinateHeight = parseInt(prompt("Вкажіть координати Y для пострілу", "3"))
+				if (gameFieldFull[userShotCoordinateWidth][userShotCoordinateHeight] === 1) {
+					gameFieldFull[userShotCoordinateWidth][userShotCoordinateHeight] = 0
+					alert("Є влучання!")
+					shipsAfloat--
+					numbersShot--
+					if (shipsAfloat === 0) {
+						alert(`Усі ворожі кораблі знищено. Повертаємось у порт. Снарядів залишилось: ${numbersShot}`)
+						break
+					} if (numbersShot === 0) {
+						alert(`Снаряди закінчились. Повертаємось у порт. Ворожих кораблів залишилось: ${shipsAfloat}`)
+						break
+					}
+				} else {
+					alert("Нема влучання! Необхідне коригування координат!")
+					numbersShot--
+					if (numbersShot === 0) {
+						alert(`Снаряди закінчились. Повертаємось у порт. Ворожих кораблів залишилось: ${shipsAfloat}`)
+					}
+				}
+			}
+			// if (shipsAfloat === 0) {
+			// 	alert("Усі ворожі кораблі знищено. Повертаємось у порт.")
+			// }
+			// // if (numbersShot === 0) {
+			// alert("Снаряди закінчились. Повертаємось у порт.")
+			// // }
+		}
+		letsGo(numberShips, gameFieldFull)
+	</script>
+
+</body>
+
+</html>
