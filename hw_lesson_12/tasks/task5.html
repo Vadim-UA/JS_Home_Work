@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>
+		Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити,
+		чи є у масиві ім’я «Olga» і під яким індексом.
+	</p>
+	<hr>
+	<br>
+	<script>
+		// Змінні
+		// Масив імен
+		const namesList = ["Joe", "Ishtvan", "Olga", "Rick", "Nino", "Paraska", "Ivan", "Tom", "Amerigo", "Mike", "Arnold", "Sony"]
+		// let nameOlgaIndex
+		// namesList.forEach((element, index, baseArrRef) => {
+		// 	if (element === "Olga") nameOlgaIndex = index
+		// });
+		// console.log(nameOlgaIndex)
+		console.log(namesList)
+		// let sortedNameList = JSON.parse(JSON.stringify(namesList)).sort()
+		namesList.sort()
+		console.log(sortedNameList)
+		function getIndexNameOlgaBinarySearch(array, searchElement) {
+			let start = 0
+			let end = array.length - 1
+			while (start <= end) {
+				let middle = Math.floor((start + end) / 2)
+				if (array[middle] === searchElement) return middle
+				if (array[middle] < searchElement) start = middle + 1
+				if (array[middle] > searchElement) end = middle - 1
+			}
+			return false
+		}
+		document.write(`Масив імен має вигляд: ${namesList}<br><br>
+		Відсортований масив імен має вигляд: ${sortedNameList}<br><br>
+		`)
+		const nameOlgaIndex = getIndexNameOlgaBinarySearch(sortedNameList, "Olga")
+		if (nameOlgaIndex) {
+			document.write(`Ім'я "Olga" є у масиві імен під індексом ${nameOlgaIndex}.`)
+		} else {
+			document.write(`Імені "Olga" нема у масиві імен.`)
+		}
+		console.log(nameOlgaIndex)
+	</script>
+
+</body>
+
+</html>

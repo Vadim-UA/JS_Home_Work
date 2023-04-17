@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		/* table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		} */
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>
+		Для розглянутих методів сортування спробувати вивести етапи сортування
+		шляхом виведення відповідних таблиць за зразком.
+		Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран.
+	</p>
+	<img src="../img/task_4.png" alt="Image">
+	<hr>
+	<br>
+	<script>
+		// За прикладом завдання №1
+		// Створюємо змінні
+		// Початковий масив
+		// const minNumberValue = 0
+		// const maxNumberValue = 50
+		// const numberValues = 30
+		// function getStartedArray(numberValues, minNumberValue, maxNumberValue) {
+		// 	const array = []
+		// 	for (let i = 0; i < numberValues; i++) {
+		// 		let randomNumber = minNumberValue + Math.floor(Math.random() * maxNumberValue - minNumberValue + 1)
+		// 		array.push(randomNumber)
+		// 	}
+		// 	return array
+		// }
+		// const startedArray = getStartedArray(numberValues, minNumberValue, maxNumberValue)
+		// console.log(startArray)
+		// const startedArray = [19, 31, 15, 43, 22, 45, 14, 46, 43, 9, 26, 31, 45, 8, 6, 28, 26, 27, 10, 29, 30, 13, 1, 12, 28, 31, 48, 34, 45, 49]
+		const startedArray = [3, 5, 1, 4, 2]
+		const startedArrayShake = [3, 5, 1, 4, 2]
+		const startedArrayInsert = [3, 5, 1, 4, 2]
+		// console.log(startedArray)
+		document.write(`
+	Масив має вигляд:<br><br> 
+	[${startedArray}]<br><br>
+	<hr>
+	Сортуємо "бульбашкою"<br><br>
+	`)
+
+		// ===================================== бульбашка
+		function getCountBubbleSort(startedArray) {
+			let changed
+			let count = 0
+			document.write(`<table>`)
+			do {
+				changed = false
+				for (let i = 1; i < startedArray.length; i++) {
+					if (startedArray[i - 1] > startedArray[i]) {
+						document.write(`<tr>`)
+						let temp = startedArray[i - 1]
+						startedArray[i - 1] = startedArray[i]
+						startedArray[i] = temp
+						changed = true
+						count++
+						document.write(`<td>[${startedArray}]</td>`)
+					}
+					document.write(`</tr>`)
+				}
+			} while (changed)
+			document.write(`</table>`)
+			return count
+		}
+		const count = getCountBubbleSort(startedArray)
+
+		// Вивести результат
+		document.write(`
+		Відсортований масив має вигляд: [${startedArray}]<br><br>
+		Під час сортування бульбашкою було ${count - 1} обмінів.
+		<hr><br><br>
+		`)
+		// ===================================== змішування
+		document.write(`Сортуємо "змішуванням"<br><br>`)
+		function swap(arr, i, j) {
+			const akum = arr[i]
+			arr[i] = arr[j]
+			arr[j] = akum
+		}
+		function getCountShakerSort(array) {
+			let leftIndex = 0
+			let rightIndex = startedArrayShake.length - 1
+			let countLeft = 0
+			let countRight = 0
+			document.write(`<table>`)
+			while (leftIndex < rightIndex) {
+				for (let idx = leftIndex; idx < rightIndex; idx++) {
+					if (array[idx] > array[idx + 1]) {
+						document.write(`<tr>`)
+						swap(array, idx, idx + 1)
+						countLeft++
+						document.write(`<td>[${array}]</td>`)
+					}
+					document.write(`</tr>`)
+				}
+				rightIndex--
+				for (let idx = rightIndex; idx > leftIndex; idx--) {
+					if (array[idx] < array[idx - 1]) {
+						document.write(`<tr>`)
+						swap(array, idx, idx - 1)
+						countRight++
+						document.write(`<td>[${array}]</td>`)
+					}
+					document.write(`</tr>`)
+				}
+				leftIndex++
+			}
+			document.write(`</table>`)
+			return countLeft + countRight
+		}
+		const countShake = getCountShakerSort(startedArrayShake)
+		// console.log(countShake)
+		// Вивести результат
+		document.write(`
+		Відсортований масив має вигляд: [${startedArrayShake}]<br><br>
+		Під час сортування змішування було ${countShake} обмінів.
+		<hr><br><br>
+		`)
+
+		// ===================================== включенням
+		document.write(`Сортуємо "включенням"<br><br>`)
+		function getCountInsertSort(array) {
+			let count = 0
+			document.write(`<table>`)
+			for (let k = 1; k < array.length; k++) {
+				const currentElement = array[k]
+				let i = k - 1
+				document.write(`<tr>`)
+				while (i >= 0 && array[i] > currentElement) {
+					array[i + 1] = array[i]
+					i = i - 1
+					count++
+				}
+				array[i + 1] = currentElement
+				document.write(`<td>[${array}]</td>`)
+				document.write(`</tr>`)
+			}
+			document.write(`</table>`)
+			return count
+		}
+		const countInsert = getCountInsertSort(startedArrayInsert)
+
+		console.log(countInsert)
+		document.write(`
+		Відсортований масив має вигляд: [${startedArrayInsert}]<br><br>
+		Під час сортування включенням було ${countInsert} обмінів.
+		<hr><br><br>
+		`)
+
+	</script>
+</body>
+
+</html>

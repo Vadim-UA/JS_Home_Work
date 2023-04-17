@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №3</h1>
+	<p>
+		Дано масив 30 випадкових цілих чисел.
+		Підрахувати скільки було обмінів під час сортування включеннями.
+	</p>
+	<hr>
+	</br>
+	<script>
+		// Початковий масив
+		const minNumberValue = 0
+		const maxNumberValue = 50
+		const numberValues = 30
+		function getStartedArray(numberValues, minNumberValue, maxNumberValue) {
+			const array = []
+			for (let i = 0; i < numberValues; i++) {
+				let randomNumber = minNumberValue + Math.floor(Math.random() * maxNumberValue - minNumberValue + 1)
+				array.push(randomNumber)
+			}
+			return array
+		}
+		const startedArray = getStartedArray(numberValues, minNumberValue, maxNumberValue)
+		// const startedArray = [19, 31, 15, 43, 22, 45, 14, 46, 43, 9, 26, 31, 45, 8, 6, 28, 26, 27, 10, 29, 30, 13, 1, 12, 28, 31, 48, 34, 45, 49]
+		// console.log(startedArray)
+		document.write(`
+	Масив має вигляд: [${startedArray}]<br><br>
+	`)
+
+		// Сортування включенням
+		function insertSort(array) {
+			let count = 0
+			for (let k = 1; k < array.length; k++) {
+				const currentElement = array[k]
+				let i = k - 1
+				while (i >= 0 && array[i] > currentElement) {
+					array[i + 1] = array[i]
+					i = i - 1
+					count++
+				}
+				array[i + 1] = currentElement
+			}
+			return count
+		}
+		const count = insertSort(startedArray)
+		// shakerSort(startedArray)
+		// console.log(startedArray)
+		// console.log(count)
+
+		// Вивести результат 
+		document.write(`
+	Відсортований масив має вигляд: [${startedArray}]<br><br>
+		Під час сортування включенням було ${count} обмінів.
+	`)
+	</script>
+</body>
+
+</html>

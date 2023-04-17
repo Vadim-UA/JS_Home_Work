@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №12</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>
+		Дано масив 30 випадкових цілих чисел.
+		Підрахувати скільки було обмінів під час сортування бульбашкою.
+	</p>
+	<hr>
+	<br>
+	<script>
+		// Створюємо змінні
+		// Початковий масив
+		const minNumberValue = 0
+		const maxNumberValue = 50
+		const numberValues = 30
+		function getStartedArray(numberValues, minNumberValue, maxNumberValue) {
+			const array = []
+			for (let i = 0; i < numberValues; i++) {
+				let randomNumber = minNumberValue + Math.floor(Math.random() * maxNumberValue - minNumberValue + 1)
+				array.push(randomNumber)
+			}
+			return array
+		}
+		const startedArray = getStartedArray(numberValues, minNumberValue, maxNumberValue)
+		// console.log(startArray)
+		// const startedArray = [19, 31, 15, 43, 22, 45, 14, 46, 43, 9, 26, 31, 45, 8, 6, 28, 26, 27, 10, 29, 30, 13, 1, 12, 28, 31, 48, 34, 45, 49]
+		// console.log(startedArray)
+		document.write(`
+	Масив має вигляд: [${startedArray}]<br><br>
+	`)
+
+		// Сортування бульбашкою
+		function getCountBubbleSort(startedArray) {
+			let changed
+			let count = 0
+			do {
+				changed = false
+				for (let i = 1; i < startedArray.length; i++) {
+					if (startedArray[i - 1] > startedArray[i]) {
+						let temp = startedArray[i - 1]
+						startedArray[i - 1] = startedArray[i]
+						startedArray[i] = temp
+						changed = true
+						count++
+					}
+				}
+			} while (changed)
+			return count
+		}
+		const count = getCountBubbleSort(startedArray)
+		// console.log(count)
+		// const newArray = bubbleSort(startedArray)
+		// document.write(newArray)
+		// console.log(newArray)
+		// console.log(startedArray)
+		// Вивести результат
+		document.write(`
+		Відсортований масив має вигляд: [${startedArray}]<br><br>
+		Під час сортування бульбашкою було ${count - 1} обмінів.
+		`)
+	</script>
+</body>
+
+</html>

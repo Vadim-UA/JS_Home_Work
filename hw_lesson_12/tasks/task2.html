@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №2</h1>
+	<p>
+		Дано масив 30 випадкових цілих чисел.
+		Підрахувати скільки було обмінів під час сортування змішуванням.
+	</p>
+	<hr>
+	<br>
+	<script>
+		// Початковий масив
+		const minNumberValue = 0
+		const maxNumberValue = 50
+		const numberValues = 30
+		function getStartedArray(numberValues, minNumberValue, maxNumberValue) {
+			const array = []
+			for (let i = 0; i < numberValues; i++) {
+				let randomNumber = minNumberValue + Math.floor(Math.random() * maxNumberValue - minNumberValue + 1)
+				array.push(randomNumber)
+			}
+			return array
+		}
+		const startedArray = getStartedArray(numberValues, minNumberValue, maxNumberValue)
+		// const startedArray = [19, 31, 15, 43, 22, 45, 14, 46, 43, 9, 26, 31, 45, 8, 6, 28, 26, 27, 10, 29, 30, 13, 1, 12, 28, 31, 48, 34, 45, 49]
+		// console.log(startedArray)
+		document.write(`
+	Масив має вигляд: [${startedArray}]<br><br>
+	`)
+
+		// Сортування змішуванням
+		function swap(arr, i, j) {
+			const akum = arr[i]
+			arr[i] = arr[j]
+			arr[j] = akum
+		}
+		function getCountShakerSort(array) {
+			let leftIndex = 0
+			let rightIndex = startedArray.length - 1
+			let countLeft = 0
+			let countRight = 0
+			while (leftIndex < rightIndex) {
+				for (let idx = leftIndex; idx < rightIndex; idx++) {
+					if (array[idx] > array[idx + 1]) {
+						swap(array, idx, idx + 1)
+						countLeft++
+					}
+				}
+				rightIndex--
+				for (let idx = rightIndex; idx > leftIndex; idx--) {
+					if (array[idx] < array[idx - 1]) {
+						swap(array, idx, idx - 1)
+						countRight++
+					}
+				}
+				leftIndex++
+			}
+			return countLeft + countRight
+		}
+		const countShake = getCountShakerSort(startedArray)
+		// shakerSort(startedArray)
+		// console.log(startedArray)
+		// console.log(countShake)
+
+		// Вивести результат 
+		document.write(`
+	Відсортований масив має вигляд: [${startedArray}]<br><br>
+		Під час сортування змішуванням було ${countShake} обмінів.
+	`)
+	</script>
+
+</body>
+
+</html>

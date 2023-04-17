@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6 уроку №8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table {
+			display: inline-block;
+			margin-right: 50px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		span {
+			font-weight: 700;
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №6</h1>
+	<p>
+		Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити,
+		чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+	</p>
+	<hr>
+	<br>
+	<script>
+		// Змінні
+		const namesList = ["Joe", "Ishtvan", "Olga", "Ricko", "Nino", "Napoleon", "Paraska", "Ivan", "Bo", "Tom", "Amerigo", "Mike", "Arnold", "Santino"]
+		document.write(`Масив імен має вигляд: ${namesList} <br><br>`)
+		console.log(namesList)
+		const numberSymbols = 5
+		// Сортування
+		// document.write(`Сортовано "бульбашкою".<br><br>`)
+		// function getSortedArrayBubbleSort(array) {
+		// 	let changed
+		// 	do {
+		// 		changed = false
+		// 		for (let i = 1; i < array.length; i++) {
+		// 			if (array[i - 1].length > array[i].length) {
+		// 				let temp = array[i - 1]
+		// 				array[i - 1] = array[i]
+		// 				array[i] = temp
+		// 				changed = true
+		// 			}
+		// 		}
+		// 	} while (changed)
+		// 	return array
+		// }
+		// const sortedArrayOfNames = getSortedArrayBubbleSort(namesList)
+		// console.log(sortedArrayOfNames)
+		namesList.sort((element1, element2) => element1.length - element2.length) // підсписав)
+		document.write(`Відсортований масив імен має вигляд: ${namesList}<br><br>`)
+
+		// Розв'язок
+		function getIndexNumberSymbolsBinarySearch(array, numberSymbols) {
+			let start = 0
+			let end = array.length - 1
+			while (start <= end) {
+				let middle = Math.floor((start + end) / 2)
+				if (array[middle].length === numberSymbols) return middle
+				if (array[middle].length < numberSymbols) start = middle + 1
+				if (array[middle].length > numberSymbols) end = middle - 1
+			}
+			return -1
+		}
+
+
+		const nameNumberSymbols = getIndexNumberSymbolsBinarySearch(namesList, numberSymbols)
+		if (nameNumberSymbols >= 0) {
+			document.write(`Ім'я з кількістю символів ${numberSymbols} є у масиві імен під індексом ${nameNumberSymbols}.<br><br>`)
+		} else {
+			document.write(`Імені з кількістю символів ${numberSymbols} нема у масиві імен.<br><br>`)
+		}
+
+		document.write(`<span>У випадку, коли вказано кількість символів у слові для пошуку від 3 до 4 включно, некоректно знаходить індекс. Прошу допомоги.</span>`)
+		console.log(nameNumberSymbols)
+
+	</script>
+</body>
+
+</html>
