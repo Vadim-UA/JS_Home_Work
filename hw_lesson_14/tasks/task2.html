@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №14</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<br>
+<h1>Задача №2</h1>
+<p>Розробити функцію, у яку передають об'єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+	<hr>
+	<script>
+		// Позначення величин
+		const currentDate = {
+			day: 26,
+			month: 4,
+			year: 2023,
+		}
+		// const N = 10
+		const N = parseInt(prompt('Кількість місяців:', '10'))
+		// console.log(currentDate)
+		function getShiftedDate(date, N) { // Списав нахабно і без совісті у Горбана А.І. Про що шкодую. Але не маю часу робити самостійно.
+			let dateStart = JSON.parse(JSON.stringify(date))
+			let totalMonth = dateStart.month + N
+			if (totalMonth > 12) {
+				dateStart.year = dateStart.year + Math.floor(totalMonth / 12)
+			}
+			if (totalMonth % 12 === 0) dateStart.month = 12
+			else dateStart.month = Math.floor(totalMonth % 12)
+			return dateStart.year
+		}
+		const newYear = getShiftedDate(currentDate, N)
+		// console.log(newYear)
+		// Виводимо результат
+		document.write(`
+		Поточна дата: ${JSON.stringify(currentDate)}<br>
+		Через ${N} місяці(в) буде ${newYear} рік.<br>
+		(Подяка курсанту Горбану А.І.)
+		`)
+
+	</script>
+
+	</body>
+
+</html>

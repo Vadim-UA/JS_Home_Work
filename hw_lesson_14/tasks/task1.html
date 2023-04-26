@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №14</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		li {
+			list-style: none;
+			margin-bottom: 10px;
+		}
+
+		span {
+			font-weight: 700;
+		}
+
+		.under-line {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>
+		Описати масив об'єктів – сайтів розроблених компанією з такими властивостями:
+	</p>
+	<ul>
+		<li>- назва компанії на час розробки (назву періодично змінюють)</li>
+		<li>- власник компанії</li>
+		<li>- спонсори (масив спонсорів)
+			<ul>
+				<li>
+					* прізвище спонсора
+				</li>
+				<li>
+					* ім’я спонсора
+				</li>
+				<li>
+					* сума вкладень спонсора
+				</li>
+			</ul>
+		</li>
+		<li>- рік випуску</li>
+		<li>- вартість сайту</li>
+	</ul>
+	<p>Знайти:</p>
+	<ol>
+		<li>1) загальну вартість усіх сайтів</li>
+		<li>2) кількість сайтів, що було зроблено між 2000 та 2009 рр.</li>
+		<li>3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000</li>
+		<li>4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</li>
+		<li>5) знайти рік, коли прибуток був найбільшим</li>
+		<li>6) упорядкувати список за спаданням прибутку</li>
+		<li>7) Створити 2 окремих списки з копіями об'єктів, що містять сайти з вартість до 10000 і більше 10000</li>
+	</ol>
+	<hr>
+	<script>
+		// Позначення величин
+		let arrayOfSites = [
+			{
+				companyName: 'Company3',
+				owner: 'Vinci',
+				sponsors: [
+					{
+						surname: 'Papalardo',
+						name: 'Dereck',
+						sponsorInvestment: 7000,
+					},
+					{
+						surname: 'Coin',
+						name: 'Stive',
+						sponsorInvestment: 20000,
+					},
+					{
+						surname: 'Brooskey',
+						name: 'Mike',
+						sponsorInvestment: 18000,
+					},
+				],
+				yearOfProduction: 2020,
+				priceOfSite: 2500,
+			},
+			{
+				companyName: 'Company1',
+				owner: 'Salieri',
+				sponsors: [
+					{
+						surname: 'Angelo',
+						name: 'Tom',
+						sponsorInvestment: 15000,
+					},
+					{
+						surname: 'Gatto',
+						name: 'Paul',
+						sponsorInvestment: 50000,
+					},
+					{
+						surname: 'Trapani',
+						name: 'Sam',
+						sponsorInvestment: 75000,
+					},
+				],
+				yearOfProduction: 2002,
+				priceOfSite: 500,
+			},
+			{
+				companyName: 'Company2',
+				owner: 'Morello',
+				sponsors: [
+					{
+						surname: 'Gonzales',
+						name: 'Speedy',
+						sponsorInvestment: 30000,
+					},
+					{
+						surname: 'Bearhunter',
+						name: 'Giuseppe',
+						sponsorInvestment: 55000,
+					},
+					{
+						surname: 'Fatboy',
+						name: 'Billy',
+						sponsorInvestment: 40000,
+					},
+				],
+				yearOfProduction: 2010,
+				priceOfSite: 11500,
+			},
+			{
+				companyName: 'Company4',
+				owner: 'Galante',
+				sponsors: [
+					{
+						surname: 'Agnello',
+						name: 'Maria',
+						sponsorInvestment: 130000,
+					},
+					{
+						surname: 'Tomasino',
+						name: 'Henry',
+						sponsorInvestment: 5000,
+					},
+					{
+						surname: 'Barbaro',
+						name: 'Joe',
+						sponsorInvestment: 240000,
+					},
+				],
+				yearOfProduction: 2025,
+				priceOfSite: 21500,
+			},
+		]
+
+		// Обчислення
+		// ==================== 1)
+		function getTotalPriceOfSite(arrayOfSites) {
+			return arrayOfSites.reduce((prevSum, item) => prevSum + item.priceOfSite, 0)
+		}
+		const totalPriceOfSite = getTotalPriceOfSite(arrayOfSites)
+		// console.log(totalPriceOfSite)
+		// ==================== 2)
+		function getNumbersOfSite_2000_2009(arr, start, end) {
+			let sum = 0
+			for (const item of arr) {
+				if (item.yearOfProduction > start && item.yearOfProduction < end)
+					sum++
+			}
+			return sum
+		}
+		const numbersOfSite_2000_2009 = getNumbersOfSite_2000_2009(arrayOfSites, 2000, 2009)
+		// console.log(numbersOfSite_2000_2009)
+		// ==================== 3)
+		function getNumbersOfSiteTotalInvestments(arr, value) {
+			let count = 0
+			for (let i = 0; i < arr.length; i++) {
+				let s = arr[i].sponsors.reduce((prevSum, el) => prevSum + el.sponsorInvestment, 0)
+				if (s > value)
+					count++
+			}
+			return count
+		}
+		const numbersOfSiteTotalInvestments = getNumbersOfSiteTotalInvestments(arrayOfSites, 100000)
+		// console.log(numbersOfSiteTotalInvestments)
+
+		// ==================== 4)
+		function getTotalSponsorsList(arr) {
+			let sponsorsList = []
+			for (const item of arr) {
+				for (const sponsor of item.sponsors) {
+					sponsorsList.push(`${sponsor.name} ${sponsor.surname}`);
+				}
+			}
+			return sponsorsList
+		}
+		const sponsorsList = getTotalSponsorsList(arrayOfSites)
+		// console.log(sponsorsList)
+
+		// ==================== 5)
+		function getMaxProfitArray(arr) {
+			let maxProfitArray = []
+			for (const item of arr) {
+				let sum = item.sponsors.reduce((prevSum, element) => prevSum + element.sponsorInvestment, 0)
+				maxProfitArray.push(sum)
+			}
+			return maxProfitArray
+		}
+		const maxProfitArray = getMaxProfitArray(arrayOfSites)
+		// console.log(maxProfitArray)
+
+		function getYearMaxProfit(arrayOfSites, maxItemArray) {
+			let maxItem = Math.max(...maxItemArray)
+			let indexMax
+			maxItemArray.forEach((element, index) => {
+				if (element === maxItem) indexMax = index
+			})
+
+			return arrayOfSites[indexMax].yearOfProduction
+		}
+		const yearOfMaxProfit = getYearMaxProfit(arrayOfSites, maxProfitArray)
+		// console.log(yearOfMaxProfit)
+
+		// ==================== 6)
+		const maxProfitArrayToSort = getMaxProfitArray(arrayOfSites)
+		// console.log(maxProfitArrayToSort)
+		const maxProfitArraySorted = maxProfitArrayToSort.sort((el1, el2) => el2 - el1)
+		// console.log(maxProfitArraySorted)		
+
+		// ==================== 7)
+		// 7-1 до 10 000
+		function getListOfSitesLess(arr, value) {
+			const copyArray = JSON.parse(JSON.stringify(arr))
+			let listOfSitesCostLessThanTenThousand = []
+			for (const element of copyArray) {
+				if (element.priceOfSite < value) listOfSitesCostLessThanTenThousand.push(element)
+			}
+			return listOfSitesCostLessThanTenThousand
+		}
+
+		const listOfSitesCostLessThanTenThousand = getListOfSitesLess(arrayOfSites, 10000)
+		// console.log(listOfSitesCostLessThanTenThousand)
+
+		// 7-2 більше 10 000
+		function getListOfSitesMore(arr, value) {
+			const copyArray = JSON.parse(JSON.stringify(arr))
+			let listOfSitesCostMoreThanTenThousand = []
+			for (const element of copyArray) {
+				if (element.priceOfSite > value) listOfSitesCostMoreThanTenThousand.push(element)
+			}
+			return listOfSitesCostMoreThanTenThousand
+		}
+
+		const listOfSitesCostMoreThanTenThousand = getListOfSitesMore(arrayOfSites, 10000)
+		// console.log(listOfSitesCostMoreThanTenThousand)
+
+		// Виводимо результат
+		document.write(`
+		1) Загальна вартість усіх сайтів: ${totalPriceOfSite} грошей.<br>
+		2) Кількість сайтів, що було зроблено між 2000 та 2009 рр.: ${numbersOfSite_2000_2009}<br>
+		3) Кількість сайтів, де сума спонсорських вкладень була більшою за 100000 грошей: ${numbersOfSiteTotalInvestments}<br>
+		4) Загальний список усіх спонсорів: ${sponsorsList}<br>
+		5) Рік, коли прибуток був найбільшим: ${yearOfMaxProfit}<br>
+		6) Упорядковано список за спаданням прибутку: ${maxProfitArraySorted}.<br> 
+		<span class="under-line">Відсортувати початковий масив не зміг/не встиг/не подужав.<br> 
+		Відсортував лише масив сум спонсорів.<br>
+		Менторе, чи це правильне рішення?</span><br>
+		7) 2 окремих списки з копіями об'єктів, що містять сайти з вартістю:<br>
+		<span>до 10000 =></span><br>
+		${JSON.stringify(listOfSitesCostLessThanTenThousand)}<br>
+		<span>більше 10000 =></span><br>
+		${JSON.stringify(listOfSitesCostMoreThanTenThousand)}<br>
+		`)
+	</script>
+</body>
+
+</html>
