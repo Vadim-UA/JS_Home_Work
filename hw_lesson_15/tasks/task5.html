@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №15</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table {
+			display: inline-block;
+			margin-right: 50px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №6</h1>
+	<p>
+		Розробити клас «Керівник танців»
+	</p>
+	<img src="../img/15-5_dance-master.jpg" alt="Image">
+	<hr>
+	<script>
+		// Змінні
+		const girlsNamesArray = ['Olga', 'Paraska', 'Stepanida', 'Horpina', 'Isabella', 'Jessica']
+		const boysNamesArray = ['Stepan', 'Affinogen', 'Miron', 'Sebastian', 'Ashot', 'George']
+
+		class Dances {
+			constructor(namesGirls, namesBoys) {
+				this.namesGirls = namesGirls
+				this.namesBoys = namesBoys
+			}
+			// Випадковий вибір імені парубка
+			getBoyNameRandom() {
+				const boyName = this.namesBoys[Math.floor(Math.random() * this.namesBoys.length)]
+				// console.log(boyName)
+				return boyName
+			}
+			// Випадковий вибір імені молодиці
+			getGirlNameRandom() {
+				const girlName = this.namesGirls[Math.floor(Math.random() * this.namesGirls.length)]
+				// console.log(girlName)
+				return girlName
+			}
+			// Метод вибору пари для вечорниць
+			getChoosePair() {
+				const pair = []
+				pair.push(this.getBoyNameRandom(), this.getGirlNameRandom())
+				// console.log(pair)
+				return pair
+			}
+			// метод Володаря Танців
+			run() {
+				setInterval(() => {
+					document.write(`<div style="margin-bottom: 10px;">${this.getChoosePair()[0]} + ${this.getChoosePair()[1]}</div>`)
+				}, 5000);
+			}
+		}
+		const lordOfDances = new Dances(girlsNamesArray, boysNamesArray)
+		lordOfDances.getBoyNameRandom()
+		// console.log(lordOfDances.getBoyNameRandom())
+		lordOfDances.getGirlNameRandom()
+		// console.log(lordOfDances.getGirlNameRandom())
+		// console.log(lordOfDances.getChoosePair())
+		lordOfDances.run()
+		// console.log(lordOfDances.run())
+	</script>
+
+</body>
+
+</html>

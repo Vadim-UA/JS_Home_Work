@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №15</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+			width: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<br>
+<h1>Задача №1</h1>
+<p>
+	Створити об'єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+</p>
+<img src="../img/15-1_rabbit.jpg" alt="Rabbit">
+<hr>
+<br>
+
+<script>
+	//Позначення величин
+	const minValue = 0
+	const maxValue = 5
+	const numberHare = 3
+
+	// -----------------------------------------------
+	function getRandomNumber(minValue, maxValue) {
+		const randomNum = minValue + Math.floor(Math.random() * maxValue - minValue + 1)
+		return randomNum
+	}
+
+	function getGameField(minValue, maxValue, getRandomNumber, numberHare) {
+		let gameField = new Array(maxValue).fill(0)
+		let hare = 0
+		while (hare < numberHare) {
+			const indexOfRandomPosition = getRandomNumber(minValue, maxValue)
+			if (gameField[indexOfRandomPosition] != 1) {
+				gameField[indexOfRandomPosition] = 1
+				hare++
+			}
+		}
+		return gameField
+	}
+	const gameField = getGameField(minValue, maxValue, getRandomNumber, numberHare)
+	console.log(gameField) // підказка))
+
+	//  Об'єкт "Тир"
+	const shootingGallery = {
+		gameField: gameField,
+		numberShoot: 3,
+		showField: function () {
+			document.write(`<table>`)
+			document.write(`<tr>`)
+			for (let i = 0; i < this.gameField.length; i++) {
+				document.write(`<td>${this.gameField[i]}</td>`)
+			}
+			document.write(`</tr>`)
+			document.write(`</table>`)
+		},
+		playGame: function (numberHare) {
+			alert(`Поле мішеней має розмір: ${maxValue + 1} стрибки(ів) зайця`)
+			alert(`Зайців маємо: ${numberHare}`)
+			alert(`Пострілів у гравця: ${this.numberShoot}`)
+			let count = numberHare
+			let shoot = this.numberShoot
+			do {
+				let userShoot = parseInt(prompt("Де ж може бути той заєць?! Куди цілити?"))
+				if (this.gameField[userShoot - 1] === 1) {
+					this.gameField[userShoot - 1] = 0
+					count--
+					alert("Спіймався!")
+				} else alert("Нема його тут.")
+				shoot--
+			} while (count > 0 && shoot > 0)
+
+		}
+	}
+
+	shootingGallery.showField(gameField)
+	document.write('Розміщення мішеней мало вигляд')
+	shootingGallery.playGame(numberHare)
+
+</script>
+
+</body>
+
+</html>

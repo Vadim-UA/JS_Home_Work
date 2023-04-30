@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №15</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		.image {
+			width: 700px;
+			height: 100px;
+			border: none;
+		}
+
+		img {
+			width: 300px;
+			height: 200px;
+			border: 2px solid #000;
+			border-radius: 15px;
+		}
+
+		a {
+			font-weight: 600;
+			font-size: 22px;
+		}
+
+		div {
+			text-align: center;
+			margin-right: 30px;
+		}
+
+		.row {
+			display: flex;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>
+		Розробити клас
+	</p>
+	<img class="image" src="../img/15-4_baner.jpg" alt="Image">
+	<hr>
+	<script>
+		// Змінні
+		// const arrayOfImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg']
+		const arrayOfImages = [
+			'<img src="../img/1.jpg" alt="Image">',
+			'<img src="../img/2.jpg" alt="Image">',
+			'<img src="../img/3.jpg" alt="Image">',
+			'<img src="../img/4.jpg" alt="Image">',
+		]
+
+		const arrayOfLinks = [
+			'<a href="https://www.ukr.net/" target="_blank">Click</a>',
+			'<a href="https://www.google.com/" target="_blank">Click</a>',
+			'<a href="https://www.linkedin.com/" target="_blank">Click</a>',
+			'<a href="https://uk.wikipedia.org/" target="_blank">Click</a>'
+		]
+
+		class Banner {
+			constructor(images, links) {
+				this.imgsArr = images
+				this.linksArr = links
+				// this.imgsArr = JSON.parse(JSON.stringify(images))
+				// this.linksArr = JSON.parse(JSON.stringify(links))
+			}
+			getRandomObj() {
+				let randomObj = []
+				const randomIdx = Math.floor(Math.random() * 4)
+				randomObj.push(this.imgsArr[randomIdx], this.linksArr[randomIdx])
+				// console.log(randomObj)
+				return randomObj
+			}
+		}
+		const randomBanner = new Banner(arrayOfImages, arrayOfLinks)
+		randomBanner.getRandomObj()
+		document.write(`<div class="row">
+		<div>${randomBanner.getRandomObj()[0]}<br> ${randomBanner.getRandomObj()[1]}</div>
+		<div>${randomBanner.getRandomObj()[0]}<br> ${randomBanner.getRandomObj()[1]}</div>
+		<div>${randomBanner.getRandomObj()[0]}<br> ${randomBanner.getRandomObj()[1]}</div>
+		</div>
+		`
+		)
+
+
+	</script>
+
+</body>
+
+</html>

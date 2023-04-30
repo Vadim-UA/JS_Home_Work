@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №15</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №2</h1>
+	<p>Створити об'єкт «Авто».</p>
+	<img src="../img/15-2_auto.jpg" alt="Image">
+	<hr>
+	</br>
+	<script>
+		// Змінні
+
+		const auto = {
+			model: 'ZAZ 110207',
+			fuelTankSize: 70,
+			amountOfFuel: 20,
+			numberOfSeats: 5,
+			passengers: 3,
+
+			// methods============================
+			// Заправка
+			refueling: function () {
+				const fuel = parseInt(prompt("Будемо заправлятись? Скільки треба пального?"))
+				const allFuel = fuel + this.amountOfFuel
+				const partOfFuel = this.fuelTankSize - allFuel
+				let fuelRes
+				if (allFuel < this.fuelTankSize) fuelRes = `Заправка: Чи "до повного?)" Бак розрахований на ${this.fuelTankSize} літрів.
+				Ще є місце для ${partOfFuel} літри(ів).<br>`
+				else if (allFuel === this.fuelTankSize) fuelRes = `Заправка: Досить. "Під зав\'язку".<br>`
+				else fuelRes = 'Заправка: Забагато(( Неси каністру!'
+				return fuelRes
+			},
+			// Кількість пасажирів
+			getNumberOfPassengers: function () {
+				return this.passengers
+			},
+			// Підібрали попутників
+			addingPassengers: function () {
+				const addPass = parseInt(prompt('Їдемо з нами? Кіко вас? У нас ще є 2 вільних місця.'))
+				const allPass = addPass + this.passengers
+				let passRes
+				if (allPass <= this.numberOfSeats) {
+					passRes = `Додавання пасажирів: Додалось ще ${addPass} людей. Буде нас тепер ${allPass}.<br>`
+					this.passengers = allPass
+				}
+				else passRes = `Додавання пасажирів: Вас забагато. Чекайте наступний транспорт.<br>`
+				return passRes
+			},
+			// Висадка пасажирів
+			goOut: function () {
+				let passOut = 1
+				return this.passengers - passOut
+			},
+		}
+		document.write(`${auto.refueling()}`)
+		document.write(`Пасажирів у авто мандрує у Карпати: ${auto.getNumberOfPassengers()}.<br>`)
+		document.write(`${auto.addingPassengers()}`)
+		document.write(`Висадка пасажирів: Одного  пасажира залишили у аквапарку. Залишилось у авто ${auto.goOut()}.<br>`)
+	</script>
+</body>
+
+</html>

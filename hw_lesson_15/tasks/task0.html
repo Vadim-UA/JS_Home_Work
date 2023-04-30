@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 0 уроку №15</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №0</h1>
+	<p>
+		Дано два об'єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у
+		іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+		Використати обидва методи стосовно обидвох об'єктів (використати call, apply).
+	</p>
+	<hr>
+	<script>
+		// Створюємо змінні 
+		const obj1 = {
+			scores: [5, 9, 10, 9, 7, 3, 5, 12, 12],
+			getSum: function () {
+				return this.scores.reduce((prevSum, element) => prevSum + element, 0)
+			}
+		}
+
+		const obj2 = {
+			scores: [3, 12, 9, 7, 5, 6, 4, 11, 8, 2, 10],
+			getProduct: function (start, end) {
+				return this.scores.reduce((prevProd, element) => (element > start && element < end) ? prevProd * element : prevProd,
+					1)
+			}
+		}
+
+		const sumObj1 = obj1.getSum()
+		const sumObj2 = obj1.getSum.call(obj2)
+		// const prodObg1 = obj2.getProduct.call(obj1, 4, 7)
+		const prodObg1 = obj2.getProduct.apply(obj1, [4, 7])
+		const prodObg2 = obj2.getProduct(4, 7)
+
+		// Виводимо
+
+		document.write(`
+		Масив чисел першого об'єкта має вигляд: ${obj1.scores}<br><br>
+		Масив чисел другого об'єкта має вигляд: ${obj2.scores}<br><br>
+		Результат роботи функції знаходження суми для першого об'єкта = ${sumObj1}<br><br>
+		Результат роботи функції знаходження суми (call) для другого об'єкта = ${sumObj2}<br><br>
+		Результат роботи функції знаходження добутку чисел між 4 і 7 (apply) для першого об'єкта = ${prodObg1}<br><br>
+		Результат роботи функції знаходження добутку чисел між 4 і 7 для другого об'єкта = ${prodObg2}<br>
+		`)
+	</script>
+</body>
+
+</html>

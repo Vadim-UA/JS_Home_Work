@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<body lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Задача 3 уроку №15</title>
+		<style>
+			body {
+				padding: 20px 30px;
+				font-family: sans-serif;
+			}
+
+			h3 {
+				font-size: 25px;
+			}
+
+			table,
+			td {
+				border: 1px solid #000;
+				font-size: 22px;
+			}
+
+			td {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Задача №3</h1>
+		<p>Розробити клас MultChecker для перевірки таблиці множення</p>
+		<img src="../img/15-3_multchecker.jpg" alt="Image">
+		<!-- <hr> -->
+		<script>
+			// Змінні
+			class MultChecker {
+				constructor(numOne) {
+					this.numOne = numOne
+					// this.numTwo = numTwo
+					this.startValue = 0
+					this.endValue = 9
+					this.rightAnswerCount = 0
+					this.wrongAnswerCount = 0
+				}
+				// getRandomNum() {
+				// 	let numTwo = this.startValue + Math.floor(Math.random() * this.endValue - this.startValue + 1)
+				// 	return numTwo
+				// }
+				getCreateExampleOfMultiplication() {
+					let userConfirm
+					do {
+						let numTwo = this.startValue + Math.floor(Math.random() * this.endValue - this.startValue + 1)
+						let example = this.numOne * numTwo
+						let userAnswer = parseInt(prompt(`Скільки буде ${this.numOne} * ${numTwo}`))
+						if (example === userAnswer) {
+							userConfirm = confirm('Правильно. Продовжуємо?')
+							this.rightAnswerCount++
+						} else {
+							userConfirm = confirm('Неправильно. Продовжуємо?')
+							this.wrongAnswerCount++
+						}
+					} while (userConfirm)
+					return
+				}
+
+				render() {
+					// Перше число (фіксоване): ${this.numOne}<br>
+					document.write(`<br><br>
+							Таблиця множення на: ${this.numOne}<br>
+							Правильних відповідей: ${this.rightAnswerCount}<br>
+							Неправильних відповідей: ${this.wrongAnswerCount}<br>
+							`)
+				}
+			}
+			function getRandomNum(startValue, endValue) {
+				let numTwo = startValue + Math.floor(Math.random() * endValue - startValue + 1)
+				return numTwo
+			}
+
+			const checker = new MultChecker(7, getRandomNum(0, 9))
+			checker.getCreateExampleOfMultiplication()
+			checker.render()
+			// console.log(checker)
+
+
+		</script>
+	</body>
+
+	</html>
