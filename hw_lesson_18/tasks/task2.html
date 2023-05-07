@@ -93,8 +93,10 @@
 		const euroRate = 42
 		const dollarRate = 37
 		const grnValue = parseFloat(document.getElementById('grn').value)
-		document.getElementById('euroResult').value = (grnValue / euroRate).toFixed(2)
-		document.getElementById('dollarResult').value = (grnValue / dollarRate).toFixed(2)
+		if (grnValue >= 0) {
+			document.getElementById('euroResult').value = (grnValue / euroRate).toFixed(2)
+			document.getElementById('dollarResult').value = (grnValue / dollarRate).toFixed(2)
+		} else alert('Дані некоректні')
 	}
 	document.getElementById('btn').onclick = convert
 
