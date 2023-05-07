@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>ДЗ 18</title>
+	<style>
+		.block {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.block__item {
+			margin-bottom: 10px;
+		}
+
+		.block__item div {
+			margin-bottom: 10px;
+		}
+
+		.buttons-block {
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			width: 100px;
+			height: 30px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.input-field {
+			padding: 5px;
+		}
+
+		.input-field-currency {
+			padding: 5px;
+		}
+
+		.label {
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+
+		.label-wrapper,
+		.button-wrapper {
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h1>ДЗ по уроку №18</h1>
+		<ol>
+			<li>
+				<h3>
+					<a href="./tasks/task1.html" target="_blank">Задача №1</a>
+				</h3>
+				<p>
+					Розробити калькулятор
+				</p>
+				<div class="calc">
+					<div class="block">
+						<div class="block__item">
+							<label> First number
+								<input class="input-field" type="number" name="" id="">
+							</label>
+						</div>
+						<div class="block__item">
+							<label> Second number
+								<input class="input-field" type="number" name="" id="">
+							</label>
+						</div>
+					</div>
+					<div class="buttons-block">
+						<button class="btn">Додати</button>
+						<button class="btn">Відняти</button>
+						<button class="btn">Помножити</button>
+						<button class="btn">Поділити</button>
+					</div>
+					<hr>
+					<label>Результат
+						<input class="input-field" type="number" name="" id="">
+					</label>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="./tasks/task2.html" target="_blank">Задача №2</a>
+				</h3>
+				<p>
+					Зробити конвертер валют (курси валют – константи у скрипті)
+				</p>
+				<div class="calc">
+					<div class="block">
+						<div class="block__item">
+							<label class="label"> Сума у гривнях
+								<input class="input-field" type="number" name="" id="">
+							</label>
+							<div class="buttons-block">
+								<button class="btn">Конвертувати</button>
+							</div>
+							<hr>
+						</div>
+						<div class="block__item">
+							<div>
+								<label> Сума, ЄВРО
+									<input class="input-field-currency" type="number" name="" id="">
+								</label>
+							</div>
+							<div>
+								<label> Сума, ДОЛАР
+									<input class="input-field-currency" type="number" name="" id="">
+								</label>
+							</div>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="./tasks/task3.html" target="_blank">Задача №3</a>
+				</h3>
+				<p>
+					Користувач задає рік народження. Визначити кількість років користувача.
+				</p>
+			</li>
+			<li>
+				<h3>
+					<a href="./tasks/task4.html" target="_blank">Задача №4</a>
+				</h3>
+				<p>
+					Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином
+					вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+				</p>
+			</li>
+			<li>
+				<h3>
+					<a href="./tasks/task5.html" target="_blank">Задача №5</a>
+				</h3>
+				<p>
+					Відобразити таблицю 3*4 з випадковими числами.
+					(її треба динамічно створити і вставити на сторінку)
+				</p>
+			</li>
+			<li>
+				<h3>
+					<a href="./tasks/task6.html" target="_blank">Задача №6</a>
+				</h3>
+				<p>
+					Користувач задає кількість оцінок і натискає на кнопку «get table».
+					В результаті формується таблиця з input, куди користувач вводить оцінки.
+					Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+				</p>
+				<div class="user-table">
+					<div class="number-scores">
+						<div class="label-wrapper">
+							<label>Scores number
+								<input type="number">
+							</label>
+						</div>
+						<div class="button-wrapper">
+							<button class="btn">get table</button>
+						</div>
+					</div>
+					<hr>
+					<hr>
+					<div>
+						<button class="btn">get sum</button>
+					</div>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="./tasks/task7.html" target="_blank">Задача №7</a>
+				</h3>
+				<p>
+					Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто,
+					автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbox)
+					та одного з 3-х гідів(використати - radio buttons).
+					Ціни визначте самі. Підрахувати загальну вартість.
+				</p>
+			</li>
+		</ol>
+	</div>
+</body>
+
+</html>

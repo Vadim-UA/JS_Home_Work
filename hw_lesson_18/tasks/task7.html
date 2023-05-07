@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 7 уроку №18</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		.text {
+			font-weight: 700;
+			margin-bottom: 10px;
+		}
+
+		.block__guide {
+			margin-bottom: 50px;
+		}
+
+		.box {
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №7</h1>
+	<p>
+		Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто,
+		автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbox)
+		та одного з 3-х гідів (використати - radio buttons). Ціни визначте самі.
+		Підрахувати загальну вартість.
+	</p>
+	<hr>
+	<div class="wrapper">
+		<div class="block">
+			<div class="block__transport transport box">
+				<p class="text">Транспорт</p>
+				<select class="transport__section" id="transport">
+					<option class="transport__option" value="0">піду пішки 0</option>
+					<option class="transport__option" value="300">авто 300</option>
+					<option class="transport__option" value="200">автобус 200</option>
+					<option class="transport__option" value="500">літак 500</option>
+				</select>
+			</div>
+			<div class="block__food food box">
+				<p class="text">Харчування</p>
+				<div class="food__check">
+					<label>Сніданок 500
+						<input type="checkbox" class="food__item" value="500">
+					</label>
+				</div>
+				<div class="food__check">
+					<label>Обід 800
+						<input type="checkbox" class="food__item" value="800">
+					</label>
+				</div>
+				<div class="food__check">
+					<label>Вечеря 300
+						<input type="checkbox" class="food__item" value="300">
+					</label>
+				</div>
+			</div>
+			<div class="block__guide guide box">
+				<p class="text">Гіди)</p>
+				<div class="guide__wrapper">
+					<label>Сам погуляю безкоштовно
+						<input type="radio" class="guide__check" value="0" name="guide">
+					</label>
+				</div>
+				<div class="guide__wrapper">
+					<label>Один з трьох гідів - Біллі 1300
+						<input type="radio" class="guide__check" value="1300" name="guide">
+					</label>
+				</div>
+				<div class="guide__wrapper">
+					<label>Один з трьох гідів - Віллі 1500
+						<input type="radio" class="guide__check" value="1500" name="guide">
+					</label>
+				</div>
+				<div class="guide__wrapper">
+					<label>Один з трьох гідів - Діллі 1800
+						<input type="radio" class="guide__check" value="1800" name="guide">
+					</label>
+				</div>
+			</div>
+			<div class="button-container">
+				<button id="btn">Розрахувати</button>
+			</div>
+			<!-- <p>Загальна вартість дорівнює <span id="result">______</span> умовних грошей</p> -->
+			<p><span id="result">Загальна вартість</span></p>
+		</div>
+	</div>
+	<script>
+		function getName() {
+			const transportPrice = parseInt(document.getElementById('transport').value)
+			const foodItemValue = document.querySelectorAll('.food__item')
+			let foodPrice = 0
+			for (let j = 0; j < foodItemValue.length; j++) {
+				if (foodItemValue[j].checked)
+					foodPrice += parseInt(foodItemValue[j].value)
+			}
+			const guideItemValue = document.getElementsByClassName('guide__check')
+			let guidePrice = 0
+			for (let i = 0; i < guideItemValue.length; i++) {
+				if (guideItemValue[i].checked)
+					guidePrice += parseInt(guideItemValue[i].value)
+			}
+			const totalSum = transportPrice + foodPrice + guidePrice
+			if (totalSum === 0) document.querySelector('span').innerText = "Сиди вдома"
+			else
+				document.querySelector('span').innerText = `Загальна вартість дорівнює ${totalSum} умовних грошей`
+		}
+		document.getElementById('btn').onclick = getName
+
+	</script>
+
+</body>
+
+</html>

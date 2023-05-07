@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 6 уроку №18</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table {
+			display: inline-block;
+			margin-right: 50px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		.block {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.block__item {
+			margin-bottom: 10px;
+		}
+
+		.block__item div {
+			margin-bottom: 10px;
+		}
+
+		.buttons-block {
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			width: 100px;
+			height: 30px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.input-field {
+			padding: 5px;
+		}
+
+		.input-field-currency {
+			padding: 5px;
+		}
+
+		.label {
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+
+		.label-wrapper,
+		.button-wrapper {
+			margin-bottom: 10px;
+		}
+
+		.input-score {
+			width: 80px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №6</h1>
+	<p>
+		Користувач задає кількість оцінок і натискає на кнопку «get table».
+		В результаті формується таблиця з input, куди користувач вводить оцінки.
+		Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+	</p>
+	<hr>
+	<div class="user-table">
+		<div class="number-scores">
+			<div class="label-block">
+				<label>
+					Scores number
+					<input type="number" id="scores-number">
+				</label>
+			</div>
+			<div class="buttons-block">
+				<div class="button-wrapper">
+					<button class="btn" id="btn-table">get table</button>
+				</div>
+				<div class="button-wrapper">
+					<button class="btn" id="btn-sum">get sum</button>
+				</div>
+			</div>
+		</div>
+		<p>Середнє значення: <span>_____</span></p>
+	</div>
+	<script>
+
+		function getTable() {
+			const number = parseInt(document.getElementById('scores-number').value)
+			const tableItem = document.createElement('table')
+			const tdItem = document.createElement('td')
+			const tableWrapper = document.getElementsByClassName('number-scores')
+			tableWrapper[0].append(tableItem)
+			for (let i = 0; i < number; i++) {
+				tableItem.append(tdItem)
+				const trItem = document.createElement('tr')
+				tdItem.append(trItem)
+				const inputItem = document.createElement('input')
+				inputItem.classList.add('input-score')
+				trItem.append(inputItem)
+			}
+		}
+		function getAverageSum() {
+			const inputValues = document.getElementsByClassName('input-score')
+			let sum = 0
+			for (let i = 0; i < inputValues.length; i++) {
+				const val = parseInt(inputValues[i].value)
+				sum += val
+			}
+			document.querySelector('span').innerText = (sum / inputValues.length).toFixed(1)
+			let delTable = document.getElementById('btn-table')
+			let delSum = document.getElementById('btn-sum')
+			delTable.remove() //гадаю, що це "костиль"( Але інакше не додумався. Буду вдячний за пораду. 
+			delSum.remove()	//гадаю, що це "костиль"( Але інакше не додумався. Буду вдячний за пораду.
+		}
+		document.getElementById('btn-table').onclick = getTable // таблиця створюється щоразу при кліку
+		document.getElementById('btn-sum').onclick = getAverageSum
+
+	</script>
+</body>
+
+</html>

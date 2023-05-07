@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №1 8</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		.block {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.block__item {
+			margin-bottom: 10px;
+		}
+
+		.buttons-block {
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			width: 100px;
+			height: 30px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.input-field {
+			padding: 5px;
+		}
+	</style>
+	<script>
+		function calculate(param) {
+			const firstNumber = parseFloat(document.getElementById('first').value)
+			const secondNumber = parseFloat(document.getElementById('second').value)
+			let result
+			if (param === '+') result = firstNumber + secondNumber
+			if (param === '-') result = firstNumber - secondNumber
+			if (param === '*') result = firstNumber * secondNumber
+			if (param === '/') result = firstNumber / secondNumber
+			document.getElementById('result').value = result
+		}
+
+		function clearFields() {
+			const clearField = document.getElementsByTagName('input')
+			for (const elem of clearField) {
+				elem.value = ''
+			}
+		}
+
+		window.onload = function () {
+			document.getElementById('clear').onclick = clearFields
+		}
+
+	</script>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>
+		Розробити калькулятор
+	</p>
+	<hr>
+	<br>
+	<div class="calc">
+		<div class="block">
+			<div class="block__item">
+				<label> First number
+					<input class="input-field" type="number" id="first">
+				</label>
+			</div>
+			<div class="block__item">
+				<label> Second number
+					<input class="input-field" type="number" id="second">
+				</label>
+			</div>
+		</div>
+		<div class="buttons-block">
+			<button onclick="calculate('+')" class="btn" id="sum">Додати</button>
+			<button onclick="calculate('-')" class="btn" id="diff">Відняти</button>
+			<button onclick="calculate('*')" class="btn" id="multiply">Помножити</button>
+			<button onclick="calculate('/')" class="btn" id="divide">Поділити</button>
+			<button class="btn" id="clear">Очистити</button>
+		</div>
+		<label>Результат
+			<input class="input-field" type="number" id="result">
+		</label>
+	</div>
+	<!-- <script>
+		// Створюємо змінні
+
+		// function clearFields() {
+		// 	const clearField = document.getElementsByTagName('input')
+		// 	for (const elem of clearField) {
+		// 		elem.value = ''
+		// 	}
+		// }
+		// document.getElementById('clear').onclick = clearFields
+
+
+
+	</script> -->
+</body>
+
+</html>

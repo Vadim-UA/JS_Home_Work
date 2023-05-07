@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №18</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+
+		.wrapper {
+			display: flex;
+			justify-content: space-evenly;
+		}
+
+		.box {
+			width: 350px;
+			height: 100px;
+			border: 2px solid #000;
+			border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+			font-size: 32px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>
+		Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і
+		відображаються у окремих div (їх треба створити і додати на сторінку)
+	</p>
+	<hr>
+	<br>
+	<div class="wrapper" id="wrapper"></div>
+
+	<script>
+		// Змінні
+		const desiresList = ['peace', 'money', 'victory', 'revenge', 'memory', 'punishment', 'reconstruction', 'fishing']
+		// =====================
+		// 
+		function getTree(arr) {
+			const divOne = document.createElement('div')
+			const divTwo = document.createElement('div')
+			const divThree = document.createElement('div')
+
+			divOne.classList.add('blockOne', 'box')
+			divTwo.classList.add('blockTwo', 'box')
+			divThree.classList.add('blockThree', 'box')
+
+			const wrapper = document.getElementById('wrapper')
+			wrapper.append(divOne)
+			wrapper.append(divTwo)
+			wrapper.append(divThree)
+
+			const row = document.querySelectorAll('.box')
+			// console.log(row)
+
+			setInterval(() => {
+				const elements = document.querySelectorAll('.box')
+				for (const item of elements) {
+					item.innerText = ''
+				}
+				for (let i = 0; i < row.length; i++) {
+					const randomIndex = Math.floor(Math.random() * arr.length)
+					const randomElement = arr[randomIndex]
+					row[i].append(randomElement)
+					console.log(randomIndex)
+					console.log(randomElement)
+				}
+
+			}, 2000)
+		}
+		getTree(desiresList)
+
+	</script>
+</body>
+
+</html>

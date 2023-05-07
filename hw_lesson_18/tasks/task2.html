@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №18</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		.block {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.block__item {
+			margin-bottom: 10px;
+		}
+
+		.block__item div {
+			margin-bottom: 10px;
+		}
+
+		.buttons-block {
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			width: 100px;
+			height: 30px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.input-field {
+			padding: 5px;
+		}
+
+		.input-field-currency {
+			padding: 5px;
+		}
+
+		.label {
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<br>
+<h1>Задача №2</h1>
+<p>
+	Зробити конвертер валют (курси валют – константи у скрипті)
+</p>
+<div class="calc">
+	<div class="block">
+		<div class="block__item">
+			<label class="label"> Сума у гривнях
+				<input class="input-field" type="number" id="grn"> UAH
+			</label>
+			<div class="buttons-block">
+				<button class="btn" id="btn">Конвертувати</button>
+				<!-- <button class="btn" id="clear">Очистити</button> -->
+			</div>
+		</div>
+		<div class="block__item">
+			<div>
+				<label> Сума, ЄВРО
+					<input class="input-field-currency" type="number" id="euroResult"> EUR
+				</label>
+			</div>
+			<div>
+				<label> Сума, ДОЛАР
+					<input class="input-field-currency" type="number" id="dollarResult"> USD
+				</label>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>
+<script>
+	//
+	function convert() {
+		const euroRate = 42
+		const dollarRate = 37
+		const grnValue = parseFloat(document.getElementById('grn').value)
+		document.getElementById('euroResult').value = (grnValue / euroRate).toFixed(2)
+		document.getElementById('dollarResult').value = (grnValue / dollarRate).toFixed(2)
+	}
+	document.getElementById('btn').onclick = convert
+
+	// >>>>>>>>>>>>>>>>>>>>>>> не по макету(
+	// function clearFields() {
+	// 	const clearField = document.getElementsByTagName('input')
+	// 	for (const elem of clearField) {
+	// 		elem.value = ''
+	// 	}
+	// }
+	// document.getElementById('clear').onclick = clearFields
+</script>
+
+</body>
+
+</html>

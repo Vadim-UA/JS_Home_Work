@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №18</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>
+		Відобразити таблицю 3*4 з випадковими числами.
+		(її треба динамічно створити і вставити на сторінку)
+	</p>
+	<hr>
+	<script>
+		// Змінні
+		const startValue = -50
+		const endValue = 50
+		// function getRandomNumber(start, end) {
+		// 	const randomNumber = startValue + Math.floor(Math.random() * (endValue - startValue + 1))
+		// 	return randomNumber
+		// }
+		function getTable(start, end) {
+			const wr = document.createElement('div')
+			wr.classList.add('wrapper')
+			document.body.append(wr)
+			const tableItem = document.createElement('table')
+			wr.append(tableItem)
+			for (let i = 0; i < 4; i++) {
+				const trItem = document.createElement('tr')
+				tableItem.append(trItem)
+				for (let j = 0; j < 3; j++) {
+					const randomNumber = startValue + Math.floor(Math.random() * (endValue - startValue + 1))
+					const tdItem = document.createElement('td')
+					tdItem.append(randomNumber)
+					trItem.append(tdItem)
+				}
+			}
+		}
+
+		getTable(startValue, endValue)
+
+	</script>
+
+</body>
+
+</html>
