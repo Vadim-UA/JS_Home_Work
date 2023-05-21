@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №23</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		.block {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.block__item {
+			margin-bottom: 10px;
+		}
+
+		.block__item div {
+			margin-bottom: 10px;
+		}
+
+		.buttons-block {
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			width: 100px;
+			height: 30px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.input-field {
+			padding: 5px;
+		}
+
+		.input-field-currency {
+			padding: 5px;
+		}
+
+		.label {
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<br>
+<h1>Задача №2</h1>
+<p>
+	Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності.
+	Визначити чи є він придатним на даний момент.
+</p>
+<hr>
+<script>
+	const userProdYear = parseInt(prompt('Зазначте рік виробництва у форматі "pppp"'))
+	const userProdMonth = parseInt(prompt('Зазначте місяць виробництва у форматі "мм"') - 1)
+	const userProdDay = parseInt(prompt('Зазначте день виробництва у форматі "дд"'))
+	const userPeriod = parseInt(prompt('Зазначте кількість днів придатності у форматі'))
+
+	function isSuitableProduct(year, months, day, period) {
+		const produceDate = new Date(userProdYear, userProdMonth, userProdDay)
+		const bestBeforeDate = new Date(userProdYear, userProdMonth, userProdDay + userPeriod)
+		const currentDay = new Date()
+		let result
+		if (produceDate <= currentDay) {
+			if (bestBeforeDate >= currentDay) result = 'придатний до споживання'
+			else result = 'НЕпридатний до споживання'
+		} else {
+			alert('Аліса, де мелафон?! Чому продукт з майбутнього?!')
+			result = 'продукт майбутнього!'
+		}
+		return result
+	}
+	const isProductSuitable = isSuitableProduct(userProdYear, userProdMonth, userProdDay, userPeriod)
+	document.write(`На даний момент продукт є ${isProductSuitable}`)
+
+
+</script>
+
+</body>
+
+</html>

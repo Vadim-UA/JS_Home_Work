@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №23</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		.block {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.block__item {
+			margin-bottom: 10px;
+		}
+
+		.buttons-block {
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			width: 100px;
+			height: 30px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.input-field {
+			padding: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>
+		Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
+	</p>
+	<hr>
+	<br>
+	<script>
+		// Створюємо змінні 
+		const holidaysNumberDays = 56
+		function getBadDate(days) {
+			const currentDate = new Date()
+			currentDate.setDate(days)
+			return currentDate
+		}
+		const badDate = getBadDate(holidaysNumberDays)
+		document.write(`Після ${holidaysNumberDays} днів відпустки (від сьогодні) користувач повернеться у компанію ${badDate}.`)
+	</script>
+</body>
+
+</html>

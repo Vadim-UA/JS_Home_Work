@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 5 уроку №23</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №5</h1>
+	<p>============ String ===============</p>
+	<p> 1) Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).</p>
+	<p> 2) Дано масив рядків. Вивести ті, у яких немає цифр.</p>
+	<p> 3) Дано масив рядків. Вивести ті, у яких є голосні літери.</p>
+	<p> 4) Дано масив рядків. Вивести ті, у яких немає голосних літер.</p>
+	<p> 5) Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.</p>
+	<p> 6) Дано рядок тексту, вивести усі числа, які є у тексті.</p>
+	<p> 7) Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.</p>
+	<p> 8) Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.</p>
+	<p> 9) Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).</p>
+	<p> 10) Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.</p>
+	<p> 11) Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі
+		такі номери.</p>
+	<p> 12) Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”).</p>
+	<p> 13) Вибрати усі роки після 2021 року з отриманого повідомлення.</p>
+	<p> 14) Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починається на «+38»).</p>
+	<p> 15) Користувач вводить прізвище та ім’я в одному рядку через пробіл. Замінити пробіл на дефіс.</p>
+	<p> 16) Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі
+		«день/місяць/рік».</p>
+	<p> 17) Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи є це день
+		вихідним.</p>
+	<hr>
+
+	<script>
+		// №1 Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази)
+		const arrayOfStrings = [
+			'Lorem ipsum dolor sit amet.',
+			'gggg rrrr pppp ssss',
+			'Lorem 85 ipsum dolor sit amet, 3225 perspiciatis! Repudiandae ?',
+			'364782 Lorem ipsum dolor sit amet 895.',
+			'brcd',
+			'1',
+			'3',
+			'aaaayyyyy oooooooooo iiiiii',
+			'Lorem ip111sum dolor, sit adipisicing elit.',
+			'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+			'ssssss vvvvvvvvvvv',
+			'yea',
+		]
+		const expression1 = /\d/
+		function getStringWithDigits(arr, exp) {
+			let arrWithDig = []
+			for (let i = 0; i < arr.length; i++) {
+				if (exp.test(arr[i])) arrWithDig.push(arr[i])
+			}
+			return arrWithDig
+		}
+		const arrWithDig = getStringWithDigits(arrayOfStrings, expression1)
+		document.write(`1) Рядки, у яких є цифри:<br>${arrWithDig}<br><br>`)
+
+		// ************************************************************************
+		// №2 Дано масив рядків. Вивести ті, у яких немає цифр.
+		// const expression2 = /^[0-9]/
+		function getStringWithoutDigits(arr, exp) {
+			let arrWithoutDig = []
+			for (let i = 0; i < arr.length; i++) {
+				if (!exp.test(arr[i])) arrWithoutDig.push(arr[i])
+			}
+			return arrWithoutDig
+		}
+		const arrWithoutDig = getStringWithoutDigits(arrayOfStrings, expression1)
+		document.write(`2) Рядки, у яких нема цифр:<br>${arrWithoutDig}<br><br>`)
+
+		// ************************************************************************
+		// №3 Дано масив рядків. Вивести ті, у яких є голосні літери.
+		const expression2 = /[aiyoe]/
+		function getVowelLetters(arr, exp) {
+			let resArr = []
+			// for (let i = 0; i < arr.length; i++) {
+			// if (exp.test(arr[i])) resArr.push(arr[i])
+			// }
+			for (const row of arr) {
+				if (exp.test(row)) {
+					resArr.push(row)
+				}
+			}
+			return resArr
+		}
+		const vowelArr = getVowelLetters(arrayOfStrings, expression2)
+		document.write(`3) Рядки, у яких є голосні літери:<br>${vowelArr}<br><br>`)
+		// console.log(vowelArr)
+
+		// ************************************************************************
+		// №4 Дано масив рядків. Вивести ті, у яких немає голосних літер.
+		function getNotVowelLetters(arr, exp) {
+			let newArr = arr.filter((elem) => !exp.test(elem))
+			return newArr
+		}
+		const notVowelArr = getNotVowelLetters(arrayOfStrings, expression2)
+		document.write(`4) Рядки, у яких нема голосних літер:<br>${notVowelArr}<br><br>`)
+		// console.log(notVowelArr)
+
+		// ************************************************************************
+		// №5 Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.
+		const expression3 = /(1|3)/
+		function getRowsNumber(arr) {
+			// let newArr = []
+			// for (const row of arr) {
+			// 	if (exp.test(row)) newArr.push(row)
+			// }
+			let newArr = arr.filter(row => /(1|3)/.test(row))
+			return newArr
+		}
+		const rowsNumbers = getRowsNumber(arrayOfStrings)
+		document.write(`5) Рядки, у яких є або цифра 1 або цифра 3:<br>${rowsNumbers}<br><br>`)
+		// console.log(rowsNumbers)
+
+		// ************************************************************************
+		// №6 Дано рядок тексту, вивести усі числа, які є у тексті.
+		const someString1 = 'Lorem15 ipsum 253 dolor sit 9 amet consectetur 17 adipisicing elit. Esse, pari98atur.'
+		// const someString = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, pariatur.'
+		function getNumbers(str) {
+			let numbers
+			if (/\d/.test(str)) {
+				numbers = str.match(/\d/g)
+			} else alert('no digits')
+			return numbers
+		}
+		const numbersOfString = getNumbers(someString1)
+		document.write(`6) 
+		Дано рядок тексту: ${someString1}<br>
+		Усі числа, які є у тексті:${numbersOfString}<br><br>
+		`)
+		// console.log(numbersOfString)
+
+		// ************************************************************************
+		// №7 Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.
+		const someString2 = 'Lorem? ipsum dolor, sit amet: consectetur! Adipisicing elit. Ipsum dolor - sit;'
+		function getPunctuationMarks(str) {
+			// const resArr = str.match(/[.,!?\-:;]/gm)
+			const resArr = str.match(/[^\w\s]/g)
+			return resArr
+		}
+		const punctuationMarks = getPunctuationMarks(someString2)
+		document.write(`7) 
+		Дано рядок тексту: <strong>${someString2}</strong><br>
+		Знаки пунктуації, які були використано y тексті: "${punctuationMarks.join(' ')}"<br><br>
+		`)
+		// console.log(punctuationMarks)
+
+		// ************************************************************************
+		// №8 Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.
+		const someString3 = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa enim dicta ullam consequatur! Similique accusantium, magnam iure necessitatibus quasi?'
+		function getPartsOfText(str) {
+			const newArray = str.match(/(\w+\s)+\b\w+/g)
+			return newArray
+		}
+		const partsOfText = getPartsOfText(someString3)
+		document.write(`8) 
+		Дано рядок тексту: <strong>${someString3}</strong><br>
+		Складові, які розділені розділовими знаками: ${partsOfText}<br><br>
+		`)
+		// console.log(partsOfText)
+
+		// ************************************************************************
+		// №9 Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).
+		const stringWithDate = 'Lorem, 14.05.2023 sit amet consectetur adipisicing elit.'
+		function getDate(str) {
+			let result
+			if (/\d{2}\.\d{2}\.\d{4}/.test(str)) {
+				const date = str.match(/\d{2}\.\d{2}\.\d{4}/)
+				result = `Рядок містить дату у вказаному форматі. Це ${date}`
+			} else {
+				result = 'Рядок не містить дати'
+			}
+			return result
+		}
+		const message = getDate(stringWithDate)
+		document.write(`9) 
+		Дано рядок тексту: <strong>${stringWithDate}</strong><br>
+		Чи містить він дату? ${message}<br><br>
+		`)
+		// console.log(message)
+
+		// ************************************************************************
+		// №10 Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.
+		const stringWithNumber = 'Lorem 2536 ipsum 1 dolor 3 sit 91 amet 326 consectetur 25 adipisicing.'
+		const expression4 = /\b\d{2}\b/g
+		// const expression4 = /\D\d{2}(\s|\D)/g
+		function getNumbersFromString(str, exp) {
+			let result
+			if (exp.test(str))
+				result = str.match(exp)
+			else result = 'Чисел вказаних розрядів рядок не має'
+			return result
+		}
+		const numberFromString = getNumbersFromString(stringWithNumber, expression4)
+		document.write(`10) 
+		Дано рядок тексту: <strong>${stringWithNumber}</strong><br>
+		Рядок має двоцифрові числа: ${numberFromString}<br><br>
+		`)
+		// console.log(numberFromString)
+
+		// ************************************************************************
+		// №11 Визначити, чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). 
+		// Знайти усі такі номери.
+		const cardsNumberString = 'Lorem 4142-3433-2323-3434 dolor sit amet 4102-3493-7323-3454 consectetur.'
+		const expression5 = /\b(\d{4})-(\d{4})-(\d{4})-(\d{4})\b/g
+		function getCardsNumbers(str, exp) {
+			let result
+			let tmp
+			if (exp.test(str)) {
+				tmp = str.match(exp)
+				result = `Рядок тексту містить номер(и) банківської карти: ${tmp}`
+			}
+			else result = 'Рядок тексту не містить номеру(ів) банківської карти'
+			return result
+		}
+		const numbersCards = getCardsNumbers(cardsNumberString, expression5)
+		document.write(`11) ${numbersCards}<br><br>`)
+		// console.log(numbersCards)
+
+		// ************************************************************************
+		// №12 Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”).
+		const addressRow = 'https://www.kmu.gov.ua/'
+		function isWebsiteGovernment(str) {
+			const check = /\.gov\./.test(str)
+			let result
+			if (check) result = `Сайт ${str} є урядовим`
+			else result = `Сайт ${str} не є урядовим`
+			return result
+		}
+		const site = isWebsiteGovernment(addressRow)
+		document.write(`12) ${site}<br><br>`)
+		// console.log(isWebsiteGovernment(addressRow))
+
+		// ************************************************************************
+		// №13 Вибрати усі роки після 2021 року з отриманого повідомлення.
+		const messageWithYears = 'Lorem 1999, 2024, 2035, 1853, ipsum 2015, 2029 adipisicing 2027, 2018, 2011, consectetur 2019, 2002, 2025, dolor sit amet 1995, 2021, 1959, 2020, 2022 1922, 2023, 1918'
+		const expression6 = /20[2-9][^01]/g
+		function getYearsAfter(str, exp) {
+			const result = str.match(exp)
+			return result
+		}
+		const yearsAfter = getYearsAfter(messageWithYears, expression6)
+		document.write(`13) У повідомленні <strong>${messageWithYears}</strong> вибрано усі роки після 2021: <strong>${yearsAfter}</strong><br><br>`)
+		// console.log(yearsAfter)
+		// ************************************************************************
+		// №14 Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починається на «+38»).
+		const phoneNumbers = 'Lorem ipsum +38(050)123-45-67 dolor sit +38(093)12 34 567 amet. '
+		const expression7 = /\+38\(\d{3}\)\d+/g // частина виразу ( \d{3}\)\d+ ) є надлишковою?
+		function isFromUA(str, exp) {
+			return exp.test(str)
+			// let result
+			// if (exp.test(str)) {
+			// 	let tmp = str.match(exp)
+			// 	result = `Номер(и) телефону(ів) ${tmp} є з України`
+			// } else result = 'Відсутні телефони з України'
+			// return result
+		}
+		const numbersFromUA = isFromUA(phoneNumbers, expression7)
+		document.write(`14) Чи є серед номерів у тексті <b>${phoneNumbers}</b> номери з України? Відповідь: <b>${numbersFromUA}</b><br><br>`)
+
+		// ************************************************************************
+		// №15  Користувач вводить прізвище та ім’я в одному рядку через пробіл. Замінити пробіл на дефіс.
+		// const userName = 'Петренко Петро'
+		const userName = prompt('Прізвище та ім\'я (через пробіл)')
+		function getReplaceTheSpace(name) {
+			// const userNameWithoutSpace = name.replace(' ', '-')
+			const userNameWithoutSpace = name.replace(/ /, '-')
+			return userNameWithoutSpace
+		}
+		const userNameWithoutSpace = getReplaceTheSpace(userName)
+		document.write(`15) Замінити пробіл на дефіс між словами <b>${userName}</b>: ${userNameWithoutSpace}<br><br>`)
+		// console.log(userNameWithoutSpace)
+
+		// ************************************************************************
+		// №16 Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік».
+		const userDate = prompt('Формат дати - "дд.мм.рррр"')
+		// const userDate = '12.01.2022'
+		// const userDate = '12/01/2022'
+		// const userDate = '12.01/2022'
+		// const userDate = '12.01.2022.' - як позбутися останнього "/" ???
+		function getNewUserDate(date) {
+			let newUserDate = 'Error'
+			const regex = /\b\d{2}\.\d{2}\.\d{4}\b/
+			if (regex.test(date)) {
+				newUserDate = date.replace(/\./g, '/')
+			} else alert('Невірний формат дати. Необхідний формат дати - "день.місяць.рік"')
+			return newUserDate
+		}
+		const newUserDate = getNewUserDate(userDate)
+		document.write(`16) Дату ${userDate} у форматі "день.місяць.рік" відображено у форматі "день/місяць/рік": ${newUserDate}<br><br>`)
+		// console.log(newUserDate)
+
+		// ************************************************************************
+		// №17 Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи є це день вихідним.
+		const userDay = prompt('Ввести номер (0-6) дня тижня або назву')
+		function getStatusDay(day) {
+			const weekDays = /sun|mon|tue|wed|thu|fri|sat/
+			const workingDayExp = /mon|tue|wed|thu|fri/
+			let result
+			if (/\d/.test(day) && (/\b\d\b/.test(day))) {
+				if ((/[0-6]/.test(day)) && parseInt(day) >= 0) {
+					if (/[0|6]/.test(day)) result = `День ${day} - вихідний`
+					if (/[1-5]/.test(day)) result = `День ${day} - робочий`
+				} else result = 'Дані некоректні'
+			} else {
+				if (weekDays.test(day)) {
+					if (/sat|sun/.test(day)) result = `День ${day} - вихідний`
+					if (workingDayExp.test(day)) result = `День ${day} - робочий`
+				} else result = 'Дані некоректні'
+			}
+			return result
+		}
+		const dayStatus = getStatusDay(userDay)
+		document.write(`17) ${dayStatus}`)
+		// console.log(dayStatus)
+	</script>
+
+</body>
+
+</html>

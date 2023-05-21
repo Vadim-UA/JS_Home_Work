@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №23</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		table,
+		td {
+			border: 1px solid #000;
+			font-size: 22px;
+		}
+
+		td {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №4</h1>
+	<p>
+		Задаємо користувачу задачу з додавання двох чисел.
+		Визначити скільки секунд було використано для розв'язання задачі.
+	</p>
+	<hr>
+
+	<script>
+		// Змінні
+		// const minValue = 1
+		// const maxValue = 20
+		const minValue = parseInt(prompt('Вкажіть початок діапазону чисел'))
+		const maxValue = parseInt(prompt('Вкажіть кінець діапазону чисел'))
+		// Обчислення
+		function getSum(minV, maxV) {
+			const num1 = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+			const num2 = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+			const sum = num1 + num2
+			let userAnswer
+			let count = 0
+			const timeStart = new Date()
+			do {
+				count++
+				userAnswer = parseInt(prompt(`Скільки буде ${num1} + ${num2}`))
+				if (userAnswer === sum)
+					document.write(`
+				Правильно! ${num1} + ${num2} = ${userAnswer}<br><br>
+				Правильна відповідь отримана зі спроби № ${count}<br>
+				`)
+				else alert('Неправильно. Наступна спроба.')
+			} while (sum != userAnswer)
+			const timeEnd = new Date()
+			return timeEnd - timeStart
+		}
+		const timeForAction = getSum(minValue, maxValue)
+		document.write(`
+		<br>Користувач витратив на розв'язання задачі ${(timeForAction / 1000).toFixed(1)} сек.<br><br>
+		Числа для прикладу знаходились у діапазоні від ${minValue} до ${maxValue} включно.
+		`)
+	</script>
+</body>
+
+</html>
