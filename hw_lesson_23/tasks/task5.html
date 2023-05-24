@@ -259,7 +259,7 @@
 		// ************************************************************************
 		// №13 Вибрати усі роки після 2021 року з отриманого повідомлення.
 		const messageWithYears = 'Lorem 1999, 2024, 2035, 1853, ipsum 2015, 2029 adipisicing 2027, 2018, 2011, consectetur 2019, 2002, 2025, dolor sit amet 1995, 2021, 1959, 2020, 2022 1922, 2023, 1918'
-		const expression6 = /20[2-9][^01]/g
+		const expression6 = /\b20[2-9][^01]\b/g
 		function getYearsAfter(str, exp) {
 			const result = str.match(exp)
 			return result
@@ -324,7 +324,7 @@
 			let result
 			if (/\d/.test(day) && (/\b\d\b/.test(day))) {
 				if ((/[0-6]/.test(day)) && parseInt(day) >= 0) {
-					if (/[0|6]/.test(day)) result = `День ${day} - вихідний`
+					if (/(0|6)/.test(day)) result = `День ${day} - вихідний`
 					if (/[1-5]/.test(day)) result = `День ${day} - робочий`
 				} else result = 'Дані некоректні'
 			} else {
