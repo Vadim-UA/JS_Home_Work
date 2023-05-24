@@ -67,7 +67,7 @@
 	const userProdYear = parseInt(prompt('Зазначте рік виробництва у форматі "pppp"'))
 	const userProdMonth = parseInt(prompt('Зазначте місяць виробництва у форматі "мм"') - 1)
 	const userProdDay = parseInt(prompt('Зазначте день виробництва у форматі "дд"'))
-	const userPeriod = parseInt(prompt('Зазначте кількість днів придатності у форматі'))
+	const userPeriod = parseInt(prompt('Зазначте кількість днів придатності'))
 
 	function isSuitableProduct(year, months, day, period) {
 		const produceDate = new Date(userProdYear, userProdMonth, userProdDay)
