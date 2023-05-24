@@ -53,12 +53,14 @@
 	<script>
 		// Створюємо змінні 
 		const holidaysNumberDays = 56
-		function getBadDate(days) {
+		function getBadDate(days, happyDays) {
 			const currentDate = new Date()
-			currentDate.setDate(days)
+			console.log(currentDate)
+			currentDate.setDate(currentDate.getDate() + happyDays)
+			console.log(currentDate)
 			return currentDate
 		}
-		const badDate = getBadDate(holidaysNumberDays)
+		const badDate = getBadDate(holidaysNumberDays, holidaysNumberDays)
 		document.write(`Після ${holidaysNumberDays} днів відпустки (від сьогодні) користувач повернеться у компанію ${badDate}.`)
 	</script>
 </body>
