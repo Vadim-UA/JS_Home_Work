@@ -144,7 +144,7 @@
 		function getNumbers(str) {
 			let numbers
 			if (/\d/.test(str)) {
-				numbers = str.match(/\d/g)
+				numbers = str.match(/\d+/g)
 			} else alert('no digits')
 			return numbers
 		}
