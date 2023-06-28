@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 1 уроку №19</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		.card-item-link {
+			display: inline-block;
+			margin: 10px;
+			/* padding: 10px; */
+		}
+
+		.container {
+			display: flex;
+		}
+
+		a {
+			display: inline-block;
+			text-decoration: none;
+		}
+
+		.outline {
+			outline: 3px solid #46a868;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача №1</h1>
+	<p>
+		Задача 1. Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку
+	</p>
+	<img src="../img/image_task_1.jpg" alt="Task">
+	<hr>
+	<br>
+	<br>
+	<div class="container"></div>
+	<script>
+		class Cards {
+			constructor(imgSrc, link) {
+				this.imgSrc = imgSrc
+				this.link = link
+			}
+			onhover() {
+				this.cardLink.classList.add('outline')
+				// this.cardLink.style.outline = '3px solid green'
+				// this.cardLink.style.transform = 'scale(1.05)'
+			}
+			onleave() {
+				this.cardLink.classList.remove('outline')
+				// this.cardLink.style.outline = 'none'
+				// this.cardLink.style.transform = 'scale(1)'
+			}
+			render(containerSelector) {
+				this.cardLink = document.createElement('a')
+				this.cardLink.className = 'card-item-link'
+				this.cardLink.href = this.link
+				this.cardLink.target = '_blank'
+
+				this.cardImg = document.createElement('img')
+				this.cardImg.className = 'card-image'
+				this.cardImg.src = this.imgSrc
+				this.cardImg.alt = 'Image'
+				this.cardLink.append(this.cardImg)
+
+				this.targetContainer = document.querySelector(containerSelector)
+				this.targetContainer.append(this.cardLink)
+
+				// hover or leave
+				this.cardLink.onmouseover = this.onhover.bind(this)
+				this.cardLink.onmouseleave = this.onleave.bind(this)
+
+			}
+		}
+		// =============
+		const cardsLinks = [
+			'https://uk.wikipedia.org/wiki/Acer',
+			'https://uk.wikipedia.org/wiki/ASUS',
+			'https://uk.wikipedia.org/wiki/Lenovo',
+			'https://uk.wikipedia.org/wiki/Apple_Inc.'
+		]
+		const imageForCards = [
+			'../img/image_task_1_1.jpg',
+			'../img/image_task_1_2.jpg',
+			'../img/image_task_1_3.jpg',
+			'../img/image_task_1_4.jpg',
+		]
+		// const c1 = new Cards(imageForCards[0], cardsLinks[0])
+		// const c2 = new Cards(imageForCards[1], cardsLinks[1])
+		// const c3 = new Cards(imageForCards[2], cardsLinks[2])
+		// const c4 = new Cards(imageForCards[3], cardsLinks[3])
+		// c1.render('.container')
+		// c2.render('.container')
+		// c3.render('.container')
+		// c4.render('.container')
+
+		function getCards(images, links, constructor) {
+			for (let i = 0; i < images.length; i++) {
+				const c = new constructor(images[i], links[i])
+				c.render('.container')
+			}
+		}
+		getCards(imageForCards, cardsLinks, Cards)
+	</script>
+</body>
+
+</html>

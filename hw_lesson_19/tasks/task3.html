@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 3 уроку №19</title>
+	<style>
+		.container {
+			background-color: #82b1cc;
+			min-height: 100%;
+			position: relative;
+			margin: 0px -30px;
+			min-height: 100vh;
+		}
+
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h1 {
+			font-size: 25px;
+		}
+
+		hr {
+			width: 100%;
+		}
+
+		.snowflakeItem {
+			color: #fff;
+			position: absolute;
+			animation: snowDown linear infinite;
+		}
+
+		@keyframes snowDown {
+			0% {
+				top: -500px;
+				transform: rotate(0deg);
+			}
+
+			100% {
+				top: 100%;
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+	<script>
+		class FallingSnow {
+			constructor(snowflakesArray, snowflakesCount) {
+				this.snowflakesArray = snowflakesArray
+				this.snowflakesCount = snowflakesCount
+			}
+			getRandomValue(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1))
+			}
+			render(containerInit) {
+				const targetContainer = document.querySelector(containerInit)
+				const snowflake = document.createElement('div')
+				snowflake.classList.add('snowflakeItem')
+				snowflake.innerHTML = this.snowflakesArray
+				snowflake.style.fontSize = this.getRandomValue(16, 150) + 'px'
+				snowflake.style.left = this.getRandomValue(5, 85) + '%'
+				snowflake.style.top = this.getRandomValue(-200, 200) + 'px'
+				snowflake.style.animationDuration = this.getRandomValue(8, 20) + 's'
+				targetContainer.append(snowflake)
+			}
+		}
+		// =======
+		const snowflakes = ['&#10049', '&#10051', '&#10052', '&#10053', '&#10054', '&#10055', '&#10056', '&#10057', '&#10058', '&#10059']
+		const snowflakesCount = 100
+		// =======
+		window.onload = function () {
+			for (let i = 0; i < snowflakesCount; i++) {
+				const randIndex = Math.floor(Math.random() * snowflakes.length)
+				const s = new FallingSnow(snowflakes[randIndex])
+				s.render('.container')
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<h1>Задача №3</h1>
+		<p>
+			Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану і з випадковою
+			швидкістю рухається вниз. Як тільки сніжинка досягає нижньої частини екрану вона знову повинна з’явитись у
+			верхній частині екрану.
+		</p>
+		<!-- <hr> -->
+		<div class="container">
+		</div>
+	</div>
+</body>
+
+</html>

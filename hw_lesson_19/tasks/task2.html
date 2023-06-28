@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 2 уроку №19</title>
+	<style>
+		body {
+			padding: 20px 30px;
+			font-family: sans-serif;
+		}
+
+		h3 {
+			font-size: 25px;
+		}
+
+		.title {
+			text-align: center;
+			font-size: 18px;
+		}
+
+		.container {
+			display: flex;
+			column-gap: 25px;
+			margin: 0px 3px;
+			align-items: stretch;
+		}
+
+		.border-line {
+			border: 3px solid #000;
+		}
+
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.general-list,
+		.selected-spotters {
+			width: 200px;
+			display: flex;
+			flex-direction: column;
+			row-gap: 3px;
+			padding: 2px;
+			flex: 1 1 100%;
+			min-height: 256px;
+		}
+
+		.general-list {
+			padding: 2px;
+		}
+
+		.item,
+		.item-selected {
+			padding: 5px;
+			/* font-size: 18px; */
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.button-green {
+			width: 40px;
+			cursor: pointer;
+			background-color: green;
+		}
+
+		.button-red {
+			width: 40px;
+			cursor: pointer;
+			background-color: red;
+		}
+	</style>
+	<script>
+		class Lists {
+			constructor({ firstName, lastName }) {
+				this.firstName = firstName
+				this.lastName = lastName
+				this.btnGreen = document.createElement('button')
+				this.btnRed = document.createElement('button')
+				this.removeItem = document.createElement('div')
+				this.itemSelected = document.createElement('div')
+			}
+
+			toGeneralList() {
+				this.removeItem.classList.add('item', 'border-line')
+				this.removeItem.innerText = this.firstName + ' ' + this.lastName
+				this.removeItem.append(this.btnGreen)
+				this.targetContainerInit.append(this.removeItem)
+				// 
+				this.itemSelected.remove()
+			}
+
+			toSelectedList() {
+				this.btnRed.className = 'button-red'
+				this.itemSelected.classList.add('item-selected', 'border-line')
+				this.itemSelected.innerText = this.firstName + ' ' + this.lastName
+				this.itemSelected.append(this.btnRed)
+				this.targetContainerSelected.append(this.itemSelected)
+				// 
+				this.item.remove()
+				this.removeItem.remove()
+			}
+
+			render(containerInit, containerSelected) {
+				this.item = document.createElement('div')
+				this.item.classList.add('item', 'border-line')
+				this.item.innerText = this.firstName + ' ' + this.lastName
+				this.targetContainerInit = document.querySelector(containerInit)
+				this.targetContainerInit.append(this.item)
+				// 
+				this.targetContainerSelected = document.querySelector(containerSelected)
+
+				// button-green
+				this.btnGreen.className = 'button-green'
+				this.item.append(this.btnGreen)
+				// 
+				this.btnGreen.onclick = this.toSelectedList.bind(this)
+				this.btnRed.onclick = this.toGeneralList.bind(this)
+
+			}
+		}
+		// ============================
+		const initialList = [
+			{
+				firstName: 'Грицик',
+				lastName: 'Джура',
+			},
+			{
+				firstName: 'Дід',
+				lastName: 'Кібчик',
+			},
+			{
+				firstName: 'Санько',
+				lastName: 'Джура',
+			},
+			{
+				firstName: 'Федір',
+				lastName: 'Колотнеча',
+			},
+			{
+				firstName: 'Пилип',
+				lastName: 'Швайка',
+			},
+			{
+				firstName: 'Демко',
+				lastName: 'Манюня',
+			},
+			{
+				firstName: 'Богдан',
+				lastName: 'Глинський',
+			}
+		]
+		window.onload = function () {
+			for (let i = 0; i < initialList.length; i++) {
+				const c = new Lists(initialList[i])
+				c.render('.general-list', '.selected-spotters')
+			}
+		}
+	</script>
+</head>
+
+<br>
+<h1>Задача №2</h1>
+<p>
+	Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні.
+	При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний.
+	При натисканні на
+	зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен
+	переміщається у
+	загальний список.
+</p>
+<img src="../img/image_task_2.jpg" alt="Task 2">
+<hr>
+<div class="container">
+	<div class="wrapper">
+		<p class="title">Загальний список</p>
+		<div class="general-list border-line"></div>
+	</div>
+	<div class="wrapper">
+		<p class="title">ОБРАНІ (для змагання)</p>
+		<div class="selected-spotters border-line"></div>
+	</div>
+</div>
+
+</body>
+
+</html>

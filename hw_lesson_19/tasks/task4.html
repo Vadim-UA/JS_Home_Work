@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Задача 4 уроку №19</title>
+	<style>
+		body {
+			/* padding: 20px 30px; */
+			font-family: sans-serif;
+			position: relative;
+			color: #fff;
+		}
+
+		h1 {
+			font-size: 25px;
+		}
+
+		.header {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 10px;
+			z-index: 2;
+		}
+
+		.container {
+			min-height: 100vh;
+			background-color: #113a5f;
+			position: relative;
+		}
+
+		.starItem {
+			position: absolute;
+			width: 30px;
+			/* height: 30px; */
+			animation: star-motion
+				/*duration*/
+				linear
+				/*delay*/
+				infinite;
+		}
+
+		@keyframes star-motion {
+			0% {
+				transform: scale(1.0);
+			}
+
+			25% {
+				transform: scale(2.0);
+			}
+
+			75% {
+				transform: scale(1.5);
+			}
+
+			100% {
+				transform: scale(2.5);
+			}
+		}
+	</style>
+	<script>
+		class ShiningStars {
+			constructor(imgSrc) {
+				this.imgSrc = imgSrc
+			}
+			getRandomValue(minV, maxV) {
+				return minV + Math.floor(Math.random() * (maxV - minV + 1))
+			}
+			render(containerInit) {
+				const targetContainer = document.querySelector(containerInit)
+				const star = document.createElement('img')
+				star.classList.add('starItem')
+				star.src = this.imgSrc
+				// star.style.width = 30 + 'px'
+				targetContainer.append(star)
+				this.value = this.getRandomValue(3, 15)
+				star.style.top = this.getRandomValue(10, 90) + '%'
+				star.style.left = this.getRandomValue(5, 95) + '%'
+				star.style.animationDuration = this.value + 's'
+				setInterval(() => {
+					star.style.top = this.getRandomValue(10, 90) + '%'
+					star.style.left = this.getRandomValue(5, 95) + '%'
+					// star.style.animationDuration = this.value + 's'
+				}, this.value * 1000);
+			}
+		}
+		const starSrc = '../img/star.png'
+		const starsNumber = 60
+
+		window.onload = function () {
+			for (let i = 0; i < starsNumber; i++) {
+				const s = new ShiningStars(starSrc)
+				s.render('.container')
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<h1>Задача №4</h1>
+		<p>
+			Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна
+			зірка з певним кроком і інтервалом збільшується від мінімального до максимального розміру. Як тільки досягнути
+			максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+		</p>
+		<!-- <hr> -->
+	</div>
+	<div class="container"></div>
+</body>
+
+</html>
